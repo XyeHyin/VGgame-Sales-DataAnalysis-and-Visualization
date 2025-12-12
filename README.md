@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 电子游戏销量分析管道
 
 该仓库已实现围绕 `vgsales.csv` 数据集的完整工作流：从采集、ML 加持的独立清洗、入库、再到数据库驱动的分析、可视化与机器学习建模。分析阶段默认直接从 PostgreSQL 表 `vgchartz_clean` 读取整洁数据，仅在数据库不可用时回退至 CSV。输出更新为 20+ 张静态图表（含季度日历、六边形密度、平台生命周期、区域扩散、瀑布图等高级图），1 份交互式 HTML 仪表盘以及多份 ML/分析 JSON，且所有描述均为中文。
@@ -53,6 +52,3 @@ python scrape_vgchartz.py --pages 10 --page-size 100 --platform All --sleep 1.2 
 - 可在 `_generate_figures`、`_generate_interactive_dashboard` 或 `_compute_innovation_metrics` 中新增函数，扩展图表与指标而无需改动主流程。
 - 交互式 HTML 页面位于 `outputs/interactive_dashboard.html`，可直接在浏览器中浏览或嵌入其他站点，适合线上展示。
 - VGChartz 爬虫默认按页面间隔 1.5 秒访问，若手动调低 `--sleep`，请自行确保符合目标站点的访问策略。
-=======
-# VGgame-Sales-DataAnalysis-and-Visualization
->>>>>>> 8b0eb9337d6e6eba65f2efecc0f4a9de6f814017
