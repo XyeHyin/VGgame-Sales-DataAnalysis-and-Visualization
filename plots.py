@@ -67,6 +67,10 @@ class FigureGenerator:
             self._plot_sankey_flow(df),
             self._plot_region_diffusion(df),
             self._plot_cohort_waterfall(df),
+            # 新增高级可视化图表
+            self._plot_console_war_bump(df),
+            self._plot_genre_evolution_stream(df),
+            self._plot_quality_sales_quadrant(df),
         ]
         return [path for path in charts if path]
 
@@ -481,3 +485,261 @@ class FigureGenerator:
         plt.close(fig)
         LOGGER.info("已保存图表 %s", path.name)
         return path
+
+    def _plot_console_war_bump(self, df: pd.DataFrame) -> Optional[Path]:
+        """动态排名图 (Bump Chart) - 展示主机战争的历史演变"""
+        if "Platform_Family_CN" not in df.columns or "Year" not in df.columns:
+            return None
+
+        # 统计每年各平台家族的销量
+        platform_year = (
+            df.groupby(["Year", "Platform_Family_CN"])["Global_Sales"]
+            .sum()
+            .reset_index()
+        )
+        if platform_year.empty:
+            return None
+
+        # 计算每年各平台的排名
+        platform_year["Rank"] = platform_year.groupby("Year")["Global_Sales"].rank(
+            ascending=False, method="min"
+        )
+
+        # 筛选主要平台 (至少出现 5 年)
+        platform_counts = platform_year.groupby("Platform_Family_CN")["Year"].count()
+        major_platforms = platform_counts[platform_counts >= 5].index.tolist()
+        platform_year = platform_year[
+            platform_year["Platform_Family_CN"].isin(major_platforms)
+        ]
+
+        if platform_year.empty or len(major_platforms) < 2:
+            return None
+
+        # 透视表
+        pivot = platform_year.pivot(
+            index="Year", columns="Platform_Family_CN", values="Rank"
+        )
+
+        fig, ax = plt.subplots(figsize=(14, 8))
+
+        # 使用不同颜色绘制每个平台的排名曲线
+        colors = plt.cm.tab10(np.linspace(0, 1, len(pivot.columns)))
+        for idx, platform in enumerate(pivot.columns):
+            series = pivot[platform].dropna()
+            if len(series) < 2:
+                continue
+            ax.plot(
+                series.index,
+                series.values,
+                marker="o",
+                label=platform,
+                linewidth=2.5,
+                markersize=6,
+                color=colors[idx],
+            )
+            # 在起点和终点标注平台名称
+            if len(series) > 0:
+                ax.annotate(
+                    platform,
+                    (series.index[-1], series.values[-1]),
+                    xytext=(5, 0),
+                    textcoords="offset points",
+                    fontsize=8,
+                    color=colors[idx],
+                    va="center",
+                )
+
+        ax.invert_yaxis()  # 排名越小越好，所以反转Y轴
+        ax.set_xlabel("年份")
+        ax.set_ylabel("销量排名")
+        ax.set_title("🎮 主机战争：平台销量排名演变 (Bump Chart)")
+        ax.legend(bbox_to_anchor=(1.15, 1), loc="upper left", ncol=1, fontsize=8)
+        ax.grid(True, alpha=0.3)
+
+        return self._save_fig(fig, "22_console_war_bump.png")
+
+    def _plot_genre_evolution_stream(self, df: pd.DataFrame) -> Optional[Path]:
+        """游戏类型流图 (Streamgraph) - 展示玩家口味的流动"""
+        if "Genre" not in df.columns or "Year" not in df.columns:
+            return None
+
+        # 统计每年各类型的销量
+        genre_year = df.groupby(["Year", "Genre"])["Global_Sales"].sum().reset_index()
+        if genre_year.empty:
+            return None
+
+        # 筛选主要类型 (销量前 8)
+        top_genres = (
+            df.groupby("Genre")["Global_Sales"].sum().nlargest(8).index.tolist()
+        )
+        genre_year = genre_year[genre_year["Genre"].isin(top_genres)]
+
+        # 透视并填充缺失值
+        pivot = genre_year.pivot(
+            index="Year", columns="Genre", values="Global_Sales"
+        ).fillna(0)
+        pivot = pivot.sort_index()
+
+        if pivot.empty or len(pivot) < 3:
+            return None
+
+        fig, ax = plt.subplots(figsize=(14, 7))
+
+        # 使用堆叠面积图模拟流图
+        colors = plt.cm.Set2(np.linspace(0, 1, len(pivot.columns)))
+        ax.stackplot(
+            pivot.index,
+            pivot.values.T,
+            labels=pivot.columns,
+            colors=colors,
+            alpha=0.85,
+            baseline="wiggle",
+        )
+
+        ax.set_xlabel("年份")
+        ax.set_ylabel("销量 (相对)")
+        ax.set_title("🌊 游戏类型演变流图 (Streamgraph)")
+        ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left", ncol=1, fontsize=9)
+        ax.set_xlim(pivot.index.min(), pivot.index.max())
+
+        # 移除Y轴刻度标签（流图更关注趋势而非绝对值）
+        ax.set_yticklabels([])
+        ax.axhline(0, color="white", linewidth=0.5, alpha=0.5)
+
+        return self._save_fig(fig, "23_genre_evolution_stream.png")
+
+    def _plot_quality_sales_quadrant(self, df: pd.DataFrame) -> Optional[Path]:
+        """爆款象限图 (Quadrant Chart) - 评分 vs 销量四象限分析"""
+        if "Composite_Score" not in df.columns or "Global_Sales" not in df.columns:
+            return None
+
+        # 过滤有评分的数据
+        valid = df[df["Composite_Score"].notna() & (df["Global_Sales"] > 0)].copy()
+        if len(valid) < 50:
+            return None
+
+        # 计算中位数作为分界线
+        score_median = valid["Composite_Score"].median()
+        sales_median = valid["Global_Sales"].median()
+
+        fig, ax = plt.subplots(figsize=(12, 10))
+
+        # 按类型着色
+        if "Genre" in valid.columns:
+            top_genres = (
+                valid.groupby("Genre")["Global_Sales"].sum().nlargest(6).index.tolist()
+            )
+            genre_colors = {
+                genre: plt.cm.tab10(i) for i, genre in enumerate(top_genres)
+            }
+            genre_colors["其他"] = "#888888"
+
+            for genre in top_genres + ["其他"]:
+                if genre == "其他":
+                    subset = valid[~valid["Genre"].isin(top_genres)]
+                else:
+                    subset = valid[valid["Genre"] == genre]
+
+                if len(subset) == 0:
+                    continue
+
+                ax.scatter(
+                    subset["Composite_Score"],
+                    subset["Global_Sales"],
+                    alpha=0.5,
+                    s=30,
+                    label=genre,
+                    color=genre_colors[genre],
+                )
+        else:
+            ax.scatter(
+                valid["Composite_Score"],
+                valid["Global_Sales"],
+                alpha=0.5,
+                s=30,
+                color="#4c72b0",
+            )
+
+        # 使用对数刻度
+        ax.set_yscale("log")
+
+        # 绘制中位数分界线
+        ax.axvline(
+            score_median, color="#ff6b6b", linestyle="--", linewidth=2, alpha=0.7
+        )
+        ax.axhline(
+            sales_median, color="#ff6b6b", linestyle="--", linewidth=2, alpha=0.7
+        )
+
+        # 标注四个象限
+        xlim = ax.get_xlim()
+        ylim = ax.get_ylim()
+
+        # 计算象限标注位置
+        quadrant_labels = [
+            (
+                "叫好不叫座\n(高评低销)",
+                score_median + (xlim[1] - score_median) * 0.5,
+                ylim[0] * 3,
+            ),
+            (
+                "叫好又叫座\n(高评高销) ⭐",
+                score_median + (xlim[1] - score_median) * 0.5,
+                ylim[1] * 0.3,
+            ),
+            (
+                "口碑销量双低\n(低评低销)",
+                xlim[0] + (score_median - xlim[0]) * 0.5,
+                ylim[0] * 3,
+            ),
+            (
+                "市场黑马\n(低评高销)",
+                xlim[0] + (score_median - xlim[0]) * 0.5,
+                ylim[1] * 0.3,
+            ),
+        ]
+
+        for label, x, y in quadrant_labels:
+            ax.text(
+                x,
+                y,
+                label,
+                fontsize=11,
+                ha="center",
+                va="center",
+                bbox=dict(boxstyle="round,pad=0.3", facecolor="black", alpha=0.6),
+            )
+
+        ax.set_xlabel("综合评分 (Composite Score)")
+        ax.set_ylabel("全球销量 (百万套, 对数轴)")
+        ax.set_title("💎 爆款象限图：评分 vs 销量四象限分析")
+
+        if "Genre" in valid.columns:
+            ax.legend(
+                bbox_to_anchor=(1.02, 1),
+                loc="upper left",
+                ncol=1,
+                fontsize=9,
+                title="游戏类型",
+            )
+
+        # 添加分界线说明
+        ax.text(
+            score_median,
+            ylim[1] * 0.8,
+            f"评分中位数: {score_median:.1f}",
+            fontsize=9,
+            color="#ff6b6b",
+            ha="center",
+        )
+        ax.text(
+            xlim[1] * 0.95,
+            sales_median,
+            f"销量中位数: {sales_median:.2f}M",
+            fontsize=9,
+            color="#ff6b6b",
+            ha="right",
+            va="bottom",
+        )
+
+        return self._save_fig(fig, "24_quality_sales_quadrant.png")

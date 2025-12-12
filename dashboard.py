@@ -297,28 +297,35 @@ class DashboardBuilder:
         return "".join(rendered)
 
     def _build_ml_features(self, ml_metrics: Dict[str, object]) -> str:
-        features = ml_metrics.get("top_features") or []
-        if not features:
-            return ""
+        # 优先读取 SHAP 特征重要性，否则回退到传统特征重要性
+        shap_features = ml_metrics.get("shap_features") or []
+        top_features = ml_metrics.get("top_features") or []
+
         rendered = []
-        for feature in features:
-            rendered.append(
-                self._render_list_item(
-                    "📈 {name} 重要度 {score:.2%}".format(
-                        name=feature.get("feature"),
-                        score=feature.get("importance", 0.0),
+
+        # 如果有 SHAP 特征，优先显示
+        if shap_features:
+            for feature in shap_features[:5]:
+                rendered.append(
+                    self._render_list_item(
+                        "🧠 SHAP 贡献: {name} = {score:.4f}".format(
+                            name=feature.get("feature"),
+                            score=feature.get("shap_importance", 0.0),
+                        )
                     )
                 )
-            )
-        permutation = ml_metrics.get("permutation_features") or []
-        for item in permutation[:3]:
-            rendered.append(
-                self._render_list_item(
-                    "🔁 Perm {name}: {score:.2%}".format(
-                        name=item.get("feature"), score=item.get("importance", 0.0)
+        elif top_features:
+            # 回退显示传统特征重要性
+            for feature in top_features[:5]:
+                rendered.append(
+                    self._render_list_item(
+                        "📈 {name} 重要度 {score:.2%}".format(
+                            name=feature.get("feature"),
+                            score=feature.get("importance", 0.0),
+                        )
                     )
                 )
-            )
+
         return "".join(rendered)
 
     def _build_ml_behavior_segments(self, ml_metrics: Dict[str, object]) -> str:
