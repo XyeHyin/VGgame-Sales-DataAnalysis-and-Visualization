@@ -1,0 +1,201 @@
+[
+  {
+    "type": "regional",
+    "cluster": 0,
+    "size": 4219,
+    "avg_global_sales": 2.4529509362408155,
+    "top_genres": [
+      "角色扮演",
+      "动作"
+    ],
+    "top_platforms": [
+      "PC",
+      "All"
+    ],
+    "dominant_region": "其他地区销量",
+    "region_profile": {
+      "北美销量": 0.003,
+      "欧洲销量": 0.001,
+      "日本销量": 0.0023,
+      "其他地区销量": 0.008
+    }
+  },
+  {
+    "type": "regional",
+    "cluster": 3,
+    "size": 5703,
+    "avg_global_sales": 0.5767140101700859,
+    "top_genres": [
+      "动作",
+      "体育"
+    ],
+    "top_platforms": [
+      "PlayStation",
+      "Nintendo"
+    ],
+    "dominant_region": "欧洲销量",
+    "region_profile": {
+      "北美销量": 0.3456,
+      "欧洲销量": 0.5258,
+      "日本销量": 0.0282,
+      "其他地区销量": 0.1004
+    }
+  },
+  {
+    "type": "regional",
+    "cluster": 1,
+    "size": 7427,
+    "avg_global_sales": 0.3625865086845294,
+    "top_genres": [
+      "动作",
+      "体育"
+    ],
+    "top_platforms": [
+      "Nintendo",
+      "Xbox"
+    ],
+    "dominant_region": "北美销量",
+    "region_profile": {
+      "北美销量": 0.8079,
+      "欧洲销量": 0.1163,
+      "日本销量": 0.0176,
+      "其他地区销量": 0.0582
+    }
+  },
+  {
+    "type": "regional",
+    "cluster": 2,
+    "size": 4269,
+    "avg_global_sales": 0.13200281096275476,
+    "top_genres": [
+      "冒险",
+      "角色扮演"
+    ],
+    "top_platforms": [
+      "Nintendo",
+      "PlayStation"
+    ],
+    "dominant_region": "日本销量",
+    "region_profile": {
+      "北美销量": 0.0175,
+      "欧洲销量": 0.0091,
+      "日本销量": 0.9651,
+      "其他地区销量": 0.0083
+    }
+  },
+  {
+    "type": "behavioral",
+    "cluster": 3,
+    "size": 1475,
+    "avg_global_sales": 5.194054237288136,
+    "avg_age": 18.031186440677967,
+    "score_median": 8.3,
+    "top_genres": [
+      "角色扮演",
+      "射击",
+      "平台跳跃"
+    ],
+    "top_platforms": [
+      "Nintendo",
+      "PlayStation"
+    ],
+    "region_profile": {
+      "北美销量": 0.0,
+      "欧洲销量": 0.0,
+      "日本销量": 0.9902,
+      "其他地区销量": 0.0098
+    }
+  },
+  {
+    "type": "behavioral",
+    "cluster": 2,
+    "size": 3144,
+    "avg_global_sales": 1.1937277353689568,
+    "avg_age": 16.660941475826974,
+    "score_median": 7.8,
+    "top_genres": [
+      "动作",
+      "体育",
+      "角色扮演"
+    ],
+    "top_platforms": [
+      "PlayStation",
+      "Nintendo"
+    ],
+    "region_profile": {
+      "北美销量": 0.4761,
+      "欧洲销量": 0.3253,
+      "日本销量": 0.0809,
+      "其他地区销量": 0.1176
+    }
+  },
+  {
+    "type": "behavioral",
+    "cluster": 4,
+    "size": 6462,
+    "avg_global_sales": 0.4673119777158775,
+    "avg_age": 19.253327143299288,
+    "score_median": 0.0,
+    "top_genres": [
+      "冒险",
+      "角色扮演",
+      "动作"
+    ],
+    "top_platforms": [
+      "PC",
+      "Nintendo"
+    ],
+    "region_profile": {
+      "北美销量": 0.0,
+      "欧洲销量": 0.0,
+      "日本销量": 1.0,
+      "其他地区销量": 0.0
+    }
+  },
+  {
+    "type": "behavioral",
+    "cluster": 1,
+    "size": 2422,
+    "avg_global_sales": 0.3080759702725021,
+    "avg_age": 18.212634186622626,
+    "score_median": 7.0,
+    "top_genres": [
+      "动作",
+      "体育",
+      "射击"
+    ],
+    "top_platforms": [
+      "Nintendo",
+      "PlayStation"
+    ],
+    "region_profile": {
+      "北美销量": 0.6247,
+      "欧洲销量": 0.2877,
+      "日本销量": 0.0,
+      "其他地区销量": 0.0877
+    }
+  },
+  {
+    "type": "behavioral",
+    "cluster": 0,
+    "size": 8115,
+    "avg_global_sales": 0.21123967960566856,
+    "avg_age": 17.71879235982748,
+    "score_median": 0.0,
+    "top_genres": [
+      "体育",
+      "动作",
+      "其他"
+    ],
+    "top_platforms": [
+      "Nintendo",
+      "PlayStation"
+    ],
+    "region_profile": {
+      "北美销量": 0.6375,
+      "欧洲销量": 0.2794,
+      "日本销量": 0.0,
+      "其他地区销量": 0.083
+    }
+  }
+]

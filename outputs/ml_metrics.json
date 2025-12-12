@@ -1,0 +1,673 @@
+{
+  "regression": {
+    "model": "RandomForestRegressor",
+    "mae": 0.794311033032391,
+    "rmse": 3.2771565757114796,
+    "r2": -0.36090317609812117
+  },
+  "regression_quantiles": {
+    "p10_mean": 0.04442225508888502,
+    "p50_mean": 0.275336999865829,
+    "p90_mean": 1.5465329809132575,
+    "p10_median": 0.03116561327422767,
+    "p50_median": 0.18435289123607002,
+    "p90_median": 1.0840626160529292
+  },
+  "regression_alternative": {
+    "model": "HistGradientBoostingRegressor",
+    "mae": 0.7762834132374641,
+    "rmse": 2.6302828914857668,
+    "r2": 0.12332673047514064
+  },
+  "classification": {
+    "model": "GradientBoostingClassifier",
+    "accuracy": 0.8677150786308974,
+    "precision": 0.7530364372469636,
+    "recall": 0.266857962697274,
+    "f1": 0.3940677966101695,
+    "hit_threshold": 1.0,
+    "support": 4324,
+    "brier": 0.10204353255520507,
+    "classification_report": {
+      "0": {
+        "precision": 0.8746627422124111,
+        "recall": 0.9831816928591122,
+        "f1-score": 0.9257528556593977,
+        "support": 3627.0
+      },
+      "1": {
+        "precision": 0.7530364372469636,
+        "recall": 0.266857962697274,
+        "f1-score": 0.3940677966101695,
+        "support": 697.0
+      },
+      "accuracy": 0.8677150786308974,
+      "macro avg": {
+        "precision": 0.8138495897296874,
+        "recall": 0.6250198277781931,
+        "f1-score": 0.6599103261347836,
+        "support": 4324.0
+      },
+      "weighted avg": {
+        "precision": 0.8550573919439289,
+        "recall": 0.8677150786308974,
+        "f1-score": 0.840048765428752,
+        "support": 4324.0
+      }
+    }
+  },
+  "calibration": {
+    "curve": [
+      {
+        "predicted": 0.04255738449242215,
+        "observed": 0.05942102590147283
+      },
+      {
+        "predicted": 0.1354425826745789,
+        "observed": 0.12693498452012383
+      },
+      {
+        "predicted": 0.23817707938684327,
+        "observed": 0.32894736842105265
+      },
+      {
+        "predicted": 0.34760590532558194,
+        "observed": 0.3333333333333333
+      },
+      {
+        "predicted": 0.4586430336268544,
+        "observed": 0.4511627906976744
+      },
+      {
+        "predicted": 0.5485485981031795,
+        "observed": 0.5303030303030303
+      },
+      {
+        "predicted": 0.6496365433737092,
+        "observed": 0.6578947368421053
+      },
+      {
+        "predicted": 0.7606286192053315,
+        "observed": 0.7368421052631579
+      },
+      {
+        "predicted": 0.8595916273156712,
+        "observed": 0.8461538461538461
+      },
+      {
+        "predicted": 0.9358977297710707,
+        "observed": 0.9848484848484849
+      }
+    ]
+  },
+  "clustering": [
+    {
+      "cluster": 0,
+      "size": 4219,
+      "avg_global_sales": 2.4529509362408155,
+      "top_genres": [
+        "角色扮演",
+        "动作"
+      ],
+      "top_platforms": [
+        "PC",
+        "All"
+      ],
+      "dominant_region": "其他地区销量",
+      "region_profile": {
+        "北美销量": 0.003,
+        "欧洲销量": 0.001,
+        "日本销量": 0.0023,
+        "其他地区销量": 0.008
+      }
+    },
+    {
+      "cluster": 3,
+      "size": 5703,
+      "avg_global_sales": 0.5767140101700859,
+      "top_genres": [
+        "动作",
+        "体育"
+      ],
+      "top_platforms": [
+        "PlayStation",
+        "Nintendo"
+      ],
+      "dominant_region": "欧洲销量",
+      "region_profile": {
+        "北美销量": 0.3456,
+        "欧洲销量": 0.5258,
+        "日本销量": 0.0282,
+        "其他地区销量": 0.1004
+      }
+    },
+    {
+      "cluster": 1,
+      "size": 7427,
+      "avg_global_sales": 0.3625865086845294,
+      "top_genres": [
+        "动作",
+        "体育"
+      ],
+      "top_platforms": [
+        "Nintendo",
+        "Xbox"
+      ],
+      "dominant_region": "北美销量",
+      "region_profile": {
+        "北美销量": 0.8079,
+        "欧洲销量": 0.1163,
+        "日本销量": 0.0176,
+        "其他地区销量": 0.0582
+      }
+    },
+    {
+      "cluster": 2,
+      "size": 4269,
+      "avg_global_sales": 0.13200281096275476,
+      "top_genres": [
+        "冒险",
+        "角色扮演"
+      ],
+      "top_platforms": [
+        "Nintendo",
+        "PlayStation"
+      ],
+      "dominant_region": "日本销量",
+      "region_profile": {
+        "北美销量": 0.0175,
+        "欧洲销量": 0.0091,
+        "日本销量": 0.9651,
+        "其他地区销量": 0.0083
+      }
+    }
+  ],
+  "behavior_clusters": [
+    {
+      "cluster": 3,
+      "size": 1475,
+      "avg_global_sales": 5.194054237288136,
+      "avg_age": 18.031186440677967,
+      "score_median": 8.3,
+      "top_genres": [
+        "角色扮演",
+        "射击",
+        "平台跳跃"
+      ],
+      "top_platforms": [
+        "Nintendo",
+        "PlayStation"
+      ],
+      "region_profile": {
+        "北美销量": 0.0,
+        "欧洲销量": 0.0,
+        "日本销量": 0.9902,
+        "其他地区销量": 0.0098
+      }
+    },
+    {
+      "cluster": 2,
+      "size": 3144,
+      "avg_global_sales": 1.1937277353689568,
+      "avg_age": 16.660941475826974,
+      "score_median": 7.8,
+      "top_genres": [
+        "动作",
+        "体育",
+        "角色扮演"
+      ],
+      "top_platforms": [
+        "PlayStation",
+        "Nintendo"
+      ],
+      "region_profile": {
+        "北美销量": 0.4761,
+        "欧洲销量": 0.3253,
+        "日本销量": 0.0809,
+        "其他地区销量": 0.1176
+      }
+    },
+    {
+      "cluster": 4,
+      "size": 6462,
+      "avg_global_sales": 0.4673119777158775,
+      "avg_age": 19.253327143299288,
+      "score_median": 0.0,
+      "top_genres": [
+        "冒险",
+        "角色扮演",
+        "动作"
+      ],
+      "top_platforms": [
+        "PC",
+        "Nintendo"
+      ],
+      "region_profile": {
+        "北美销量": 0.0,
+        "欧洲销量": 0.0,
+        "日本销量": 1.0,
+        "其他地区销量": 0.0
+      }
+    },
+    {
+      "cluster": 1,
+      "size": 2422,
+      "avg_global_sales": 0.3080759702725021,
+      "avg_age": 18.212634186622626,
+      "score_median": 7.0,
+      "top_genres": [
+        "动作",
+        "体育",
+        "射击"
+      ],
+      "top_platforms": [
+        "Nintendo",
+        "PlayStation"
+      ],
+      "region_profile": {
+        "北美销量": 0.6247,
+        "欧洲销量": 0.2877,
+        "日本销量": 0.0,
+        "其他地区销量": 0.0877
+      }
+    },
+    {
+      "cluster": 0,
+      "size": 8115,
+      "avg_global_sales": 0.21123967960566856,
+      "avg_age": 17.71879235982748,
+      "score_median": 0.0,
+      "top_genres": [
+        "体育",
+        "动作",
+        "其他"
+      ],
+      "top_platforms": [
+        "Nintendo",
+        "PlayStation"
+      ],
+      "region_profile": {
+        "北美销量": 0.6375,
+        "欧洲销量": 0.2794,
+        "日本销量": 0.0,
+        "其他地区销量": 0.083
+      }
+    }
+  ],
+  "top_features": [
+    {
+      "feature": "Year",
+      "importance": 0.5183729230628286
+    },
+    {
+      "feature": "发行商:OtherPublisher",
+      "importance": 0.12132850967633185
+    },
+    {
+      "feature": "平台:All",
+      "importance": 0.10810582689790957
+    },
+    {
+      "feature": "类型:动作冒险",
+      "importance": 0.04177756773551711
+    },
+    {
+      "feature": "发行商:Nintendo",
+      "importance": 0.034924271444635294
+    },
+    {
+      "feature": "Decade",
+      "importance": 0.023367394527932395
+    },
+    {
+      "feature": "类型:射击",
+      "importance": 0.016312957362777738
+    },
+    {
+      "feature": "类型:角色扮演",
+      "importance": 0.015242266916081063
+    },
+    {
+      "feature": "发行商:Activision",
+      "importance": 0.012340362378989845
+    },
+    {
+      "feature": "类型:竞速",
+      "importance": 0.011936483589180088
+    },
+    {
+      "feature": "类型:平台跳跃",
+      "importance": 0.010983387140384042
+    },
+    {
+      "feature": "发行商:Warner Bros. Interactive Entertainment",
+      "importance": 0.009916800372078458
+    },
+    {
+      "feature": "平台:NS",
+      "importance": 0.009707085510420876
+    },
+    {
+      "feature": "类型:模拟",
+      "importance": 0.007623117924893268
+    },
+    {
+      "feature": "发行商:Capcom",
+      "importance": 0.00617757088656814
+    }
+  ],
+  "permutation_features": [
+    {
+      "feature": "Year",
+      "importance": 0.259576877620062
+    },
+    {
+      "feature": "发行商:Nintendo",
+      "importance": 0.11089556150495095
+    },
+    {
+      "feature": "类型:射击",
+      "importance": 0.04064701965341275
+    },
+    {
+      "feature": "发行商:Activision",
+      "importance": 0.03909910119289309
+    },
+    {
+      "feature": "发行商:Warner Bros. Interactive Entertainment",
+      "importance": 0.020773565751115664
+    },
+    {
+      "feature": "类型:竞速",
+      "importance": 0.020222093967436572
+    },
+    {
+      "feature": "发行商:Electronic Arts",
+      "importance": 0.014515963132446047
+    },
+    {
+      "feature": "类型:角色扮演",
+      "importance": 0.012205941307961071
+    },
+    {
+      "feature": "类型:体育",
+      "importance": 0.004394762107691186
+    },
+    {
+      "feature": "发行商:Sega",
+      "importance": 0.004380918658264288
+    }
+  ],
+  "similar_titles": [
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto V",
+      "candidate_platform": "All",
+      "similarity": 0.9997531743896684,
+      "anchor_sales": 350.0,
+      "candidate_sales": 220.0
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Wii Sports",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9976220081302063,
+      "anchor_sales": 350.0,
+      "candidate_sales": 82.9
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Terraria",
+      "candidate_platform": "All",
+      "similarity": 0.9974304575392867,
+      "anchor_sales": 350.0,
+      "candidate_sales": 58.7
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "PlayerUnknown's Battlegrounds",
+      "candidate_platform": "All",
+      "similarity": 0.9970601706133383,
+      "anchor_sales": 350.0,
+      "candidate_sales": 75.0
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Human: Fall Flat",
+      "candidate_platform": "All",
+      "similarity": 0.9953643892828973,
+      "anchor_sales": 350.0,
+      "candidate_sales": 55.0
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Minecraft",
+      "candidate_platform": "All",
+      "similarity": 0.9997531743896684,
+      "anchor_sales": 220.0,
+      "candidate_sales": 350.0
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Wii Sports",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9987425988889341,
+      "anchor_sales": 220.0,
+      "candidate_sales": 82.9
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Terraria",
+      "candidate_platform": "All",
+      "similarity": 0.9962916161816778,
+      "anchor_sales": 220.0,
+      "candidate_sales": 58.7
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "PlayerUnknown's Battlegrounds",
+      "candidate_platform": "All",
+      "similarity": 0.9962284905061474,
+      "anchor_sales": 220.0,
+      "candidate_sales": 75.0
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Red Dead Redemption 2",
+      "candidate_platform": "All",
+      "similarity": 0.9954934877159879,
+      "anchor_sales": 220.0,
+      "candidate_sales": 79.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Grand Theft Auto V",
+      "candidate_platform": "All",
+      "similarity": 0.9987425988889341,
+      "anchor_sales": 82.9,
+      "candidate_sales": 220.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Minecraft",
+      "candidate_platform": "All",
+      "similarity": 0.9976220081302063,
+      "anchor_sales": 82.9,
+      "candidate_sales": 350.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Red Dead Redemption 2",
+      "candidate_platform": "All",
+      "similarity": 0.9973181416288812,
+      "anchor_sales": 82.9,
+      "candidate_sales": 79.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate_platform": "All",
+      "similarity": 0.9971183651695774,
+      "anchor_sales": 82.9,
+      "candidate_sales": 60.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Mario Kart 8 Deluxe",
+      "candidate_platform": "NS",
+      "similarity": 0.9968456079108986,
+      "anchor_sales": 82.9,
+      "candidate_sales": 69.56
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Mario Kart 8 Deluxe",
+      "candidate_platform": "NS",
+      "similarity": 0.9999558137892782,
+      "anchor_sales": 79.0,
+      "candidate_sales": 69.56
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "The Witcher 3: Wild Hunt",
+      "candidate_platform": "All",
+      "similarity": 0.9997248220699273,
+      "anchor_sales": 79.0,
+      "candidate_sales": 60.0
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate_platform": "All",
+      "similarity": 0.9990068875694003,
+      "anchor_sales": 79.0,
+      "candidate_sales": 60.0
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Wii Sports",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9973181416288812,
+      "anchor_sales": 79.0,
+      "candidate_sales": 82.9
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Wii Play",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9963190950967821,
+      "anchor_sales": 79.0,
+      "candidate_sales": 28.02
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Human: Fall Flat",
+      "candidate_platform": "All",
+      "similarity": 0.9997927088128578,
+      "anchor_sales": 75.0,
+      "candidate_sales": 55.0
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Terraria",
+      "candidate_platform": "All",
+      "similarity": 0.9995549511517668,
+      "anchor_sales": 75.0,
+      "candidate_sales": 58.7
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Counter-Strike: Global Offensive",
+      "candidate_platform": "PC",
+      "similarity": 0.9992967823681662,
+      "anchor_sales": 75.0,
+      "candidate_sales": 40.0
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Stardew Valley",
+      "candidate_platform": "All",
+      "similarity": 0.9986722090953747,
+      "anchor_sales": 75.0,
+      "candidate_sales": 41.0
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Animal Crossing: New Horizons",
+      "candidate_platform": "NS",
+      "similarity": 0.9980932101739082,
+      "anchor_sales": 75.0,
+      "candidate_sales": 48.62
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Red Dead Redemption 2",
+      "candidate_platform": "All",
+      "similarity": 0.9999558137892782,
+      "anchor_sales": 69.56,
+      "candidate_sales": 79.0
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "The Witcher 3: Wild Hunt",
+      "candidate_platform": "All",
+      "similarity": 0.9998904394605881,
+      "anchor_sales": 69.56,
+      "candidate_sales": 60.0
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate_platform": "All",
+      "similarity": 0.9991981945952626,
+      "anchor_sales": 69.56,
+      "candidate_sales": 60.0
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Wii Sports",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9968456079108986,
+      "anchor_sales": 69.56,
+      "candidate_sales": 82.9
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Wii Play",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9966375229888945,
+      "anchor_sales": 69.56,
+      "candidate_sales": 28.02
+    }
+  ]
+}
