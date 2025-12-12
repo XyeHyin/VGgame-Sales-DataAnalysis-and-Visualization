@@ -10,3 +10,5 @@ psycopg2-binary>=2.9
 pyarrow>=14.0
 pyecharts>=2.0
 plotly>=5.20
+lightgbm>=4.0
+shap>=0.43

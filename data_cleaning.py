@@ -9,7 +9,10 @@ from typing import Dict, Tuple
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
-from sklearn.impute import KNNImputer
+from sklearn.decomposition import PCA
+from sklearn.ensemble import IsolationForest
+from sklearn.experimental import enable_iterative_imputer  # noqa: F401
+from sklearn.impute import IterativeImputer
 from sklearn.preprocessing import StandardScaler
 
 from settings import (
@@ -115,18 +118,31 @@ class GameDataCleaner:
         LOGGER.info("缺失关键字段移除：%d", stats.get("missing_key_rows", 0))
         LOGGER.info("销量无效移除：%d", stats.get("invalid_sales_rows", 0))
         LOGGER.info(
-            "KNN 缺失值插补：%s",
-            "执行" if stats.get("knn_imputer") else "跳过",
+            "MICE 缺失值插补：%s",
+            "执行" if stats.get("iterative_imputer") else "跳过",
         )
-        if stats.get("knn_imputer"):
-            LOGGER.info("  - 使用特征：%s", ", ".join(stats["knn_imputer"]["features"]))
-            LOGGER.info("  - 邻居数：%d", stats["knn_imputer"]["n_neighbors"])
+        if stats.get("iterative_imputer"):
+            LOGGER.info(
+                "  - 使用特征：%s", ", ".join(stats["iterative_imputer"]["features"])
+            )
+            LOGGER.info("  - 算法：%s", stats["iterative_imputer"]["algorithm"])
+        LOGGER.info(
+            "异常检测 (Isolation Forest)：%s",
+            "执行" if stats.get("isolation_forest") else "跳过",
+        )
+        if stats.get("isolation_forest"):
+            LOGGER.info(
+                "  - 检测到异常点：%d", stats["isolation_forest"]["outliers_found"]
+            )
         LOGGER.info(
             "区域聚类：%s",
             "执行" if stats.get("regional_clustering") else "跳过",
         )
         if stats.get("regional_clustering"):
             LOGGER.info("  - 聚类数：%d", stats["regional_clustering"]["n_clusters"])
+            LOGGER.info(
+                "  - 算法：%s", stats["regional_clustering"].get("algorithm", "K-Means")
+            )
         LOGGER.info("数据保留率：%.2f%%", 100 * stats.get("retention_rate", 0.0))
         LOGGER.info("========================")
 
@@ -245,6 +261,7 @@ class GameDataCleaner:
             "duplicates_removed": 0,
             "missing_key_rows": 0,
             "invalid_sales_rows": 0,
+            "outliers_detected": 0,
         }
 
         if "Platform" in df.columns:
@@ -272,6 +289,74 @@ class GameDataCleaner:
             subset=["Name", "Platform", "Year", "Publisher"], keep="first"
         )
         stats["duplicates_removed"] = before - len(df)
+
+        # 使用 Isolation Forest 进行异常检测
+        df, outlier_stats = self._detect_outliers(df)
+        stats.update(outlier_stats)
+
+        return df, stats
+
+    def _detect_outliers(
+        self, df: pd.DataFrame
+    ) -> Tuple[pd.DataFrame, Dict[str, object]]:
+        """使用 Isolation Forest 检测异常数据点"""
+        stats: Dict[str, object] = {}
+
+        if len(df) < 50:
+            df["Is_Outlier"] = False
+            df["Outlier_Score"] = 0.0
+            return df, stats
+
+        # 选择用于异常检测的特征
+        detection_cols = ["Global_Sales", "Year"]
+        score_cols = [
+            col for col in ["Critic_Score", "User_Score"] if col in df.columns
+        ]
+        detection_cols.extend(
+            [col for col in score_cols if df[col].notna().sum() > len(df) * 0.3]
+        )
+        region_cols = [col for col in REGION_COLS if col in df.columns]
+        detection_cols.extend(region_cols[:2])  # 最多取两个区域列
+
+        # 准备特征矩阵
+        feature_df = df[detection_cols].copy()
+        feature_df = feature_df.fillna(feature_df.median())
+
+        if len(feature_df.columns) < 2:
+            df["Is_Outlier"] = False
+            df["Outlier_Score"] = 0.0
+            return df, stats
+
+        # 标准化
+        scaler = StandardScaler()
+        scaled_features = scaler.fit_transform(feature_df)
+
+        # Isolation Forest 异常检测
+        iso_forest = IsolationForest(
+            contamination=0.05,  # 预期 5% 的异常率
+            random_state=self.random_state,
+            n_jobs=-1,
+        )
+        outlier_labels = iso_forest.fit_predict(scaled_features)
+        outlier_scores = iso_forest.decision_function(scaled_features)
+
+        df["Is_Outlier"] = outlier_labels == -1
+        df["Outlier_Score"] = outlier_scores
+
+        n_outliers = int((outlier_labels == -1).sum())
+        stats["outliers_detected"] = n_outliers
+        stats["isolation_forest"] = {
+            "features": detection_cols,
+            "contamination": 0.05,
+            "outliers_found": n_outliers,
+            "outlier_ratio": round(n_outliers / len(df), 4) if len(df) > 0 else 0.0,
+        }
+
+        LOGGER.info(
+            "Isolation Forest 检测到 %d 个异常点 (%.2f%%)",
+            n_outliers,
+            100 * n_outliers / len(df),
+        )
 
         return df, stats
 
@@ -341,18 +426,28 @@ class GameDataCleaner:
         ]
         helper_cols = [col for col in ["Global_Sales", "Year"] if col in df.columns]
 
+        # 使用 MICE (IterativeImputer) 替代 KNNImputer - 速度更快，统计分布保留更好
         if score_cols and helper_cols and df[score_cols].isna().any().any():
             feature_columns = score_cols + helper_cols
-            n_neighbors = min(8, max(2, row_count - 1))
-            imputer = KNNImputer(n_neighbors=n_neighbors, weights="distance")
+
+            # IterativeImputer: 基于贝叶斯岭回归的多元链式插补
+            # 将缺失列作为"目标变量"，其他列作为"特征"循环训练回归模型
+            imputer = IterativeImputer(
+                max_iter=10,
+                random_state=self.random_state,
+                initial_strategy="median",
+                skip_complete=True,
+            )
             imputed = imputer.fit_transform(df[feature_columns])
             df.loc[:, score_cols] = imputed[:, : len(score_cols)]
             for col in score_cols:
                 df[col] = df[col].clip(lower=0).round(2)
-            stats["knn_imputer"] = {
+            stats["iterative_imputer"] = {
                 "features": feature_columns,
-                "n_neighbors": n_neighbors,
+                "max_iter": 10,
+                "algorithm": "MICE (Multivariate Imputation by Chained Equations)",
             }
+            LOGGER.info("MICE 插补完成，特征: %s", ", ".join(feature_columns))
 
         region_cols = [col for col in REGION_COLS if col in df.columns]
         if region_cols and row_count >= 20:
@@ -371,16 +466,40 @@ class GameDataCleaner:
                 if cluster_count >= 2:
                     scaler = StandardScaler()
                     scaled = scaler.fit_transform(share)
+
+                    # 使用 PCA 降维，便于可视化和加速聚类
+                    pca = PCA(
+                        n_components=min(2, len(region_cols)),
+                        random_state=self.random_state,
+                    )
+                    pca_features = pca.fit_transform(scaled)
+                    df["PCA_Region_1"] = pca_features[:, 0]
+                    if pca_features.shape[1] > 1:
+                        df["PCA_Region_2"] = pca_features[:, 1]
+
+                    # K-Means++ 聚类 (init='k-means++' 是默认值)
                     kmeans = KMeans(
                         n_clusters=cluster_count,
                         n_init=25,
                         random_state=self.random_state,
+                        init="k-means++",
                     )
-                    labels = kmeans.fit_predict(scaled)
+                    labels = kmeans.fit_predict(pca_features)
                     df["Regional_Cluster"] = labels
-                    centers = pd.DataFrame(kmeans.cluster_centers_, columns=region_cols)
+                    centers = pd.DataFrame(
+                        kmeans.cluster_centers_,
+                        columns=[f"PC{i+1}" for i in range(pca_features.shape[1])],
+                    )
+
+                    # 根据原始特征空间确定主导区域
+                    original_centers = scaler.inverse_transform(
+                        pca.inverse_transform(kmeans.cluster_centers_)
+                    )
+                    original_centers_df = pd.DataFrame(
+                        original_centers, columns=region_cols
+                    )
                     label_map: Dict[int, str] = {}
-                    for idx, center in centers.iterrows():
+                    for idx, center in original_centers_df.iterrows():
                         top_region = REGION_LABELS.get(center.idxmax(), center.idxmax())
                         label_map[idx] = (
                             f"{top_region}主导" if top_region else f"Cluster {idx}"
@@ -389,7 +508,12 @@ class GameDataCleaner:
                     stats["regional_clustering"] = {
                         "n_clusters": cluster_count,
                         "label_map": label_map,
+                        "algorithm": "K-Means++ with PCA",
+                        "pca_variance_ratio": pca.explained_variance_ratio_.tolist(),
                     }
+                    LOGGER.info(
+                        "K-Means++ (with PCA) 区域聚类完成，聚类数: %d", cluster_count
+                    )
         return df, stats
 
     def _parse_date_column(self, series: pd.Series) -> pd.Series:
