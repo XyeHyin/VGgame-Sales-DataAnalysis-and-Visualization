@@ -243,7 +243,7 @@
       "2025": 36
     },
     "cagr": -0.013483098288068596,
-    "volatility": 1.6170948367007523,
+    "volatility": 1.617094836700752,
     "boom_periods": [
       {
         "year": 1980,
@@ -680,7 +680,7 @@
     "correlation": 0.16053022776683373,
     "score_gap": {
       "mean_gap": -0.3611353711790394,
-      "std_gap": 1.1319601552165064,
+      "std_gap": 1.1319601552165068,
       "share_positive": 0.2925764192139738
     },
     "largest_disagreements": [
@@ -1627,9 +1627,18 @@
       {
         "anchor": "Minecraft",
         "anchor_platform": "All",
+        "candidate": "Kinect Adventures!",
+        "candidate_platform": "Xbox",
+        "similarity": 0.9981682466350699,
+        "anchor_sales": 350.0,
+        "candidate_sales": 24.0
+      },
+      {
+        "anchor": "Minecraft",
+        "anchor_platform": "All",
         "candidate": "Grand Theft Auto V",
         "candidate_platform": "All",
-        "similarity": 0.9997531743896684,
+        "similarity": 0.9966258368264862,
         "anchor_sales": 350.0,
         "candidate_sales": 220.0
       },
@@ -1638,36 +1647,27 @@
         "anchor_platform": "All",
         "candidate": "Wii Sports",
         "candidate_platform": "Nintendo",
-        "similarity": 0.9976220081302063,
+        "similarity": 0.9957362547715364,
         "anchor_sales": 350.0,
         "candidate_sales": 82.9
       },
       {
         "anchor": "Minecraft",
         "anchor_platform": "All",
-        "candidate": "Terraria",
+        "candidate": "Call of Duty: Black Ops",
         "candidate_platform": "All",
-        "similarity": 0.9974304575392867,
+        "similarity": 0.9941275631788606,
         "anchor_sales": 350.0,
-        "candidate_sales": 58.7
+        "candidate_sales": 30.0
       },
       {
         "anchor": "Minecraft",
         "anchor_platform": "All",
-        "candidate": "PlayerUnknown's Battlegrounds",
-        "candidate_platform": "All",
-        "similarity": 0.9970601706133383,
+        "candidate": "Wii Sports Resort",
+        "candidate_platform": "Nintendo",
+        "similarity": 0.9940307814792031,
         "anchor_sales": 350.0,
-        "candidate_sales": 75.0
-      },
-      {
-        "anchor": "Minecraft",
-        "anchor_platform": "All",
-        "candidate": "Human: Fall Flat",
-        "candidate_platform": "All",
-        "similarity": 0.9953643892828973,
-        "anchor_sales": 350.0,
-        "candidate_sales": 55.0
+        "candidate_sales": 33.14
       }
     ]
   }

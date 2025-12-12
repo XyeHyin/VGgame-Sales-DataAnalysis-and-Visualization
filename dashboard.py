@@ -1,11 +1,24 @@
 from datetime import datetime
+import json
 from pathlib import Path
 from string import Template
 from typing import Dict, List, Optional
 
 import pandas as pd
 from pyecharts import options as opts
-from pyecharts.charts import Bar, Grid, HeatMap, Line, Page, Pie, Radar, Sunburst, Gauge
+from pyecharts.charts import (
+    Bar,
+    Grid,
+    HeatMap,
+    Line,
+    Page,
+    Pie,
+    Radar,
+    Sunburst,
+    Gauge,
+    Sankey,
+)
+from pyecharts.commons.utils import JsCode
 from pyecharts.globals import CurrentConfig, ThemeType
 
 from settings import (
@@ -22,7 +35,6 @@ class DashboardBuilder:
         self.output_path = output_path
         self.config = config
         self._template_cache: Optional[Template] = None
-        self._summary_template_cache: Optional[Template] = None
 
     def build(
         self,
@@ -30,40 +42,78 @@ class DashboardBuilder:
         metrics: Dict[str, object],
         static_charts: Optional[List[Path]] = None,
     ) -> None:
-        LOGGER.info("正在生成交互式 HTML 仪表盘")
+        LOGGER.info("正在生成高精度交互式仪表盘")
         charts = self._build_charts_dict(df, metrics)
-        html = self._build_document(charts, metrics, static_charts or [])
+
+        # 构建静态图库 HTML (Data Vault)
+        static_gallery_html = self._build_static_gallery(static_charts or [])
+
+        html = self._build_document(charts, metrics, static_gallery_html)
         self.output_path.write_text(html, encoding="utf-8")
-        LOGGER.info("交互式仪表盘已写入 %s", self.output_path)
+        LOGGER.info("仪表盘构建完成：%s", self.output_path)
+
+    def _build_static_gallery(self, static_charts: List[Path]) -> str:
+        """构建高科技感的静态图库数据 (JSON)"""
+        gallery_data = []
+
+        for chart_path in static_charts:
+            filename = chart_path.name
+            # 假设 HTML 在 outputs/，图片在 outputs/gallery/
+            # 相对路径应该是 gallery/filename
+            relative_path = f"gallery/{filename}"
+
+            gallery_data.append(
+                {
+                    "src": relative_path,
+                    "name": filename.replace(".png", "").replace("_", " ").upper(),
+                    "id": filename,
+                }
+            )
+
+        return json.dumps(gallery_data)
 
     def _build_charts_dict(
         self, df: pd.DataFrame, metrics: Dict[str, object]
     ) -> Dict[str, str]:
         charts = {}
 
-        # General Charts
-        charts["yearly_line"] = self._render_chart(self._build_yearly_line_chart(df))
-        charts["region_stream"] = self._render_chart(
-            self._build_region_stream_chart(df)
+        # --- 通用配置优化：消除留白，自适应宽度 ---
+        # GridOpts: pos_left/right="0%" 消除左右留白
+        full_width_grid = opts.GridOpts(
+            pos_left="2%", pos_right="2%", pos_bottom="10%", is_contain_label=True
         )
-        charts["genre_bar"] = self._render_chart(self._build_genre_bar_chart(df))
+
+        # 1. 核心预测图表 (放宽布局)
+        charts["yearly_line"] = self._render_chart(
+            self._build_yearly_line_chart(df, full_width_grid)
+        )
+        charts["region_stream"] = self._render_chart(
+            self._build_region_stream_chart(df, full_width_grid)
+        )
+
+        # 2. 结构分析
+        charts["genre_bar"] = self._render_chart(
+            self._build_genre_bar_chart(df, full_width_grid)
+        )
         charts["platform_pie"] = self._render_chart(
             self._build_platform_pie_chart(metrics)
         )
+
+        # 3. 复杂关系 (热力图通常很宽，需要特殊处理)
         charts["platform_heatmap"] = self._render_chart(
             self._build_platform_genre_heatmap(df)
         )
+
+        # 4. 区域详情
         charts["region_radar"] = self._render_chart(self._build_region_radar_chart(df))
         charts["region_sunburst"] = self._render_chart(
             self._build_region_sunburst_chart(df)
         )
 
-        # Add Sankey Flow
-        charts["sankey_flow"] = (
-            '<iframe src="19_sankey_flow.html" style="width:100%; height:600px; border:none;"></iframe>'
-        )
+        # 5. 桑基图 (重新设计配色)
+        charts["sankey_flow"] = self._render_chart(self._build_sankey_chart(df))
 
-        # ML Charts
+        # 6. ML 仪表
         ml_charts = self._build_ml_charts(metrics)
         charts.update(ml_charts)
 
@@ -71,8 +121,267 @@ class DashboardBuilder:
 
     def _render_chart(self, chart) -> str:
         if chart is None:
-            return ""
+            return '<div class="no-data">DATA FRAGMENTED</div>'
         return chart.render_embed()
+
+    # --- 图表构建函数 (优化版) ---
+
+    def _build_yearly_line_chart(
+        self, df: pd.DataFrame, grid_opt: opts.GridOpts
+    ) -> Optional[Grid]:
+        yearly = df.groupby("Year")["Global_Sales"].sum().sort_index().round(2)
+        if yearly.empty:
+            return None
+
+        c = (
+            Line(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add_xaxis(yearly.index.astype(str).tolist())
+            .add_yaxis(
+                "全球销量",
+                yearly.tolist(),
+                is_smooth=True,
+                areastyle_opts=opts.AreaStyleOpts(opacity=0.3, color="#00f3ff"),
+                itemstyle_opts=opts.ItemStyleOpts(color="#00f3ff"),
+                symbol_size=6,
+            )
+            .set_global_opts(
+                xaxis_opts=opts.AxisOpts(
+                    axislabel_opts=opts.LabelOpts(rotate=0)
+                ),  # 0度旋转，减少空间占用
+                legend_opts=opts.LegendOpts(
+                    is_show=False
+                ),  # 标题已有说明，隐藏图例省空间
+                tooltip_opts=opts.TooltipOpts(trigger="axis"),
+                datazoom_opts=[
+                    opts.DataZoomOpts(type_="inside")
+                ],  # 隐藏滑块，只允许滚轮
+            )
+        )
+        grid = Grid(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        grid.add(c, grid_opts=grid_opt)
+        return grid
+
+    def _build_region_stream_chart(
+        self, df: pd.DataFrame, grid_opt: opts.GridOpts
+    ) -> Optional[Grid]:
+        region_year = df.groupby("Year")[REGION_COLS].sum().sort_index().round(2)
+        if region_year.empty:
+            return None
+
+        c = Line(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        c.add_xaxis(region_year.index.astype(str).tolist())
+
+        colors = ["#00f3ff", "#bc13fe", "#0aff60", "#ff0055"]
+        for idx, col in enumerate(REGION_COLS):
+            c.add_yaxis(
+                REGION_LABELS[col],
+                region_year[col].tolist(),
+                stack="total",
+                is_smooth=True,
+                areastyle_opts=opts.AreaStyleOpts(opacity=0.6),
+                itemstyle_opts=opts.ItemStyleOpts(color=colors[idx % len(colors)]),
+                label_opts=opts.LabelOpts(is_show=False),
+                symbol="none",  # 移除点，纯流图
+            )
+
+        c.set_global_opts(
+            tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross"),
+            legend_opts=opts.LegendOpts(pos_top="0%", pos_right="0%"),  # 图例放右上角
+            datazoom_opts=[opts.DataZoomOpts(type_="inside")],
+            xaxis_opts=opts.AxisOpts(boundary_gap=False),  # 消除X轴两侧留白
+        )
+        grid = Grid(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        grid.add(c, grid_opts=grid_opt)
+        return grid
+
+    def _build_genre_bar_chart(
+        self, df: pd.DataFrame, grid_opt: opts.GridOpts
+    ) -> Optional[Grid]:
+        genre_sales = (
+            df.groupby("Genre")["Global_Sales"]
+            .sum()
+            .sort_values(ascending=True)
+            .tail(10)
+        )
+        if genre_sales.empty:
+            return None
+
+        c = (
+            Bar(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add_xaxis(genre_sales.index.tolist())
+            .add_yaxis(
+                "销量",
+                genre_sales.round(2).tolist(),
+                itemstyle_opts=opts.ItemStyleOpts(
+                    color=JsCode(
+                        """
+                        new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                            {offset: 0, color: '#bc13fe'},
+                            {offset: 1, color: '#00f3ff'}
+                        ])
+                       """
+                    )
+                ),
+            )
+            .reversal_axis()  # 横向柱状图更适合长标签，不挤
+            .set_global_opts(
+                legend_opts=opts.LegendOpts(is_show=False),
+                xaxis_opts=opts.AxisOpts(
+                    splitline_opts=opts.SplitLineOpts(
+                        is_show=True, linestyle_opts=opts.LineStyleOpts(opacity=0.1)
+                    )
+                ),
+                yaxis_opts=opts.AxisOpts(
+                    axisline_opts=opts.AxisLineOpts(is_show=False)
+                ),
+            )
+        )
+        # 横向图表留白调整
+        grid = Grid(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        grid.add(
+            c,
+            grid_opts=opts.GridOpts(
+                pos_left="15%", pos_right="5%", pos_bottom="10%", pos_top="5%"
+            ),
+        )
+        return grid
+
+    def _build_platform_genre_heatmap(self, df: pd.DataFrame) -> Optional[Grid]:
+        pivot = df.pivot_table(
+            index="Platform_Family_CN",
+            columns="Genre",
+            values="Global_Sales",
+            aggfunc="sum",
+            fill_value=0,
+        ).round(1)
+        if pivot.empty:
+            return None
+
+        c = (
+            HeatMap(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add_xaxis(pivot.columns.tolist())
+            .add_yaxis(
+                "",
+                pivot.index.tolist(),
+                [
+                    [i, j, pivot.iloc[j, i]]
+                    for i in range(len(pivot.columns))
+                    for j in range(len(pivot.index))
+                ],
+            )
+            .set_global_opts(
+                visualmap_opts=opts.VisualMapOpts(
+                    pos_left="center",
+                    pos_bottom="0%",
+                    orient="horizontal",
+                    is_calculable=True,
+                    dimension=2,
+                    range_color=[
+                        "#050505",
+                        "#300f5c",
+                        "#bc13fe",
+                        "#00f3ff",
+                    ],  # 赛博朋克配色
+                ),
+                xaxis_opts=opts.AxisOpts(
+                    axislabel_opts=opts.LabelOpts(rotate=45, font_size=10)
+                ),
+                yaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(font_size=10)),
+                tooltip_opts=opts.TooltipOpts(formatter="{b}: {c}"),
+            )
+        )
+        grid = Grid(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        # 底部留白给 visualmap
+        grid.add(
+            c,
+            grid_opts=opts.GridOpts(
+                pos_bottom="15%", pos_top="5%", pos_left="10%", pos_right="5%"
+            ),
+        )
+        return grid
+
+    def _build_sankey_chart(self, df: pd.DataFrame) -> Optional[Sankey]:
+        # 重写桑基图，不再使用 iframe，直接嵌入以控制样式
+        data = (
+            df.groupby(["Platform_Family_CN", "Genre", "Top_Region_CN"])["Global_Sales"]
+            .sum()
+            .reset_index()
+        )
+        if data.empty:
+            return None
+
+        # 节点和链接构建
+        nodes_set = (
+            set(data["Platform_Family_CN"])
+            | set(data["Genre"])
+            | set(data["Top_Region_CN"])
+        )
+        nodes = [{"name": n} for n in nodes_set]
+        links = []
+
+        # 第一层：平台 -> 类型
+        l1 = (
+            data.groupby(["Platform_Family_CN", "Genre"])["Global_Sales"]
+            .sum()
+            .reset_index()
+        )
+        for _, r in l1.iterrows():
+            links.append({"source": r.iloc[0], "target": r.iloc[1], "value": r.iloc[2]})
+
+        # 第二层：类型 -> 区域
+        l2 = (
+            data.groupby(["Genre", "Top_Region_CN"])["Global_Sales"].sum().reset_index()
+        )
+        for _, r in l2.iterrows():
+            links.append({"source": r.iloc[0], "target": r.iloc[1], "value": r.iloc[2]})
+
+        c = (
+            Sankey(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add(
+                "流向",
+                nodes,
+                links,
+                linestyle_opt=opts.LineStyleOpts(
+                    opacity=0.3, curve=0.5, color="source"
+                ),
+                label_opts=opts.LabelOpts(
+                    position="right", color="#e0e0e0", font_size=12
+                ),  # 强制标签颜色
+                node_gap=10,
+                layout_iterations=32,  # 优化布局
+                itemstyle_opts=opts.ItemStyleOpts(border_width=1, border_color="#aaa"),
+            )
+            .set_global_opts(
+                tooltip_opts=opts.TooltipOpts(trigger="item", formatter="{b}: {c}")
+            )
+        )
+        return c
 
     def _build_ml_charts(self, metrics: Dict[str, object]) -> Dict[str, str]:
         charts = {}
@@ -80,88 +389,185 @@ class DashboardBuilder:
         if not ml_data:
             return charts
 
-        # Feature Importance
-        features = ml_data.get("top_features", [])
+        # 特征重要性
+        features = ml_data.get("shap_features", []) or ml_data.get("top_features", [])
         if features:
             c = (
-                Bar(init_opts=opts.InitOpts(theme=ThemeType.DARK))
-                .add_xaxis([f["feature"] for f in features[:10]])
-                .add_yaxis("重要度", [round(f["importance"], 4) for f in features[:10]])
+                Bar(
+                    init_opts=opts.InitOpts(
+                        theme=ThemeType.DARK, width="100%", height="100%"
+                    )
+                )
+                .add_xaxis([f["feature"] for f in features[:8]])  # 只展示前8个，防拥挤
+                .add_yaxis(
+                    "SHAP Value",
+                    [
+                        round(f.get("shap_importance", f.get("importance", 0)), 4)
+                        for f in features[:8]
+                    ],
+                    itemstyle_opts=opts.ItemStyleOpts(color="#0aff60"),
+                )
+                .reversal_axis()
                 .set_global_opts(
-                    title_opts=opts.TitleOpts(title="ML 特征重要度 Top 10"),
-                    xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=20)),
-                    datazoom_opts=[opts.DataZoomOpts()],
+                    xaxis_opts=opts.AxisOpts(
+                        splitline_opts=opts.SplitLineOpts(
+                            is_show=True, linestyle_opts=opts.LineStyleOpts(opacity=0.2)
+                        )
+                    ),
+                    yaxis_opts=opts.AxisOpts(
+                        axisline_opts=opts.AxisLineOpts(is_show=False)
+                    ),
                 )
             )
-            charts["ml_feature_importance"] = c.render_embed()
+            grid = Grid(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            grid.add(
+                c,
+                grid_opts=opts.GridOpts(
+                    pos_left="30%", pos_right="5%", pos_top="5%", pos_bottom="10%"
+                ),
+            )  # 左侧留大点给文字
+            charts["ml_feature_importance"] = grid.render_embed()
 
-        # Model Performance Gauge (Regression R2)
+        # R2 仪表盘
         reg = ml_data.get("regression", {})
         if reg:
             r2 = reg.get("r2", 0)
             c = (
-                Gauge(init_opts=opts.InitOpts(theme=ThemeType.DARK))
+                Gauge(
+                    init_opts=opts.InitOpts(
+                        theme=ThemeType.DARK, width="100%", height="100%"
+                    )
+                )
                 .add(
-                    "R² Score",
-                    [("R²", round(r2, 4))],
+                    "",
+                    [("R² Score", round(r2, 3))],
                     min_=-1,
                     max_=1,
+                    detail_label_opts=opts.GaugeDetailOpts(
+                        offset_center=[0, "60%"], color="#fff", font_size=20
+                    ),
                     axisline_opts=opts.AxisLineOpts(
                         linestyle_opts=opts.LineStyleOpts(
-                            color=[(0.3, "#fd666d"), (0.7, "#e6a23c"), (1, "#67e0e3")],
-                            width=30,
+                            color=[(0.3, "#ff0055"), (0.7, "#bc13fe"), (1, "#00f3ff")],
+                            width=20,
                         )
                     ),
                 )
-                .set_global_opts(title_opts=opts.TitleOpts(title="回归模型 R² 评分"))
+                .set_global_opts(legend_opts=opts.LegendOpts(is_show=False))
             )
             charts["ml_r2_gauge"] = c.render_embed()
 
         return charts
 
+    # --- 其他辅助图表 (保持原样但应用 full width 逻辑) ---
+    def _build_platform_pie_chart(self, metrics: Dict[str, object]) -> Optional[Pie]:
+        data = metrics["innovation"]["platform_share"]
+        if not data:
+            return None
+        return (
+            Pie(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add(
+                "",
+                [opts.PieItem(name=n, value=round(v * 100, 2)) for n, v in data],
+                radius=["40%", "70%"],
+                center=["50%", "50%"],
+            )
+            .set_global_opts(
+                legend_opts=opts.LegendOpts(
+                    type_="scroll", orient="vertical", pos_left="0%", pos_top="10%"
+                )
+            )
+            .set_series_opts(
+                label_opts=opts.LabelOpts(is_show=False)
+            )  # 饼图内部不显示标签，靠图例
+        )
+
+    def _build_region_radar_chart(self, df: pd.DataFrame) -> Optional[Radar]:
+        top_genres = df.groupby("Genre")["Global_Sales"].sum().nlargest(5).index
+        dataset = df[df["Genre"].isin(top_genres)].groupby("Genre")[REGION_COLS].sum()
+        if dataset.empty:
+            return None
+
+        indicators = [
+            opts.RadarIndicatorItem(
+                name=REGION_LABELS[c], max_=float(dataset[c].max() * 1.1)
+            )
+            for c in REGION_COLS
+        ]
+        c = Radar(
+            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
+        )
+        c.add_schema(
+            schema=indicators,
+            shape="polygon",
+            splitarea_opt=opts.SplitAreaOpts(
+                is_show=True, areastyle_opts=opts.AreaStyleOpts(opacity=0.1)
+            ),
+        )
+
+        colors = ["#00f3ff", "#ff0055", "#0aff60", "#bc13fe", "#ffff00"]
+        for idx, genre in enumerate(dataset.index):
+            c.add(
+                genre,
+                [dataset.loc[genre].tolist()],
+                color=colors[idx % 5],
+                areastyle_opts=opts.AreaStyleOpts(opacity=0.1),
+                linestyle_opts=opts.LineStyleOpts(width=2),
+            )
+        c.set_global_opts(legend_opts=opts.LegendOpts(pos_bottom="0%"))
+        return c
+
+    def _build_region_sunburst_chart(self, df: pd.DataFrame) -> Optional[Sunburst]:
+        # 简化版旭日图
+        data = (
+            df.groupby(["Top_Region_CN", "Platform_Family_CN"])["Global_Sales"]
+            .sum()
+            .reset_index()
+        )
+        if data.empty:
+            return None
+        tree = []
+        for reg, g in data.groupby("Top_Region_CN"):
+            children = [
+                {"name": r["Platform_Family_CN"], "value": r["Global_Sales"]}
+                for _, r in g.iterrows()
+            ]
+            tree.append({"name": reg, "children": children})
+
+        c = (
+            Sunburst(
+                init_opts=opts.InitOpts(
+                    theme=ThemeType.DARK, width="100%", height="100%"
+                )
+            )
+            .add("", tree, radius=[0, "90%"])
+            .set_global_opts(title_opts=opts.TitleOpts(title=""))
+            .set_series_opts(label_opts=opts.LabelOpts(formatter="{b}"))
+        )
+        return c
+
     def _build_document(
-        self,
-        charts: Dict[str, str],
-        metrics: Dict[str, object],
-        static_charts: List[Path],
+        self, charts: Dict[str, str], metrics: Dict[str, object], static_gallery: str
     ) -> str:
-        # Collect JS dependencies (simplified: just include all common ones or rely on CDN in template)
-        # For now, we'll assume the template handles the main echarts.min.js
-        # But pyecharts usually needs specific maps/etc.
-        # Since we are embedding, the JS is inside the embed string, but the library loading is separate.
-        # We will inject a script tag to load echarts from CDN if not present.
-
-        summary_components = self._get_summary_components(metrics)
-
-        static_html = ""
-        for chart_path in static_charts:
-            filename = chart_path.name
-            # URL encode filename to handle Chinese characters safely in HTML
-            from urllib.parse import quote
-
-            encoded_filename = quote(filename)
-            static_html += f"""
-            <div class="gallery-item" onclick="openModal('{encoded_filename}')">
-                <div class="gallery-img-container">
-                    <img src="{encoded_filename}" alt="{filename}" loading="lazy">
-                </div>
-                <div class="gallery-caption">
-                    <span>{filename}</span>
-                </div>
-            </div>
-            """
-
+        summary = self._get_summary_components(metrics)
         template = self._get_template()
-        # Safe substitute with all chart keys and summary components
+
         return template.safe_substitute(
             PAGE_TITLE=self.config.page_title,
             HERO_TITLE=self.config.hero_title,
             HERO_SUBTITLE=self.config.hero_subtitle,
-            DATA_SOURCE=self.config.data_source,
-            STATIC_CHARTS=static_html,
-            UPDATED_AT=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            **charts,  # Unpack charts dict
-            **summary_components,  # Unpack summary components
+            UPDATED_AT=datetime.now().strftime("%Y-%m-%d %H:%M"),
+            STATIC_GALLERY_DATA=static_gallery,  # 注入 JSON 数据
+            **charts,
+            **summary,
         )
 
     def _get_template(self) -> Template:
@@ -172,8 +578,8 @@ class DashboardBuilder:
 
     def _get_summary_components(self, metrics: Dict[str, object]) -> Dict[str, str]:
         platform_info = metrics["innovation"]["platform_share"]
-        top_genres = metrics["innovation"]["top_genres"][:5]
-        preference = metrics["innovation"]["region_preference"][:4]
+        top_genres = metrics["innovation"]["top_genres"][:8]
+        preference = metrics["innovation"]["region_preference"][:8]
         moat = metrics["innovation"]["publisher_moat"]
         ml_metrics = metrics.get("ml", {}) or {}
         time_series = metrics.get("time_series", {})
@@ -202,7 +608,7 @@ class DashboardBuilder:
             self._render_list_item(
                 f"🕹️ {PLATFORM_LABELS.get(name, name)} 占比 {share:.1%}"
             )
-            for name, share in platform_info[:5]
+            for name, share in platform_info[:8]
         )
         components["REGION_PREFERENCES"] = "".join(
             self._render_list_item(
@@ -227,21 +633,6 @@ class DashboardBuilder:
         components["CLUSTER_INSIGHTS"] = self._build_cluster_section(cluster_insights)
 
         return components
-
-    def _build_dashboard_summary(self, metrics: Dict[str, object]) -> str:
-        # Deprecated but kept for compatibility if needed, or just redirect
-        # Since we removed the summary template usage in _build_document, this is dead code
-        # unless called externally. We can remove it or leave it as a stub.
-        return ""
-
-    def _get_summary_template(self) -> Template:
-        # Deprecated
-        if self._summary_template_cache is None:
-            template_text = self.config.summary_template_path.read_text(
-                encoding="utf-8"
-            )
-            self._summary_template_cache = Template(template_text)
-        return self._summary_template_cache
 
     @staticmethod
     def _render_metric_card(title: str, value: str) -> str:
@@ -445,233 +836,3 @@ class DashboardBuilder:
                 )
             )
         return "".join(rendered)
-
-    def _build_yearly_line_chart(self, df: pd.DataFrame) -> Optional[Grid]:
-        yearly = df.groupby("Year")["Global_Sales"].sum().sort_index().round(2)
-        if yearly.empty:
-            return None
-        line = (
-            Line()
-            .add_xaxis(yearly.index.astype(str).tolist())
-            .add_yaxis(
-                "全球销量",
-                yearly.tolist(),
-                is_smooth=True,
-                areastyle_opts=opts.AreaStyleOpts(opacity=0.2),
-                label_opts=opts.LabelOpts(is_show=False),
-            )
-            .set_global_opts(
-                title_opts=opts.TitleOpts(title="全球销量年度趋势"),
-                tooltip_opts=opts.TooltipOpts(trigger="axis"),
-                xaxis_opts=opts.AxisOpts(
-                    name="年份", axislabel_opts=opts.LabelOpts(rotate=35)
-                ),
-                yaxis_opts=opts.AxisOpts(name="销量（百万套）"),
-                toolbox_opts=opts.ToolboxOpts(),
-                datazoom_opts=[opts.DataZoomOpts()],
-            )
-        )
-        grid = Grid(
-            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
-        )
-        grid.add(line, grid_opts=opts.GridOpts(is_contain_label=True))
-        return grid
-
-    def _build_region_stream_chart(self, df: pd.DataFrame) -> Optional[Grid]:
-        region_year = df.groupby("Year")[REGION_COLS].sum().sort_index().round(2)
-        if region_year.empty:
-            return None
-        chart = Line()
-        chart.add_xaxis(region_year.index.astype(str).tolist())
-        for col in REGION_COLS:
-            chart.add_yaxis(
-                REGION_LABELS[col],
-                region_year[col].tolist(),
-                stack="总量",
-                areastyle_opts=opts.AreaStyleOpts(opacity=0.25),
-                label_opts=opts.LabelOpts(is_show=False),
-            )
-        chart.set_global_opts(
-            title_opts=opts.TitleOpts(title="区域销量堆叠趋势"),
-            tooltip_opts=opts.TooltipOpts(trigger="axis"),
-            xaxis_opts=opts.AxisOpts(
-                name="年份", axislabel_opts=opts.LabelOpts(rotate=35)
-            ),
-            yaxis_opts=opts.AxisOpts(name="销量（百万套）"),
-            legend_opts=opts.LegendOpts(pos_top="5%"),
-            datazoom_opts=[opts.DataZoomOpts()],
-            toolbox_opts=opts.ToolboxOpts(),
-        )
-        grid = Grid(
-            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
-        )
-        grid.add(chart, grid_opts=opts.GridOpts(is_contain_label=True))
-        return grid
-
-    def _build_genre_bar_chart(self, df: pd.DataFrame) -> Optional[Grid]:
-        genre_sales = (
-            df.groupby("Genre")["Global_Sales"]
-            .sum()
-            .sort_values(ascending=False)
-            .head(10)
-        )
-        if genre_sales.empty:
-            return None
-        bar = (
-            Bar()
-            .add_xaxis(genre_sales.index.tolist())
-            .add_yaxis("全球销量", genre_sales.round(2).tolist(), category_gap="35%")
-            .set_global_opts(
-                title_opts=opts.TitleOpts(title="全球热销游戏类型（前十）"),
-                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=30)),
-                yaxis_opts=opts.AxisOpts(name="销量（百万套）"),
-                toolbox_opts=opts.ToolboxOpts(),
-            )
-        )
-        grid = Grid(
-            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
-        )
-        grid.add(bar, grid_opts=opts.GridOpts(is_contain_label=True))
-        return grid
-
-    def _build_platform_pie_chart(self, metrics: Dict[str, object]) -> Optional[Pie]:
-        data = metrics["innovation"]["platform_share"]
-        if not data:
-            return None
-        return (
-            Pie(
-                init_opts=opts.InitOpts(
-                    theme=ThemeType.DARK, width="100%", height="100%"
-                )
-            )
-            .add(
-                "",
-                [
-                    opts.PieItem(
-                        name=PLATFORM_LABELS.get(name, name),
-                        value=round(value * 100, 2),
-                    )
-                    for name, value in data
-                ],
-                radius=["35%", "70%"],
-            )
-            .set_global_opts(
-                title_opts=opts.TitleOpts(title="平台家族销量占比"),
-                legend_opts=opts.LegendOpts(
-                    orient="vertical", pos_left="5%", pos_top="20%"
-                ),
-                toolbox_opts=opts.ToolboxOpts(),
-            )
-            .set_series_opts(
-                tooltip_opts=opts.TooltipOpts(formatter="{b}: {c}%"),
-                label_opts=opts.LabelOpts(formatter="{b}: {d}%"),
-            )
-        )
-
-    def _build_platform_genre_heatmap(self, df: pd.DataFrame) -> Optional[Grid]:
-        pivot = df.pivot_table(
-            values="Global_Sales",
-            index="Platform_Family_CN",
-            columns="Genre",
-            aggfunc="sum",
-            fill_value=0,
-        ).round(2)
-        if pivot.empty:
-            return None
-        xaxis = pivot.columns.tolist()
-        yaxis = pivot.index.tolist()
-        data = [
-            [i, j, pivot.iloc[j, i]]
-            for i in range(len(xaxis))
-            for j in range(len(yaxis))
-        ]
-        heatmap = (
-            HeatMap()
-            .add_xaxis(xaxis)
-            .add_yaxis("平台-类型热力", yaxis, data)
-            .set_global_opts(
-                title_opts=opts.TitleOpts(title="平台家族 VS 游戏类型热力图"),
-                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=40)),
-                visualmap_opts=opts.VisualMapOpts(
-                    max_=float(pivot.values.max()),
-                    min_=0,
-                    orient="horizontal",
-                    pos_left="center",
-                    pos_top="top",
-                ),
-                toolbox_opts=opts.ToolboxOpts(),
-            )
-        )
-        grid = Grid(
-            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
-        )
-        grid.add(
-            heatmap, grid_opts=opts.GridOpts(is_contain_label=True, pos_bottom="15%")
-        )
-        return grid
-
-    def _build_region_radar_chart(self, df: pd.DataFrame) -> Optional[Radar]:
-        top_genres = df.groupby("Genre")["Global_Sales"].sum().nlargest(5).index
-        dataset = df[df["Genre"].isin(top_genres)].groupby("Genre")[REGION_COLS].sum()
-        if dataset.empty:
-            return None
-        indicators = [
-            opts.RadarIndicatorItem(
-                name=REGION_LABELS[col],
-                max_=float(dataset[col].max()) * 1.1 + 0.01,
-            )
-            for col in REGION_COLS
-        ]
-        chart = Radar(
-            init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
-        ).add_schema(schema=indicators, shape="circle")
-        for genre in dataset.index:
-            values = [float(dataset.loc[genre, col]) for col in REGION_COLS]
-            chart.add(
-                genre,
-                [values],
-                areastyle_opts=opts.AreaStyleOpts(opacity=0.1),
-                linestyle_opts=opts.LineStyleOpts(width=2),
-            )
-        chart.set_global_opts(
-            title_opts=opts.TitleOpts(title="区域偏好雷达图"),
-            toolbox_opts=opts.ToolboxOpts(),
-        )
-        return chart
-
-    def _build_region_sunburst_chart(self, df: pd.DataFrame) -> Optional[Sunburst]:
-        region_platform = (
-            df.groupby(["Top_Region_CN", "Platform_Family_CN"])["Global_Sales"]
-            .sum()
-            .reset_index()
-        )
-        if region_platform.empty:
-            return None
-        data = []
-        for region, group in region_platform.groupby("Top_Region_CN"):
-            children = [
-                {
-                    "name": row["Platform_Family_CN"],
-                    "value": round(row["Global_Sales"], 2),
-                }
-                for _, row in group.iterrows()
-            ]
-            data.append(
-                {
-                    "name": region or "未知",
-                    "value": round(group["Global_Sales"].sum(), 2),
-                    "children": children,
-                }
-            )
-        return (
-            Sunburst(
-                init_opts=opts.InitOpts(
-                    theme=ThemeType.DARK, width="100%", height="100%"
-                )
-            )
-            .add("", data, radius=[0, "85%"])
-            .set_global_opts(
-                title_opts=opts.TitleOpts(title="区域与平台层级结构"),
-                toolbox_opts=opts.ToolboxOpts(),
-            )
-        )

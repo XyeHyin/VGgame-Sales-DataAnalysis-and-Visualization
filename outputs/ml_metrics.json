@@ -344,9 +344,18 @@
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
+      "candidate": "Kinect Adventures!",
+      "candidate_platform": "Xbox",
+      "similarity": 0.9981682466350699,
+      "anchor_sales": 350.0,
+      "candidate_sales": 24.0
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
       "candidate": "Grand Theft Auto V",
       "candidate_platform": "All",
-      "similarity": 0.9997531743896684,
+      "similarity": 0.9966258368264862,
       "anchor_sales": 350.0,
       "candidate_sales": 220.0
     },
@@ -355,223 +364,214 @@
       "anchor_platform": "All",
       "candidate": "Wii Sports",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9976220081302063,
+      "similarity": 0.9957362547715364,
       "anchor_sales": 350.0,
       "candidate_sales": 82.9
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Terraria",
+      "candidate": "Call of Duty: Black Ops",
       "candidate_platform": "All",
-      "similarity": 0.9974304575392867,
+      "similarity": 0.9941275631788606,
       "anchor_sales": 350.0,
-      "candidate_sales": 58.7
+      "candidate_sales": 30.0
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "PlayerUnknown's Battlegrounds",
-      "candidate_platform": "All",
-      "similarity": 0.9970601706133383,
-      "anchor_sales": 350.0,
-      "candidate_sales": 75.0
-    },
-    {
-      "anchor": "Minecraft",
-      "anchor_platform": "All",
-      "candidate": "Human: Fall Flat",
-      "candidate_platform": "All",
-      "similarity": 0.9953643892828973,
-      "anchor_sales": 350.0,
-      "candidate_sales": 55.0
-    },
-    {
-      "anchor": "Grand Theft Auto V",
-      "anchor_platform": "All",
-      "candidate": "Minecraft",
-      "candidate_platform": "All",
-      "similarity": 0.9997531743896684,
-      "anchor_sales": 220.0,
-      "candidate_sales": 350.0
-    },
-    {
-      "anchor": "Grand Theft Auto V",
-      "anchor_platform": "All",
-      "candidate": "Wii Sports",
+      "candidate": "Wii Sports Resort",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9987425988889341,
-      "anchor_sales": 220.0,
-      "candidate_sales": 82.9
+      "similarity": 0.9940307814792031,
+      "anchor_sales": 350.0,
+      "candidate_sales": 33.14
     },
     {
       "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "Terraria",
+      "candidate": "Call of Duty: Black Ops II",
       "candidate_platform": "All",
-      "similarity": 0.9962916161816778,
+      "similarity": 0.9986131541892332,
       "anchor_sales": 220.0,
-      "candidate_sales": 58.7
+      "candidate_sales": 31.0
     },
     {
       "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "PlayerUnknown's Battlegrounds",
-      "candidate_platform": "All",
-      "similarity": 0.9962284905061474,
-      "anchor_sales": 220.0,
-      "candidate_sales": 75.0
-    },
-    {
-      "anchor": "Grand Theft Auto V",
-      "anchor_platform": "All",
-      "candidate": "Red Dead Redemption 2",
-      "candidate_platform": "All",
-      "similarity": 0.9954934877159879,
-      "anchor_sales": 220.0,
-      "candidate_sales": 79.0
-    },
-    {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
-      "candidate": "Grand Theft Auto V",
-      "candidate_platform": "All",
-      "similarity": 0.9987425988889341,
-      "anchor_sales": 82.9,
-      "candidate_sales": 220.0
-    },
-    {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
-      "candidate": "Minecraft",
-      "candidate_platform": "All",
-      "similarity": 0.9976220081302063,
-      "anchor_sales": 82.9,
-      "candidate_sales": 350.0
-    },
-    {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
-      "candidate": "Red Dead Redemption 2",
-      "candidate_platform": "All",
-      "similarity": 0.9973181416288812,
-      "anchor_sales": 82.9,
-      "candidate_sales": 79.0
-    },
-    {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
       "candidate": "The Elder Scrolls V: Skyrim",
       "candidate_platform": "All",
-      "similarity": 0.9971183651695774,
-      "anchor_sales": 82.9,
+      "similarity": 0.9985656914893144,
+      "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
     {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
-      "candidate": "Mario Kart 8 Deluxe",
-      "candidate_platform": "NS",
-      "similarity": 0.9968456079108986,
-      "anchor_sales": 82.9,
-      "candidate_sales": 69.56
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
+      "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "Mario Kart 8 Deluxe",
-      "candidate_platform": "NS",
-      "similarity": 0.9999558137892782,
-      "anchor_sales": 79.0,
-      "candidate_sales": 69.56
+      "candidate": "Call of Duty: Black Ops",
+      "candidate_platform": "All",
+      "similarity": 0.998125644575257,
+      "anchor_sales": 220.0,
+      "candidate_sales": 30.0
     },
     {
-      "anchor": "Red Dead Redemption 2",
+      "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
       "candidate": "The Witcher 3: Wild Hunt",
       "candidate_platform": "All",
-      "similarity": 0.9997248220699273,
-      "anchor_sales": 79.0,
+      "similarity": 0.9980805999649659,
+      "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
     {
-      "anchor": "Red Dead Redemption 2",
+      "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate": "Terraria",
+      "candidate_platform": "PC",
+      "similarity": 0.9979549422672136,
+      "anchor_sales": 220.0,
+      "candidate_sales": 32.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Minecraft",
       "candidate_platform": "All",
-      "similarity": 0.9990068875694003,
-      "anchor_sales": 79.0,
-      "candidate_sales": 60.0
+      "similarity": 0.9957362547715364,
+      "anchor_sales": 82.9,
+      "candidate_sales": 350.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Wii Fit",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9951614502645053,
+      "anchor_sales": 82.9,
+      "candidate_sales": 22.67
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Kinect Adventures!",
+      "candidate_platform": "Xbox",
+      "similarity": 0.9951414887563584,
+      "anchor_sales": 82.9,
+      "candidate_sales": 24.0
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Mario Kart Wii",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9948302150804523,
+      "anchor_sales": 82.9,
+      "candidate_sales": 37.38
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "New Super Mario Bros.",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.994653324698674,
+      "anchor_sales": 82.9,
+      "candidate_sales": 30.8
     },
     {
       "anchor": "Red Dead Redemption 2",
       "anchor_platform": "All",
-      "candidate": "Wii Sports",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9973181416288812,
+      "candidate": "Mario Kart 8 Deluxe",
+      "candidate_platform": "NS",
+      "similarity": 0.9997384192039104,
       "anchor_sales": 79.0,
-      "candidate_sales": 82.9
+      "candidate_sales": 69.56
     },
     {
       "anchor": "Red Dead Redemption 2",
       "anchor_platform": "All",
-      "candidate": "Wii Play",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9963190950967821,
+      "candidate": "Super Smash Bros. Ultimate",
+      "candidate_platform": "NS",
+      "similarity": 0.9992082546452511,
       "anchor_sales": 79.0,
-      "candidate_sales": 28.02
+      "candidate_sales": 36.93
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Monster Hunter: World",
+      "candidate_platform": "All",
+      "similarity": 0.9990220375638764,
+      "anchor_sales": 79.0,
+      "candidate_sales": 29.1
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Dying Light",
+      "candidate_platform": "All",
+      "similarity": 0.9990215055025483,
+      "anchor_sales": 79.0,
+      "candidate_sales": 20.0
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Diablo III",
+      "candidate_platform": "All",
+      "similarity": 0.9990149175540717,
+      "anchor_sales": 79.0,
+      "candidate_sales": 30.0
     },
     {
       "anchor": "PlayerUnknown's Battlegrounds",
       "anchor_platform": "All",
       "candidate": "Human: Fall Flat",
       "candidate_platform": "All",
-      "similarity": 0.9997927088128578,
+      "similarity": 0.9998811415658625,
       "anchor_sales": 75.0,
       "candidate_sales": 55.0
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "Terraria",
-      "candidate_platform": "All",
-      "similarity": 0.9995549511517668,
-      "anchor_sales": 75.0,
-      "candidate_sales": 58.7
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "Counter-Strike: Global Offensive",
-      "candidate_platform": "PC",
-      "similarity": 0.9992967823681662,
-      "anchor_sales": 75.0,
-      "candidate_sales": 40.0
     },
     {
       "anchor": "PlayerUnknown's Battlegrounds",
       "anchor_platform": "All",
       "candidate": "Stardew Valley",
       "candidate_platform": "All",
-      "similarity": 0.9986722090953747,
+      "similarity": 0.9998264489634816,
       "anchor_sales": 75.0,
       "candidate_sales": 41.0
     },
     {
       "anchor": "PlayerUnknown's Battlegrounds",
       "anchor_platform": "All",
-      "candidate": "Animal Crossing: New Horizons",
-      "candidate_platform": "NS",
-      "similarity": 0.9980932101739082,
+      "candidate": "PLAYERUNKNOWN'S BATTLEGROUNDS",
+      "candidate_platform": "PC",
+      "similarity": 0.9995240029584281,
       "anchor_sales": 75.0,
-      "candidate_sales": 48.62
+      "candidate_sales": 36.6
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "The Legend of Zelda: Breath of the Wild",
+      "candidate_platform": "All",
+      "similarity": 0.9994530693233875,
+      "anchor_sales": 75.0,
+      "candidate_sales": 35.04
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "FIFA 18",
+      "candidate_platform": "All",
+      "similarity": 0.9988132776747621,
+      "anchor_sales": 75.0,
+      "candidate_sales": 26.4
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
       "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9999558137892782,
+      "similarity": 0.9997384192039104,
       "anchor_sales": 69.56,
       "candidate_sales": 79.0
     },
@@ -580,36 +580,36 @@
       "anchor_platform": "NS",
       "candidate": "The Witcher 3: Wild Hunt",
       "candidate_platform": "All",
-      "similarity": 0.9998904394605881,
+      "similarity": 0.9993347597207358,
       "anchor_sales": 69.56,
       "candidate_sales": 60.0
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate": "Dying Light",
       "candidate_platform": "All",
-      "similarity": 0.9991981945952626,
+      "similarity": 0.9992583760054319,
       "anchor_sales": 69.56,
-      "candidate_sales": 60.0
+      "candidate_sales": 20.0
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "Wii Sports",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9968456079108986,
+      "candidate": "Diablo III",
+      "candidate_platform": "All",
+      "similarity": 0.999014683913271,
       "anchor_sales": 69.56,
-      "candidate_sales": 82.9
+      "candidate_sales": 30.0
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "Wii Play",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9966375229888945,
+      "candidate": "Fallout 4",
+      "candidate_platform": "All",
+      "similarity": 0.9989013197140572,
       "anchor_sales": 69.56,
-      "candidate_sales": 28.02
+      "candidate_sales": 25.0
     }
   ]
 }

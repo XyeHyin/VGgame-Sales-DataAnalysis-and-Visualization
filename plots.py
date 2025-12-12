@@ -58,7 +58,7 @@ class FigureGenerator:
             # self._plot_genre_radar(df),        # Covered by Pyecharts
             self._plot_correlation_heatmap(df),
             self._plot_lorenz_curve(df),
-            self._plot_decade_distributions(df),
+            # self._plot_decade_distributions(df),
             self._plot_region_scatter(df),
             self._plot_top_games_bubble(df),
             self._plot_calendar_heatmap(df),
@@ -415,22 +415,22 @@ class FigureGenerator:
         ax.legend()
         return self._save_fig(fig, "12_lorenz_curve.png")
 
-    def _plot_decade_distributions(self, df: pd.DataFrame) -> Path:
-        g = sns.displot(
-            data=df,
-            x="Global_Sales",
-            col="Decade",
-            kind="hist",
-            col_wrap=4,
-            height=3,
-            facet_kws={"sharex": False},
-        )
-        g.set_titles("{col_name} 年代")
-        g.set(xlabel="全球销量（百万套）", ylabel="游戏数量")
-        out_path = self.output_dir / "13_decade_distributions.png"
-        g.fig.savefig(out_path, bbox_inches="tight")
-        plt.close(g.fig)
-        return out_path
+    # def _plot_decade_distributions(self, df: pd.DataFrame) -> Path:
+    #     g = sns.displot(
+    #         data=df,
+    #         x="Global_Sales",
+    #         col="Decade",
+    #         kind="hist",
+    #         col_wrap=4,
+    #         height=3,
+    #         facet_kws={"sharex": False},
+    #     )
+    #     g.set_titles("{col_name} 年代")
+    #     g.set(xlabel="全球销量（百万套）", ylabel="游戏数量")
+    #     out_path = self.output_dir / "13_decade_distributions.png"
+    #     g.fig.savefig(out_path, bbox_inches="tight")
+    #     plt.close(g.fig)
+    #     return out_path
 
     def _plot_region_scatter(self, df: pd.DataFrame) -> Path:
         fig, ax = plt.subplots(figsize=(8, 6))

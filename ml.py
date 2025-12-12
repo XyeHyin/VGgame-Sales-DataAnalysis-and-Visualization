@@ -396,6 +396,9 @@ class SalesMLAnalyzer:
         if len(feature_cols) < 3 or len(df) < 50:
             return []
         work = df[feature_cols].copy().fillna(0)
+        sales_cols = [c for c in work.columns if "Sales" in c or "Shipped" in c]
+        for col in sales_cols:
+            work[col] = np.log1p(np.log1p(work[col]))
         scaler = StandardScaler()
         matrix = scaler.fit_transform(work)
         neighbors = NearestNeighbors(metric="cosine", n_neighbors=6)

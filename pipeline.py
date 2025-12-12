@@ -36,11 +36,17 @@ class VGSalesPipeline:
         self.artifacts = artifacts or build_artifacts(output_dir)
         self.output_dir = self.artifacts.directory
         self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Create gallery directory
+        self.gallery_dir = self.output_dir / "gallery"
+        self.gallery_dir.mkdir(exist_ok=True)
+
         self.dashboard_builder = dashboard_builder or DashboardBuilder(
             self.artifacts.dashboard_html,
             config=DASHBOARD_CONFIG,
         )
-        self.figure_generator = figure_generator or FigureGenerator(self.output_dir)
+        # Pass gallery_dir to FigureGenerator
+        self.figure_generator = figure_generator or FigureGenerator(self.gallery_dir)
         default_ml_artifacts = MLArtifacts(
             metrics_json=self.artifacts.ml_metrics_json,
             clusters_json=self.artifacts.ml_clusters_json,
@@ -64,11 +70,16 @@ class VGSalesPipeline:
         self._write_summary(metrics)
         figure_paths = self.figure_generator.generate_all(df)
 
-        # 检查 SHAP 蜂群图是否存在，添加到图表列表
+        # 检查 SHAP 蜂群图是否存在，移动到 gallery 并添加到图表列表
         shap_summary_path = self.output_dir / "shap_summary.png"
         if shap_summary_path.exists():
-            figure_paths.append(shap_summary_path)
-            LOGGER.info("已添加 SHAP 蜂群图到画廊: %s", shap_summary_path.name)
+            new_shap_path = self.gallery_dir / "shap_summary.png"
+            # 如果目标文件存在，先删除
+            if new_shap_path.exists():
+                new_shap_path.unlink()
+            shap_summary_path.rename(new_shap_path)
+            figure_paths.append(new_shap_path)
+            LOGGER.info("已添加 SHAP 蜂群图到画廊: %s", new_shap_path.name)
 
         self._generate_interactive_dashboard(df, metrics, figure_paths)
         LOGGER.info("流程完成，共生成 %d 张静态图表", len(figure_paths))
