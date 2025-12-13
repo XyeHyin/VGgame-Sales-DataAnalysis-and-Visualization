@@ -1,10 +1,10 @@
 from datetime import datetime
 import json
 from pathlib import Path
-from string import Template
 from typing import Dict, List, Optional
 
 import pandas as pd
+from jinja2 import Environment, FileSystemLoader
 from pyecharts import options as opts
 from pyecharts.charts import (
     Bar,
@@ -34,7 +34,8 @@ class DashboardBuilder:
     def __init__(self, output_path: Path, *, config: DashboardConfig) -> None:
         self.output_path = output_path
         self.config = config
-        self._template_cache: Optional[Template] = None
+        self.env = Environment(loader=FileSystemLoader(config.template_path.parent))
+        self.template = self.env.get_template(config.template_path.name)
 
     def build(
         self,
@@ -587,33 +588,21 @@ class DashboardBuilder:
     def _build_document(
         self, charts: Dict[str, str], metrics: Dict[str, object], static_gallery: str
     ) -> str:
-        summary = self._get_summary_components(metrics)
-        template = self._get_template()
+        summary_context = self._get_summary_context(metrics)
 
-        html_content = template.safe_substitute(
-            PAGE_TITLE=self.config.page_title,
-            HERO_TITLE=self.config.hero_title,
-            HERO_SUBTITLE=self.config.hero_subtitle,
-            UPDATED_AT=datetime.now().strftime("%Y-%m-%d %H:%M"),
+        context = {
+            "PAGE_TITLE": self.config.page_title,
+            "HERO_TITLE": self.config.hero_title,
+            "HERO_SUBTITLE": self.config.hero_subtitle,
+            "UPDATED_AT": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "STATIC_GALLERY_DATA": static_gallery,
             **charts,
-            **summary,
-        )
+            **summary_context,
+        }
 
-        # 手动替换 JS 变量，避免模板引擎格式化问题
-        # 将 "STATIC_GALLERY_DATA_PLACEHOLDER" 替换为实际的 JSON 数据
-        html_content = html_content.replace(
-            '"STATIC_GALLERY_DATA_PLACEHOLDER"', static_gallery
-        )
+        return self.template.render(context)
 
-        return html_content
-
-    def _get_template(self) -> Template:
-        if self._template_cache is None:
-            template_text = self.config.template_path.read_text(encoding="utf-8")
-            self._template_cache = Template(template_text)
-        return self._template_cache
-
-    def _get_summary_components(self, metrics: Dict[str, object]) -> Dict[str, str]:
+    def _get_summary_context(self, metrics: Dict[str, object]) -> Dict[str, object]:
         platform_info = metrics["innovation"]["platform_share"]
         top_genres = metrics["innovation"]["top_genres"][:8]
         preference = metrics["innovation"]["region_preference"][:8]
@@ -624,107 +613,85 @@ class DashboardBuilder:
         quality_gap = metrics.get("quality_gap", {})
         cluster_insights = metrics.get("cluster_insights", [])
 
-        components = {}
-        components["METRIC_CARDS"] = "".join(
-            [
-                self._render_metric_card("记录数量", f"{metrics['row_count']:,}"),
-                self._render_metric_card(
-                    "时间跨度",
-                    f"{metrics['time_span'][0]} - {metrics['time_span'][1]}",
-                ),
-                self._render_metric_card(
-                    "销量集中度 (Gini)", f"{metrics['innovation']['gini']:.3f}"
-                ),
-            ]
-        )
-        components["TOP_GENRES"] = "".join(
-            self._render_list_item(f"🎮 {genre}: {sales:.2f} 百万套")
-            for genre, sales in top_genres
-        )
-        components["PLATFORM_SHARES"] = "".join(
-            self._render_list_item(
-                f"🕹️ {PLATFORM_LABELS.get(name, name)} 占比 {share:.1%}"
-            )
+        context = {}
+        context["metric_cards"] = [
+            {"title": "记录数量", "value": f"{metrics['row_count']:,}"},
+            {
+                "title": "时间跨度",
+                "value": f"{metrics['time_span'][0]} - {metrics['time_span'][1]}",
+            },
+            {
+                "title": "销量集中度 (Gini)",
+                "value": f"{metrics['innovation']['gini']:.3f}",
+            },
+        ]
+
+        context["top_genres"] = [
+            f"🎮 {genre}: {sales:.2f} 百万套" for genre, sales in top_genres
+        ]
+        context["platform_shares"] = [
+            f"🕹️ {PLATFORM_LABELS.get(name, name)} 占比 {share:.1%}"
             for name, share in platform_info[:8]
-        )
-        components["REGION_PREFERENCES"] = "".join(
-            self._render_list_item(
-                f"📍 {REGION_LABELS.get(item['Region'], item['Region'])} 对 {item['Genre']} 偏好 +{item['Preference']:.1%}"
-            )
+        ]
+        context["region_preferences"] = [
+            f"📍 {REGION_LABELS.get(item['Region'], item['Region'])} 对 {item['Genre']} 偏好 +{item['Preference']:.1%}"
             for item in preference
-        )
-        components["PUBLISHER_MOAT"] = "".join(
-            self._render_list_item(
-                f"🏢 {entry['Publisher']} 竞争力 {entry['moat_score']:.2f}"
-            )
+        ]
+        context["publisher_moat"] = [
+            f"🏢 {entry['Publisher']} 竞争力 {entry['moat_score']:.2f}"
             for entry in moat
-        )
-        components["ML_INSIGHTS"] = self._build_ml_insights(ml_metrics)
-        components["ML_SEGMENTS"] = self._build_ml_segments(ml_metrics)
-        components["ML_BEHAVIOR"] = self._build_ml_behavior_segments(ml_metrics)
-        components["ML_FEATURES"] = self._build_ml_features(ml_metrics)
-        components["ML_SIMILARITY"] = self._build_ml_similarity(ml_metrics)
-        components["MOMENTUM"] = self._build_momentum_section(time_series)
-        components["TIER_SUMMARY"] = self._build_tier_section(tier_contributions)
-        components["QUALITY_GAP"] = self._build_quality_section(quality_gap)
-        components["CLUSTER_INSIGHTS"] = self._build_cluster_section(cluster_insights)
+        ]
 
-        return components
+        context["ml_insights"] = self._build_ml_insights(ml_metrics)
+        context["ml_segments"] = self._build_ml_segments(ml_metrics)
+        context["ml_behavior"] = self._build_ml_behavior_segments(ml_metrics)
+        context["ml_features"] = self._build_ml_features(ml_metrics)
+        context["ml_similarity"] = self._build_ml_similarity(ml_metrics)
+        context["momentum"] = self._build_momentum_section(time_series)
+        context["tier_summary"] = self._build_tier_section(tier_contributions)
+        context["quality_gap"] = self._build_quality_section(quality_gap)
+        context["cluster_insights"] = self._build_cluster_section(cluster_insights)
 
-    @staticmethod
-    def _render_metric_card(title: str, value: str) -> str:
-        return (
-            '<div class="metric-card">' f"<h3>{title}</h3>" f"<p>{value}</p>" "</div>"
-        )
+        return context
 
-    @staticmethod
-    def _render_list_item(content: str) -> str:
-        return f'<div class="list-item">{content}</div>'
-
-    def _build_ml_insights(self, ml_metrics: Dict[str, object]) -> str:
+    def _build_ml_insights(self, ml_metrics: Dict[str, object]) -> List[str]:
         if not ml_metrics:
-            return ""
+            return []
         items: List[str] = []
         regression = ml_metrics.get("regression") or {}
         classification = ml_metrics.get("classification") or {}
         if regression:
             items.append(
-                self._render_list_item(
-                    "🤖 回归模型 MAE {:.2f} / R² {:.2f}".format(
-                        regression.get("mae", 0.0), regression.get("r2", 0.0)
-                    )
+                "🤖 回归模型 MAE {:.2f} / R² {:.2f}".format(
+                    regression.get("mae", 0.0), regression.get("r2", 0.0)
                 )
             )
         if classification:
             items.append(
-                self._render_list_item(
-                    "🎯 命中预测 F1 {:.2f}，准确率 {:.2f}".format(
-                        classification.get("f1", 0.0),
-                        classification.get("accuracy", 0.0),
-                    )
+                "🎯 命中预测 F1 {:.2f}，准确率 {:.2f}".format(
+                    classification.get("f1", 0.0),
+                    classification.get("accuracy", 0.0),
                 )
             )
-        return "".join(items)
+        return items
 
-    def _build_ml_segments(self, ml_metrics: Dict[str, object]) -> str:
+    def _build_ml_segments(self, ml_metrics: Dict[str, object]) -> List[str]:
         segments = ml_metrics.get("clustering") or []
         if not segments:
-            return ""
+            return []
         rendered = []
         for segment in segments:
             rendered.append(
-                self._render_list_item(
-                    "🧩 Segment {cluster}: {region} 偏好，样本 {size}，均值 {sales:.2f}".format(
-                        cluster=segment.get("cluster"),
-                        region=segment.get("dominant_region", "未知"),
-                        size=segment.get("size", 0),
-                        sales=segment.get("avg_global_sales", 0.0),
-                    )
+                "🧩 Segment {cluster}: {region} 偏好，样本 {size}，均值 {sales:.2f}".format(
+                    cluster=segment.get("cluster"),
+                    region=segment.get("dominant_region", "未知"),
+                    size=segment.get("size", 0),
+                    sales=segment.get("avg_global_sales", 0.0),
                 )
             )
-        return "".join(rendered)
+        return rendered
 
-    def _build_ml_features(self, ml_metrics: Dict[str, object]) -> str:
+    def _build_ml_features(self, ml_metrics: Dict[str, object]) -> List[str]:
         # 优先读取 SHAP 特征重要性，否则回退到传统特征重要性
         shap_features = ml_metrics.get("shap_features") or []
         top_features = ml_metrics.get("top_features") or []
@@ -735,141 +702,123 @@ class DashboardBuilder:
         if shap_features:
             for feature in shap_features[:5]:
                 rendered.append(
-                    self._render_list_item(
-                        "🧠 SHAP 贡献: {name} = {score:.4f}".format(
-                            name=feature.get("feature"),
-                            score=feature.get("shap_importance", 0.0),
-                        )
+                    "🧠 SHAP 贡献: {name} = {score:.4f}".format(
+                        name=feature.get("feature"),
+                        score=feature.get("shap_importance", 0.0),
                     )
                 )
         elif top_features:
             # 回退显示传统特征重要性
             for feature in top_features[:5]:
                 rendered.append(
-                    self._render_list_item(
-                        "📈 {name} 重要度 {score:.2%}".format(
-                            name=feature.get("feature"),
-                            score=feature.get("importance", 0.0),
-                        )
+                    "📈 {name} 重要度 {score:.2%}".format(
+                        name=feature.get("feature"),
+                        score=feature.get("importance", 0.0),
                     )
                 )
 
-        return "".join(rendered)
+        return rendered
 
-    def _build_ml_behavior_segments(self, ml_metrics: Dict[str, object]) -> str:
+    def _build_ml_behavior_segments(self, ml_metrics: Dict[str, object]) -> List[str]:
         segments = ml_metrics.get("behavior_clusters") or []
         if not segments:
-            return ""
+            return []
         rendered = []
         for segment in segments:
             rendered.append(
-                self._render_list_item(
-                    "🧭 行为集群 {cluster}: 销量 {sales:.2f}，年龄 {age:.1f}, 评分 {score:.1f}".format(
-                        cluster=segment.get("cluster"),
-                        sales=segment.get("avg_global_sales", 0.0),
-                        age=segment.get("avg_age", 0.0),
-                        score=segment.get("score_median", 0.0),
-                    )
+                "🧭 行为集群 {cluster}: 销量 {sales:.2f}，年龄 {age:.1f}, 评分 {score:.1f}".format(
+                    cluster=segment.get("cluster"),
+                    sales=segment.get("avg_global_sales", 0.0),
+                    age=segment.get("avg_age", 0.0),
+                    score=segment.get("score_median", 0.0),
                 )
             )
-        return "".join(rendered)
+        return rendered
 
-    def _build_ml_similarity(self, ml_metrics: Dict[str, object]) -> str:
+    def _build_ml_similarity(self, ml_metrics: Dict[str, object]) -> List[str]:
         pairs = ml_metrics.get("similar_titles") or []
         if not pairs:
-            return ""
+            return []
         rendered = []
         for pair in pairs[:5]:
             rendered.append(
-                self._render_list_item(
-                    "🤝 {anchor} ↔ {candidate} (相似度 {sim:.2f})".format(
-                        anchor=pair.get("anchor"),
-                        candidate=pair.get("candidate"),
-                        sim=pair.get("similarity", 0.0),
-                    )
+                "🤝 {anchor} ↔ {candidate} (相似度 {sim:.2f})".format(
+                    anchor=pair.get("anchor"),
+                    candidate=pair.get("candidate"),
+                    sim=pair.get("similarity", 0.0),
                 )
             )
-        return "".join(rendered)
+        return rendered
 
-    def _build_momentum_section(self, time_series: Dict[str, object]) -> str:
+    def _build_momentum_section(self, time_series: Dict[str, object]) -> List[str]:
         if not time_series:
-            return ""
+            return []
         items = []
         cagr = time_series.get("cagr")
         if cagr is not None:
-            items.append(self._render_list_item(f"📈 CAGR {cagr:.2%}"))
+            items.append(f"📈 CAGR {cagr:.2%}")
         volatility = time_series.get("volatility")
         if volatility is not None:
-            items.append(self._render_list_item(f"⚡ 波动率 {volatility:.2%}"))
+            items.append(f"⚡ 波动率 {volatility:.2%}")
         density = time_series.get("recent_release_density")
         if density is not None:
-            items.append(
-                self._render_list_item(f"📅 近五年发布密度 {density:.1f} 款/年")
-            )
+            items.append(f"📅 近五年发布密度 {density:.1f} 款/年")
         boom = time_series.get("boom_periods", [])
         if boom:
             boom_desc = ", ".join(
                 f"{entry['year']}({entry['yoy']:.1%})" for entry in boom[:3]
             )
-            items.append(self._render_list_item(f"🌠 高光年份：{boom_desc}"))
+            items.append(f"🌠 高光年份：{boom_desc}")
         bust = time_series.get("bust_periods", [])
         if bust:
             bust_desc = ", ".join(
                 f"{entry['year']}({entry['yoy']:.1%})" for entry in bust[:2]
             )
-            items.append(self._render_list_item(f"🌧️ 回落年份：{bust_desc}"))
-        return "".join(items)
+            items.append(f"🌧️ 回落年份：{bust_desc}")
+        return items
 
-    def _build_tier_section(self, tier_contributions: Dict[str, object]) -> str:
+    def _build_tier_section(self, tier_contributions: Dict[str, object]) -> List[str]:
         if not tier_contributions:
-            return ""
+            return []
         lift = tier_contributions.get("tier_lift") or []
         if not lift:
-            return ""
+            return []
         rendered = []
         for entry in lift[:5]:
             rendered.append(
-                self._render_list_item(
-                    f"🏷️ {entry['tier']} 平均 {entry['avg_sales']:.2f} 百万套，lift {entry['lift']:.2f}"
-                )
+                f"🏷️ {entry['tier']} 平均 {entry['avg_sales']:.2f} 百万套，lift {entry['lift']:.2f}"
             )
-        return "".join(rendered)
+        return rendered
 
-    def _build_quality_section(self, quality_gap: Dict[str, object]) -> str:
+    def _build_quality_section(self, quality_gap: Dict[str, object]) -> List[str]:
         if not quality_gap:
-            return ""
+            return []
         items = []
         corr = quality_gap.get("correlation")
         if corr is not None:
-            items.append(self._render_list_item(f"🎯 评分-销量相关性 {corr:.2f}"))
+            items.append(f"🎯 评分-销量相关性 {corr:.2f}")
         gap = quality_gap.get("score_gap", {})
         if gap:
             items.append(
-                self._render_list_item(
-                    f"⚖️ 均值差 {gap.get('mean_gap', 0.0):.2f} / σ {gap.get('std_gap', 0.0):.2f}"
-                )
+                f"⚖️ 均值差 {gap.get('mean_gap', 0.0):.2f} / σ {gap.get('std_gap', 0.0):.2f}"
             )
         disagreements = quality_gap.get("largest_disagreements") or []
         for row in disagreements[:3]:
             items.append(
-                self._render_list_item(
-                    "🛑 {name} ({platform}) 差值 {gap:.2f}".format(
-                        name=row.get("name"),
-                        platform=row.get("platform"),
-                        gap=row.get("score_gap", 0.0),
-                    )
+                "🛑 {name} ({platform}) 差值 {gap:.2f}".format(
+                    name=row.get("name"),
+                    platform=row.get("platform"),
+                    gap=row.get("score_gap", 0.0),
                 )
             )
-        return "".join(items)
+        return items
 
-    def _build_cluster_section(self, clusters: List[Dict[str, object]]) -> str:
+    def _build_cluster_section(self, clusters: List[Dict[str, object]]) -> List[str]:
         if not clusters:
-            return ""
+            return []
         rendered = []
         for cluster in clusters[:4]:
             rendered.append(
-                self._render_list_item(
-                    f"🗺️ {cluster['label']}：样本 {cluster['size']}，均值 {cluster['avg_sales']:.2f}"
-                )
+                f"🗺️ {cluster['label']}：样本 {cluster['size']}，均值 {cluster['avg_sales']:.2f}"
             )
-        return "".join(rendered)
+        return rendered

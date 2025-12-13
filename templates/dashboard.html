@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>${PAGE_TITLE} | NEXUS COMMAND</title>
+    <title>{{ PAGE_TITLE }} | NEXUS COMMAND</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=JetBrains+Mono:wght@400;800&family=Orbitron:wght@500;900&display=swap"
         rel="stylesheet">
@@ -926,8 +926,8 @@
         <div
             style="position:absolute; width:100%; height:100%; background: linear-gradient(0deg, transparent 95%, var(--primary) 100%); opacity:0.1; animation: scan 3s infinite linear;">
         </div>
-        <div class="hero-title">${HERO_TITLE}</div>
-        <div class="hero-subtitle">INTELLIGENCE UNIT // UPDATED: ${UPDATED_AT}</div>
+        <div class="hero-title">{{ HERO_TITLE }}</div>
+        <div class="hero-subtitle">INTELLIGENCE UNIT // UPDATED: {{ UPDATED_AT }}</div>
 
         <div class="carousel-container">
             <div class="carousel-track" id="carousel-track">
@@ -946,7 +946,12 @@
         <div id="tab-overview" class="tab-content active">
 
             <div class="metric-grid">
-                ${METRIC_CARDS}
+                {% for card in metric_cards %}
+                <div class="metric-card">
+                    <h3>{{ card.title }}</h3>
+                    <p>{{ card.value }}</p>
+                </div>
+                {% endfor %}
             </div>
 
             <div class="section-header">战略洞察 (Strategic Intelligence)</div>
@@ -954,13 +959,13 @@
                 <div class="module col-6">
                     <div class="module-header"><span class="module-title">平台-类型-区域 流量全景</span></div>
                     <div class="chart-wrapper tall">
-                        ${sankey_flow}
+                        {{ sankey_flow | safe }}
                     </div>
                 </div>
                 <div class="module col-6">
                     <div class="module-header"><span class="module-title">热度矩阵</span></div>
                     <div class="chart-wrapper tall">
-                        ${platform_heatmap}
+                        {{ platform_heatmap | safe }}
                     </div>
                 </div>
             </div>
@@ -970,13 +975,15 @@
                 <div class="module col-8">
                     <div class="module-header"><span class="module-title">年度销量走势</span></div>
                     <div class="chart-wrapper">
-                        ${yearly_line}
+                        {{ yearly_line | safe }}
                     </div>
                 </div>
                 <div class="module col-4">
                     <div class="module-header"><span class="module-title">动量指标</span></div>
                     <div class="list-container">
-                        ${MOMENTUM}
+                        {% for item in momentum %}
+                        <div class="list-item">{{ item }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -985,13 +992,15 @@
                 <div class="module col-8">
                     <div class="module-header"><span class="module-title">区域竞争堆叠图</span></div>
                     <div class="chart-wrapper">
-                        ${region_stream}
+                        {{ region_stream | safe }}
                     </div>
                 </div>
                 <div class="module col-4">
                     <div class="module-header"><span class="module-title">区域偏好</span></div>
                     <div class="list-container">
-                        ${REGION_PREFERENCES}
+                        {% for item in region_preferences %}
+                        <div class="list-item">{{ item }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -1000,13 +1009,15 @@
                 <div class="module col-8">
                     <div class="module-header"><span class="module-title">平台份额</span></div>
                     <div class="chart-wrapper">
-                        ${platform_pie}
+                        {{ platform_pie | safe }}
                     </div>
                 </div>
                 <div class="module col-4">
                     <div class="module-header"><span class="module-title">平台数据</span></div>
                     <div class="list-container">
-                        ${PLATFORM_SHARES}
+                        {% for item in platform_shares %}
+                        <div class="list-item">{{ item }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -1015,13 +1026,15 @@
                 <div class="module col-8">
                     <div class="module-header"><span class="module-title">类型排行</span></div>
                     <div class="chart-wrapper">
-                        ${genre_bar}
+                        {{ genre_bar | safe }}
                     </div>
                 </div>
                 <div class="module col-4">
                     <div class="module-header"><span class="module-title">类型数据</span></div>
                     <div class="list-container">
-                        ${TOP_GENRES}
+                        {% for item in top_genres %}
+                        <div class="list-item">{{ item }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -1034,18 +1047,26 @@
                     <div class="module-header"><span class="module-title">模型性能评估</span></div>
                     <div class="nexus-body">
                         <div class="nexus-scroll-wrapper">
-                            <div class="nexus-chart-container">${ml_r2_gauge}</div>
+                            <div class="nexus-chart-container">{{ ml_r2_gauge | safe }}</div>
                         </div>
-                        <div class="nexus-data-list" style="margin-top:15px;">${ML_INSIGHTS}</div>
+                        <div class="nexus-data-list" style="margin-top:15px;">
+                            {% for item in ml_insights %}
+                            <div class="list-item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="nexus-card">
                     <div class="module-header"><span class="module-title">关键特征因子</span></div>
                     <div class="nexus-body">
                         <div class="nexus-scroll-wrapper">
-                            <div class="nexus-chart-container">${ml_feature_importance}</div>
+                            <div class="nexus-chart-container">{{ ml_feature_importance | safe }}</div>
                         </div>
-                        <div class="nexus-data-list" style="margin-top:15px;">${ML_FEATURES}</div>
+                        <div class="nexus-data-list" style="margin-top:15px;">
+                            {% for item in ml_features %}
+                            <div class="list-item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1057,16 +1078,28 @@
                     <div class="nexus-grid-2">
                         <div>
                             <h4 style="color:var(--secondary)">>> 区域聚类</h4>
-                            <div class="nexus-data-list">${ML_SEGMENTS}</div>
+                            <div class="nexus-data-list">
+                                {% for item in ml_segments %}
+                                <div class="list-item">{{ item }}</div>
+                                {% endfor %}
+                            </div>
                         </div>
                         <div>
                             <h4 style="color:var(--accent)">>> 行为特征</h4>
-                            <div class="nexus-data-list">${ML_BEHAVIOR}</div>
+                            <div class="nexus-data-list">
+                                {% for item in ml_behavior %}
+                                <div class="list-item">{{ item }}</div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
                     <div style="margin-top:20px; padding-top:10px; border-top:1px dashed #333">
                         <h4 style="color:var(--primary)">>> 聚类洞察</h4>
-                        <div class="nexus-data-list">${CLUSTER_INSIGHTS}</div>
+                        <div class="nexus-data-list">
+                            {% for item in cluster_insights %}
+                            <div class="list-item">{{ item }}</div>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1075,7 +1108,11 @@
             <div class="nexus-card">
                 <div class="module-header"><span class="module-title">相似性推荐引擎</span></div>
                 <div class="nexus-body">
-                    <div class="nexus-data-list">${ML_SIMILARITY}</div>
+                    <div class="nexus-data-list">
+                        {% for item in ml_similarity %}
+                        <div class="list-item">{{ item }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -1112,7 +1149,7 @@
     </div>
 
     <script>
-        let galleryData = "STATIC_GALLERY_DATA_PLACEHOLDER";
+        let galleryData = {{ STATIC_GALLERY_DATA | safe }};
         console.log("Gallery Data Loaded:", galleryData);
         let currentGalleryIndex = 0;
 
