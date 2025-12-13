@@ -319,6 +319,7 @@
         .gallery-side {
             width: 250px;
             overflow-y: auto;
+            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -386,7 +387,7 @@
 
         .gallery-display img {
             max-width: 95%;
-            max-height: 85%;
+            max-height: 80%;
             border: 1px solid var(--primary);
             box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
             transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s;
@@ -394,7 +395,7 @@
 
         .gallery-info {
             position: absolute;
-            bottom: 20px;
+            bottom: 0px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(2, 4, 10, 0.9);
@@ -950,13 +951,13 @@
 
             <div class="section-header">战略洞察 (Strategic Intelligence)</div>
             <div class="content-grid">
-                <div class="module col-7">
+                <div class="module col-6">
                     <div class="module-header"><span class="module-title">平台-类型-区域 流量全景</span></div>
                     <div class="chart-wrapper tall">
                         ${sankey_flow}
                     </div>
                 </div>
-                <div class="module col-5">
+                <div class="module col-6">
                     <div class="module-header"><span class="module-title">热度矩阵</span></div>
                     <div class="chart-wrapper tall">
                         ${platform_heatmap}
@@ -1027,9 +1028,10 @@
         </div>
 
         <div id="tab-prediction" class="tab-content" style="display:none;">
+            <div class="section-header">模型性能分析 (Model Performance)</div>
             <div class="nexus-grid-2">
                 <div class="nexus-card">
-                    <div class="nexus-header"><span>///</span> 模型性能评估</div>
+                    <div class="module-header"><span class="module-title">模型性能评估</span></div>
                     <div class="nexus-body">
                         <div class="nexus-scroll-wrapper">
                             <div class="nexus-chart-container">${ml_r2_gauge}</div>
@@ -1038,7 +1040,7 @@
                     </div>
                 </div>
                 <div class="nexus-card">
-                    <div class="nexus-header"><span>///</span> 关键特征因子</div>
+                    <div class="module-header"><span class="module-title">关键特征因子</span></div>
                     <div class="nexus-body">
                         <div class="nexus-scroll-wrapper">
                             <div class="nexus-chart-container">${ml_feature_importance}</div>
@@ -1048,8 +1050,9 @@
                 </div>
             </div>
 
+            <div class="section-header">智能聚类分析 (Clustering Analysis)</div>
             <div class="nexus-card">
-                <div class="nexus-header"><span>///</span> 智能聚类与细分</div>
+                <div class="module-header"><span class="module-title">智能聚类与细分</span></div>
                 <div class="nexus-body">
                     <div class="nexus-grid-2">
                         <div>
@@ -1068,8 +1071,9 @@
                 </div>
             </div>
 
+            <div class="section-header">推荐引擎 (Recommendation Engine)</div>
             <div class="nexus-card">
-                <div class="nexus-header"><span>///</span> 相似性推荐引擎</div>
+                <div class="module-header"><span class="module-title">相似性推荐引擎</span></div>
                 <div class="nexus-body">
                     <div class="nexus-data-list">${ML_SIMILARITY}</div>
                 </div>
@@ -1089,7 +1093,6 @@
                         <img id="gallery-main-img" src="" alt="Select Data">
                         <div class="gallery-info">
                             <h3 id="gallery-title">SYSTEM READY</h3>
-                            <p id="gallery-id">WAITING FOR INPUT</p>
                         </div>
                     </div>
                     <button class="gallery-nav next" onclick="changeGalleryImage(1)">❯</button>
@@ -1109,8 +1112,7 @@
     </div>
 
     <script>
-        // Gallery Logic
-        let galleryData = ${STATIC_GALLERY_DATA};
+        let galleryData = "STATIC_GALLERY_DATA_PLACEHOLDER";
         console.log("Gallery Data Loaded:", galleryData);
         let currentGalleryIndex = 0;
 
@@ -1155,7 +1157,6 @@
             const item = galleryData[currentGalleryIndex];
             const img = document.getElementById('gallery-main-img');
             const title = document.getElementById('gallery-title');
-            const id = document.getElementById('gallery-id');
 
             // Animation Out
             gsap.to(img, {
@@ -1163,8 +1164,6 @@
                     // Update Content
                     img.src = item.src;
                     title.innerText = item.name;
-                    id.innerText = `ID: ${item.id}`;
-
                     // Animation In
                     gsap.to(img, { opacity: 1, scale: 1, duration: 0.4 });
                 }

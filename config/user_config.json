@@ -1,0 +1,21 @@
+{
+  "postgres": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "postgres",
+    "user": "postgres",
+    "password": "123400",
+    "table_name": "vgchartz_clean"
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s | %(levelname)s | %(message)s",
+    "datefmt": "%Y-%m-%d %H:%M:%S"
+  },
+  "dashboard": {
+    "page_title": "全球电子游戏销量交互式仪表盘",
+    "hero_title": "全球电子游戏销量交互式仪表盘",
+    "hero_subtitle": "覆盖 1970-2025 年度主流游戏的销量表现、区域差异与发行格局",
+    "data_source": "数据来源：VGChartz 实时抓取（vgchartz_scrape.csv）"
+  }
+}

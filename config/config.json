@@ -1,0 +1,20 @@
+{
+  "paths": {
+    "data_file": "data/vgchartz_scrape.csv",
+    "output_dir": "outputs",
+    "dashboard_template": "templates/dashboard.html",
+    "dashboard_summary_template": "templates/dashboard_summary.html"
+  },
+  "outputs": {
+    "clean_csv": "data/vgchartz_clean.csv",
+    "clean_parquet": "data/vgchartz_clean.parquet",
+    "quality_json": "metrics/data_quality.json",
+    "metrics_json": "metrics/analysis_metrics.json",
+    "summary_md": "reports/analysis_summary.md",
+    "dashboard_html": "dashboard.html",
+    "ml_metrics_json": "metrics/ml_metrics.json",
+    "ml_clusters_json": "metrics/ml_clusters.json",
+    "ml_predictions_json": "metrics/ml_predictions_sample.json",
+    "ml_feature_png": "plots/ml_feature_importance.png"
+  }
+}

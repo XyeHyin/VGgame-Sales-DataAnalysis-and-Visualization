@@ -185,7 +185,7 @@
       "avg_global_sales": 5.293898847631242,
       "avg_age": 11.54225352112676,
       "score_median": 8.5,
-      "cluster_purity": 0.8322542725110494,
+      "cluster_purity": 0.8322542725110337,
       "top_genres": [
         "角色扮演",
         "动作冒险",
@@ -208,7 +208,7 @@
       "avg_global_sales": 2.7083838383838383,
       "avg_age": 23.69472502805836,
       "score_median": 8.3,
-      "cluster_purity": 0.926081655887396,
+      "cluster_purity": 0.9260816558874069,
       "top_genres": [
         "体育",
         "动作",
@@ -231,7 +231,7 @@
       "avg_global_sales": 0.7652934226073257,
       "avg_age": 18.523631350925562,
       "score_median": 7.3,
-      "cluster_purity": 0.8777358446906516,
+      "cluster_purity": 0.8777358446906556,
       "top_genres": [
         "动作",
         "体育",
@@ -254,7 +254,7 @@
       "avg_global_sales": 0.30504182384779405,
       "avg_age": 21.808594390683943,
       "score_median": 0.0,
-      "cluster_purity": 0.938620389339136,
+      "cluster_purity": 0.9386203893391429,
       "top_genres": [
         "体育",
         "动作",
@@ -277,7 +277,7 @@
       "avg_global_sales": 0.0583491864831039,
       "avg_age": 15.659699624530663,
       "score_median": 0.0,
-      "cluster_purity": 0.9574955935833083,
+      "cluster_purity": 0.957495593583289,
       "top_genres": [
         "冒险",
         "动作",
@@ -346,7 +346,7 @@
       "anchor_platform": "All",
       "candidate": "Kinect Adventures!",
       "candidate_platform": "Xbox",
-      "similarity": 0.9981682466350699,
+      "similarity": 0.99816824663507,
       "anchor_sales": 350.0,
       "candidate_sales": 24.0
     },
@@ -364,7 +364,7 @@
       "anchor_platform": "All",
       "candidate": "Wii Sports",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9957362547715364,
+      "similarity": 0.9957362547715363,
       "anchor_sales": 350.0,
       "candidate_sales": 82.9
     },
@@ -373,7 +373,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops",
       "candidate_platform": "All",
-      "similarity": 0.9941275631788606,
+      "similarity": 0.9941275631788608,
       "anchor_sales": 350.0,
       "candidate_sales": 30.0
     },
@@ -382,7 +382,7 @@
       "anchor_platform": "All",
       "candidate": "Wii Sports Resort",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9940307814792031,
+      "similarity": 0.9940307814792033,
       "anchor_sales": 350.0,
       "candidate_sales": 33.14
     },
@@ -391,7 +391,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops II",
       "candidate_platform": "All",
-      "similarity": 0.9986131541892332,
+      "similarity": 0.9986131541892336,
       "anchor_sales": 220.0,
       "candidate_sales": 31.0
     },
@@ -400,7 +400,7 @@
       "anchor_platform": "All",
       "candidate": "The Elder Scrolls V: Skyrim",
       "candidate_platform": "All",
-      "similarity": 0.9985656914893144,
+      "similarity": 0.9985656914893143,
       "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
@@ -409,7 +409,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops",
       "candidate_platform": "All",
-      "similarity": 0.998125644575257,
+      "similarity": 0.9981256445752571,
       "anchor_sales": 220.0,
       "candidate_sales": 30.0
     },
@@ -418,7 +418,7 @@
       "anchor_platform": "All",
       "candidate": "The Witcher 3: Wild Hunt",
       "candidate_platform": "All",
-      "similarity": 0.9980805999649659,
+      "similarity": 0.998080599964966,
       "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
@@ -427,7 +427,7 @@
       "anchor_platform": "All",
       "candidate": "Terraria",
       "candidate_platform": "PC",
-      "similarity": 0.9979549422672136,
+      "similarity": 0.9979549422672138,
       "anchor_sales": 220.0,
       "candidate_sales": 32.0
     },
@@ -436,7 +436,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Minecraft",
       "candidate_platform": "All",
-      "similarity": 0.9957362547715364,
+      "similarity": 0.9957362547715363,
       "anchor_sales": 82.9,
       "candidate_sales": 350.0
     },
@@ -481,7 +481,7 @@
       "anchor_platform": "All",
       "candidate": "Mario Kart 8 Deluxe",
       "candidate_platform": "NS",
-      "similarity": 0.9997384192039104,
+      "similarity": 0.9997384192039105,
       "anchor_sales": 79.0,
       "candidate_sales": 69.56
     },
@@ -490,7 +490,7 @@
       "anchor_platform": "All",
       "candidate": "Super Smash Bros. Ultimate",
       "candidate_platform": "NS",
-      "similarity": 0.9992082546452511,
+      "similarity": 0.9992082546452514,
       "anchor_sales": 79.0,
       "candidate_sales": 36.93
     },
@@ -499,7 +499,7 @@
       "anchor_platform": "All",
       "candidate": "Monster Hunter: World",
       "candidate_platform": "All",
-      "similarity": 0.9990220375638764,
+      "similarity": 0.9990220375638765,
       "anchor_sales": 79.0,
       "candidate_sales": 29.1
     },
@@ -508,7 +508,7 @@
       "anchor_platform": "All",
       "candidate": "Dying Light",
       "candidate_platform": "All",
-      "similarity": 0.9990215055025483,
+      "similarity": 0.9990215055025484,
       "anchor_sales": 79.0,
       "candidate_sales": 20.0
     },
@@ -517,7 +517,7 @@
       "anchor_platform": "All",
       "candidate": "Diablo III",
       "candidate_platform": "All",
-      "similarity": 0.9990149175540717,
+      "similarity": 0.9990149175540719,
       "anchor_sales": 79.0,
       "candidate_sales": 30.0
     },
@@ -526,7 +526,7 @@
       "anchor_platform": "All",
       "candidate": "Human: Fall Flat",
       "candidate_platform": "All",
-      "similarity": 0.9998811415658625,
+      "similarity": 0.9998811415658623,
       "anchor_sales": 75.0,
       "candidate_sales": 55.0
     },
@@ -544,7 +544,7 @@
       "anchor_platform": "All",
       "candidate": "PLAYERUNKNOWN'S BATTLEGROUNDS",
       "candidate_platform": "PC",
-      "similarity": 0.9995240029584281,
+      "similarity": 0.9995240029584282,
       "anchor_sales": 75.0,
       "candidate_sales": 36.6
     },
@@ -571,7 +571,7 @@
       "anchor_platform": "NS",
       "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9997384192039104,
+      "similarity": 0.9997384192039105,
       "anchor_sales": 69.56,
       "candidate_sales": 79.0
     },
@@ -589,7 +589,7 @@
       "anchor_platform": "NS",
       "candidate": "Dying Light",
       "candidate_platform": "All",
-      "similarity": 0.9992583760054319,
+      "similarity": 0.9992583760054318,
       "anchor_sales": 69.56,
       "candidate_sales": 20.0
     },
@@ -607,7 +607,7 @@
       "anchor_platform": "NS",
       "candidate": "Fallout 4",
       "candidate_platform": "All",
-      "similarity": 0.9989013197140572,
+      "similarity": 0.9989013197140568,
       "anchor_sales": 69.56,
       "candidate_sales": 25.0
     }
