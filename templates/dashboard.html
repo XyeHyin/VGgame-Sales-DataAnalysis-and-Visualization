@@ -1110,7 +1110,8 @@
 
     <script>
         // Gallery Logic
-        let galleryData = ${ STATIC_GALLERY_DATA }; // Injected JSON
+        let galleryData = ${STATIC_GALLERY_DATA};
+        console.log("Gallery Data Loaded:", galleryData);
         let currentGalleryIndex = 0;
 
         function initGallery() {
@@ -1285,14 +1286,13 @@
 
         // Init Carousel (Simple visuals)
         const track = document.getElementById('carousel-track');
-        // Extract images from gallery to populate carousel for effect
-        const galleryImages = document.querySelectorAll('.vault-card img');
-        if (galleryImages.length > 0) {
-            galleryImages.forEach((img, i) => {
+        // Use galleryData directly to populate carousel
+        if (galleryData && galleryData.length > 0) {
+            galleryData.forEach((item, i) => {
                 if (i > 5) return; // Limit items
                 let div = document.createElement('div');
                 div.className = 'carousel-item';
-                div.innerHTML = `<img src="${img.src}">`;
+                div.innerHTML = `<img src="${item.src}">`;
                 // Simple 3D positioning
                 div.style.transform = `rotateY(${i * 60}deg) translateZ(300px)`;
                 track.appendChild(div);
