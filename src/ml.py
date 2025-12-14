@@ -153,7 +153,7 @@ class SalesMLAnalyzer:
             X, y, test_size=0.2, random_state=self.random_state
         )
 
-        # LightGBM 回归模型 - 速度比 RF 快 10-20 倍
+        # LightGBM 回归模型
         model = lgb.LGBMRegressor(
             n_estimators=1000,
             learning_rate=0.05,
@@ -188,7 +188,7 @@ class SalesMLAnalyzer:
         # 获取 LightGBM 内置特征重要性 (基于 split 或 gain)
         feature_importance = self._collect_lgb_feature_importance(model, feature_cols)
 
-        # 使用 SHAP 进行特征重要性分析 - 比 Permutation 更快更精确
+        # 使用 SHAP 进行特征重要性分析
         shap_importance = self._compute_shap_importance(model, X_test, feature_cols)
 
         # 分位数回归 - 给出预测置信区间
@@ -573,7 +573,6 @@ class SalesMLAnalyzer:
             explainer = shap.TreeExplainer(model)
             shap_values = explainer.shap_values(X_test)
 
-            # 保存 SHAP 蜂群图
             shap_plot_path = (
                 self.artifacts.feature_importance_png.parent / "shap_summary.png"
             )
@@ -604,7 +603,6 @@ class SalesMLAnalyzer:
         predictions: Dict[str, np.ndarray] = {}
 
         for alpha in alphas:
-            # LightGBM 原生支持分位数回归
             model = lgb.LGBMRegressor(
                 objective="quantile",
                 alpha=alpha,

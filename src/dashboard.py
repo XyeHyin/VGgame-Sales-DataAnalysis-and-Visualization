@@ -46,7 +46,6 @@ class DashboardBuilder:
         LOGGER.info("正在生成高精度交互式仪表盘")
         charts = self._build_charts_dict(df, metrics)
 
-        # 构建静态图库 HTML (Data Vault)
         static_gallery_html = self._build_static_gallery(static_charts or [])
 
         html = self._build_document(charts, metrics, static_gallery_html)
@@ -59,8 +58,6 @@ class DashboardBuilder:
 
         for chart_path in static_charts:
             filename = chart_path.name
-            # 假设 HTML 在 outputs/，图片在 outputs/gallery/
-            # 相对路径应该是 gallery/filename
             relative_path = f"gallery/{filename}"
 
             gallery_data.append(
@@ -78,13 +75,12 @@ class DashboardBuilder:
     ) -> Dict[str, str]:
         charts = {}
 
-        # --- 通用配置优化：消除留白，自适应宽度 ---
-        # GridOpts: pos_left/right="0%" 消除左右留白
+        # --- 通用配置优化 ---
         full_width_grid = opts.GridOpts(
             pos_left="2%", pos_right="2%", pos_bottom="10%", is_contain_label=True
         )
 
-        # 1. 核心预测图表 (放宽布局)
+        # 1. 核心预测图表
         charts["yearly_line"] = self._render_chart(
             self._build_yearly_line_chart(df, full_width_grid)
         )
@@ -100,7 +96,7 @@ class DashboardBuilder:
             self._build_platform_pie_chart(metrics)
         )
 
-        # 3. 复杂关系 (热力图通常很宽，需要特殊处理)
+        # 3. 复杂关系
         charts["platform_heatmap"] = self._render_chart(
             self._build_platform_genre_heatmap(df)
         )
@@ -111,7 +107,7 @@ class DashboardBuilder:
             self._build_region_sunburst_chart(df)
         )
 
-        # 5. 桑基图 (重新设计配色)
+        # 5. 桑基图
         charts["sankey_flow"] = self._render_chart(self._build_sankey_chart(df))
 
         # 6. ML 仪表
@@ -124,8 +120,6 @@ class DashboardBuilder:
         if chart is None:
             return '<div class="no-data">DATA FRAGMENTED</div>'
         return chart.render_embed()
-
-    # --- 图表构建函数 (优化版) ---
 
     def _build_yearly_line_chart(
         self, df: pd.DataFrame, grid_opt: opts.GridOpts
@@ -152,14 +146,14 @@ class DashboardBuilder:
             .set_global_opts(
                 xaxis_opts=opts.AxisOpts(
                     axislabel_opts=opts.LabelOpts(rotate=0)
-                ),  # 0度旋转，减少空间占用
+                ), 
                 legend_opts=opts.LegendOpts(
                     is_show=False
-                ),  # 标题已有说明，隐藏图例省空间
+                ), 
                 tooltip_opts=opts.TooltipOpts(trigger="axis"),
                 datazoom_opts=[
                     opts.DataZoomOpts(type_="inside")
-                ],  # 隐藏滑块，只允许滚轮
+                ], 
             )
         )
         grid = Grid(
@@ -190,14 +184,14 @@ class DashboardBuilder:
                 areastyle_opts=opts.AreaStyleOpts(opacity=0.6),
                 itemstyle_opts=opts.ItemStyleOpts(color=colors[idx % len(colors)]),
                 label_opts=opts.LabelOpts(is_show=False),
-                symbol="none",  # 移除点，纯流图
+                symbol="none",
             )
 
         c.set_global_opts(
             tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="cross"),
-            legend_opts=opts.LegendOpts(pos_top="0%", pos_right="0%"),  # 图例放右上角
+            legend_opts=opts.LegendOpts(pos_top="0%", pos_right="0%"),
             datazoom_opts=[opts.DataZoomOpts(type_="inside")],
-            xaxis_opts=opts.AxisOpts(boundary_gap=False),  # 消除X轴两侧留白
+            xaxis_opts=opts.AxisOpts(boundary_gap=False),
         )
         grid = Grid(
             init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
@@ -238,7 +232,7 @@ class DashboardBuilder:
                     )
                 ),
             )
-            .reversal_axis()  # 横向柱状图更适合长标签，不挤
+            .reversal_axis()
             .set_global_opts(
                 legend_opts=opts.LegendOpts(is_show=False),
                 xaxis_opts=opts.AxisOpts(
@@ -251,7 +245,6 @@ class DashboardBuilder:
                 ),
             )
         )
-        # 横向图表留白调整
         grid = Grid(
             init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
         )
@@ -302,7 +295,7 @@ class DashboardBuilder:
                         "#300f5c",
                         "#bc13fe",
                         "#00f3ff",
-                    ],  # 赛博朋克配色
+                    ],
                 ),
                 xaxis_opts=opts.AxisOpts(
                     axislabel_opts=opts.LabelOpts(rotate=45, font_size=10)
@@ -314,7 +307,6 @@ class DashboardBuilder:
         grid = Grid(
             init_opts=opts.InitOpts(theme=ThemeType.DARK, width="100%", height="100%")
         )
-        # 底部留白给 visualmap
         grid.add(
             c,
             grid_opts=opts.GridOpts(
@@ -324,7 +316,6 @@ class DashboardBuilder:
         return grid
 
     def _build_sankey_chart(self, df: pd.DataFrame) -> Optional[Sankey]:
-        # 重写桑基图，不再使用 iframe，直接嵌入以控制样式
         data = (
             df.groupby(["Platform_Family_CN", "Genre", "Top_Region_CN"])["Global_Sales"]
             .sum()
@@ -369,7 +360,7 @@ class DashboardBuilder:
                 nodes,
                 links,
                 pos_left="2%",
-                pos_right="15%",
+                pos_right="8%",
                 pos_top="5%",
                 pos_bottom="5%",
                 linestyle_opt=opts.LineStyleOpts(
@@ -435,7 +426,7 @@ class DashboardBuilder:
                 grid_opts=opts.GridOpts(
                     pos_left="30%", pos_right="5%", pos_top="5%", pos_bottom="10%"
                 ),
-            )  # 左侧留大点给文字
+            )
             charts["ml_feature_importance"] = grid.render_embed()
 
         # R2 仪表盘
@@ -469,7 +460,7 @@ class DashboardBuilder:
 
         return charts
 
-    # --- 其他辅助图表 (保持原样但应用 full width 逻辑) ---
+    # --- 其他辅助图表  ---
     def _build_platform_pie_chart(self, metrics: Dict[str, object]) -> Optional[Pie]:
         data = metrics["innovation"]["platform_share"]
         if not data:
@@ -557,7 +548,7 @@ class DashboardBuilder:
         return c
 
     def _build_region_sunburst_chart(self, df: pd.DataFrame) -> Optional[Sunburst]:
-        # 简化版旭日图
+        # 旭日图
         data = (
             df.groupby(["Top_Region_CN", "Platform_Family_CN"])["Global_Sales"]
             .sum()

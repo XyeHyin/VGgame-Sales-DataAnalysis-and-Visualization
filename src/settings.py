@@ -63,10 +63,10 @@ DATA_FILE = PROJECT_ROOT / Path(
 )
 OUTPUT_DIR = PROJECT_ROOT / Path(PATHS_CONFIG.get("output_dir", "outputs"))
 DASHBOARD_TEMPLATE_PATH = PROJECT_ROOT / Path(
-    PATHS_CONFIG.get("dashboard_template", "templates/dashboard.html")
+    PATHS_CONFIG.get("dashboard_template", "templates/dashboard.j2")
 )
 DASHBOARD_SUMMARY_TEMPLATE_PATH = PROJECT_ROOT / Path(
-    PATHS_CONFIG.get("dashboard_summary_template", "templates/dashboard_summary.html")
+    PATHS_CONFIG.get("dashboard_summary_template", "templates/dashboard_summary.j2")
 )
 CLEAN_CSV_PATH = OUTPUT_DIR / OUTPUT_NAMES.get("clean_csv", "data/vgchartz_clean.csv")
 CLEAN_PARQUET_PATH = OUTPUT_DIR / OUTPUT_NAMES.get(

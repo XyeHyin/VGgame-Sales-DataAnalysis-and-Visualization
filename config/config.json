@@ -2,8 +2,8 @@
   "paths": {
     "data_file": "data/vgchartz_scrape.csv",
     "output_dir": "outputs",
-    "dashboard_template": "templates/dashboard.html",
-    "dashboard_summary_template": "templates/dashboard_summary.html"
+    "dashboard_template": "templates/dashboard.j2",
+    "dashboard_summary_template": "templates/dashboard_summary.j2"
   },
   "outputs": {
     "clean_csv": "data/vgchartz_clean.csv",

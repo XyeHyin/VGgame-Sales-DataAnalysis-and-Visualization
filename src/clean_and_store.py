@@ -41,18 +41,22 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
-    args = parse_args()
-    input_path = args.input
-    output_dir = args.output_dir
-
+def run_cleaning(
+    input_path: Path,
+    output_dir: Path,
+    skip_db: bool = False,
+    random_state: int = 42,
+) -> None:
+    """
+    执行数据清洗流程
+    """
     if not input_path.exists():
         LOGGER.error("原始数据文件不存在：%s", input_path)
         sys.exit(1)
 
     LOGGER.info("读取原始数据：%s", input_path)
     raw_df = pd.read_csv(input_path)
-    cleaner = GameDataCleaner(random_state=args.random_state)
+    cleaner = GameDataCleaner(random_state=random_state)
     result = cleaner.clean(raw_df)
 
     artifacts = build_artifacts(output_dir)
@@ -63,7 +67,7 @@ def main() -> None:
     cleaner.save_quality_report(quality_report, artifacts.quality_json)
     cleaner.log_console_report(result.summary)
 
-    if args.skip_db:
+    if skip_db:
         LOGGER.info("已跳过 PostgreSQL 写入 (skip-db)")
     else:
         LOGGER.info("写入 PostgreSQL 数据库")
@@ -71,6 +75,16 @@ def main() -> None:
         writer.write(result.dataframe)
 
     LOGGER.info("清理程序执行完毕，产出文件目录：%s", output_dir.resolve())
+
+
+def main() -> None:
+    args = parse_args()
+    run_cleaning(
+        input_path=args.input,
+        output_dir=args.output_dir,
+        skip_db=args.skip_db,
+        random_state=args.random_state,
+    )
 
 
 if __name__ == "__main__":
