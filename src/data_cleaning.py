@@ -11,7 +11,7 @@ import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.ensemble import IsolationForest
-from sklearn.experimental import enable_iterative_imputer  # noqa: F401
+from sklearn.experimental import enable_iterative_imputer
 from sklearn.impute import IterativeImputer
 from sklearn.preprocessing import StandardScaler
 
@@ -32,7 +32,6 @@ class CleaningResult:
 
 
 class GameDataCleaner:
-    """Cleans raw VGChartz data with ML-enhanced imputation and clustering."""
 
     def __init__(self, random_state: int = 42) -> None:
         self.random_state = random_state
@@ -289,8 +288,6 @@ class GameDataCleaner:
             subset=["Name", "Platform", "Year", "Publisher"], keep="first"
         )
         stats["duplicates_removed"] = before - len(df)
-
-        # 使用 Isolation Forest 进行异常检测
         df, outlier_stats = self._detect_outliers(df)
         stats.update(outlier_stats)
 
@@ -307,7 +304,6 @@ class GameDataCleaner:
             df["Outlier_Score"] = 0.0
             return df, stats
 
-        # 选择用于异常检测的特征
         detection_cols = ["Global_Sales", "Year"]
         score_cols = [
             col for col in ["Critic_Score", "User_Score"] if col in df.columns
@@ -316,9 +312,8 @@ class GameDataCleaner:
             [col for col in score_cols if df[col].notna().sum() > len(df) * 0.3]
         )
         region_cols = [col for col in REGION_COLS if col in df.columns]
-        detection_cols.extend(region_cols[:2])  # 最多取两个区域列
+        detection_cols.extend(region_cols[:2])
 
-        # 准备特征矩阵
         feature_df = df[detection_cols].copy()
         feature_df = feature_df.fillna(feature_df.median())
 
@@ -326,14 +321,10 @@ class GameDataCleaner:
             df["Is_Outlier"] = False
             df["Outlier_Score"] = 0.0
             return df, stats
-
-        # 标准化
         scaler = StandardScaler()
         scaled_features = scaler.fit_transform(feature_df)
-
-        # Isolation Forest 异常检测
         iso_forest = IsolationForest(
-            contamination=0.05,  # 预期 5% 的异常率
+            contamination=0.05, 
             random_state=self.random_state,
             n_jobs=-1,
         )
@@ -424,14 +415,10 @@ class GameDataCleaner:
             for col in ["VGChartz_Score", "Critic_Score", "User_Score"]
             if col in df.columns
         ]
-        helper_cols = [col for col in ["Global_Sales", "Year"] if col in df.columns]
-
-        # 使用 MICE (IterativeImputer) 替代 KNNImputer - 速度更快，统计分布保留更好
+        helper_cols = [col for col in ["Global_Sales", "Year"] if col in df.columns] 
         if score_cols and helper_cols and df[score_cols].isna().any().any():
             feature_columns = score_cols + helper_cols
-
             # IterativeImputer: 基于贝叶斯岭回归的多元链式插补
-            # 将缺失列作为"目标变量"，其他列作为"特征"循环训练回归模型
             imputer = IterativeImputer(
                 max_iter=10,
                 random_state=self.random_state,
@@ -466,7 +453,6 @@ class GameDataCleaner:
                 if cluster_count >= 2:
                     scaler = StandardScaler()
                     scaled = scaler.fit_transform(share)
-
                     # 使用 PCA 降维，便于可视化和加速聚类
                     pca = PCA(
                         n_components=min(2, len(region_cols)),
@@ -476,8 +462,7 @@ class GameDataCleaner:
                     df["PCA_Region_1"] = pca_features[:, 0]
                     if pca_features.shape[1] > 1:
                         df["PCA_Region_2"] = pca_features[:, 1]
-
-                    # K-Means++ 聚类 (init='k-means++' 是默认值)
+                    # K-Means++ 聚类
                     kmeans = KMeans(
                         n_clusters=cluster_count,
                         n_init=25,
@@ -490,7 +475,6 @@ class GameDataCleaner:
                         kmeans.cluster_centers_,
                         columns=[f"PC{i+1}" for i in range(pca_features.shape[1])],
                     )
-
                     # 根据原始特征空间确定主导区域
                     original_centers = scaler.inverse_transform(
                         pca.inverse_transform(kmeans.cluster_centers_)

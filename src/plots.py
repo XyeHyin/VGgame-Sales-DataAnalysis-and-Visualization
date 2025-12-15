@@ -45,7 +45,6 @@ class FigureGenerator:
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def generate_all(self, df: pd.DataFrame) -> List[Path]:
-        """生成所有静态图表，文件名使用中文"""
         charts = [
             self._plot_global_sales_hist(df),  # 01
             self._plot_genre_boxplot(df),  # 02
@@ -405,11 +404,8 @@ class FigureGenerator:
         return path
 
     def _plot_console_war_bump(self, df: pd.DataFrame) -> Optional[Path]:
-        """动态排名图 (Bump Chart) - 展示主机战争的历史演变"""
         if "Platform_Family_CN" not in df.columns or "Year" not in df.columns:
             return None
-
-        # 统计每年各平台家族的销量
         platform_year = (
             df.groupby(["Year", "Platform_Family_CN"])["Global_Sales"]
             .sum()
@@ -417,13 +413,9 @@ class FigureGenerator:
         )
         if platform_year.empty:
             return None
-
-        # 计算每年各平台的排名
         platform_year["Rank"] = platform_year.groupby("Year")["Global_Sales"].rank(
             ascending=False, method="min"
         )
-
-        # 筛选主要平台 (至少出现 5 年)
         platform_counts = platform_year.groupby("Platform_Family_CN")["Year"].count()
         major_platforms = platform_counts[platform_counts >= 5].index.tolist()
         platform_year = platform_year[
@@ -432,15 +424,11 @@ class FigureGenerator:
 
         if platform_year.empty or len(major_platforms) < 2:
             return None
-
-        # 透视表
         pivot = platform_year.pivot(
             index="Year", columns="Platform_Family_CN", values="Rank"
         )
 
         fig, ax = plt.subplots(figsize=(14, 8))
-
-        # 使用不同颜色绘制每个平台的排名曲线
         colors = plt.cm.tab10(np.linspace(0, 1, len(pivot.columns)))
         for idx, platform in enumerate(pivot.columns):
             series = pivot[platform].dropna()
@@ -455,7 +443,6 @@ class FigureGenerator:
                 markersize=6,
                 color=colors[idx],
             )
-            # 在起点和终点标注平台名称
             if len(series) > 0:
                 ax.annotate(
                     platform,
@@ -467,7 +454,7 @@ class FigureGenerator:
                     va="center",
                 )
 
-        ax.invert_yaxis()  # 排名越小越好，所以反转Y轴
+        ax.invert_yaxis()
         ax.set_xlabel("年份")
         ax.set_ylabel("销量排名")
         ax.set_title(" 主机战争：平台销量排名演变 (Bump Chart)")

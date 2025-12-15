@@ -38,8 +38,6 @@
                 linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-
-        /* --- Scrollbar --- */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -52,8 +50,6 @@
             background: var(--primary);
             border-radius: 3px;
         }
-
-        /* --- Hero Banner (Unchanged as requested) --- */
         .hero-section {
             height: 450px;
             position: relative;
@@ -88,8 +84,6 @@
             padding: 5px 15px;
             border: 1px solid var(--primary);
         }
-
-        /* 3D Carousel (Keep existing logic) */
         .carousel-container {
             position: absolute;
             top: 60%;
@@ -129,8 +123,6 @@
             object-fit: cover;
             opacity: 0.7;
         }
-
-        /* --- Navigation --- */
         .nav-bar {
             display: flex;
             justify-content: center;
@@ -170,16 +162,11 @@
             background: var(--primary);
             box-shadow: 0 -2px 10px var(--primary);
         }
-
-        /* --- Main Layout --- */
         .container {
             max-width: 1800px;
-            /* Wider container */
             margin: 0 auto;
             padding: 40px 20px;
         }
-
-        /* --- The Data Vault (New Static Gallery) --- */
         .vault-section {
             margin-bottom: 60px;
             border: 1px solid var(--grid-line);
@@ -219,8 +206,6 @@
             overflow: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* Highlight priority charts (Quadrant/Bump/Stream) */
         .vault-card.priority {
             border-color: var(--accent);
             grid-column: span 2;
@@ -304,8 +289,6 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-
-        /* --- New Gallery Styles --- */
         .gallery-container {
             display: flex;
             height: 700px;
@@ -448,8 +431,6 @@
         .gallery-nav.next {
             right: 20px;
         }
-
-        /* --- Intelligent Grid Layout for Charts --- */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -465,8 +446,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        /* 装饰角标 */
         .module::after {
             content: '';
             position: absolute;
@@ -477,8 +456,6 @@
             border-top: 2px solid var(--primary);
             border-right: 2px solid var(--primary);
         }
-
-        /* Size Classes */
         .col-12 {
             grid-column: span 12;
         }
@@ -529,8 +506,6 @@
             color: var(--text-dim);
             text-transform: uppercase;
         }
-
-        /* 关键修改：消除图表容器留白 */
         .chart-wrapper {
             flex-grow: 1;
             position: relative;
@@ -539,13 +514,9 @@
             /* Fixed height for consistency */
             overflow: hidden;
         }
-
-        /* 针对特别宽的图表 */
         .chart-wrapper.tall {
             height: 600px;
         }
-
-        /* --- Nexus Theme Styles (Renamed to avoid conflicts) --- */
         .nexus-card {
             background: var(--bg-panel);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -621,8 +592,6 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 10px;
         }
-
-        /* --- Metrics & List Items --- */
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -721,8 +690,6 @@
                 transform: translateY(100%);
             }
         }
-
-        /* --- Modal --- */
         .modal {
             display: none;
             position: fixed;
@@ -755,8 +722,6 @@
             color: #fff;
             cursor: pointer;
         }
-
-        /* --- 开屏加载器样式 (Tech Enhanced) --- */
         #loader-overlay {
             position: fixed;
             top: 0;
@@ -782,8 +747,6 @@
             flex-direction: column;
             align-items: center;
         }
-
-        /* Complex Spinner */
         .spinner-wrapper {
             position: relative;
             width: 120px;
@@ -841,8 +804,6 @@
             box-shadow: 0 0 20px var(--primary);
             animation: pulse 0.8s ease-in-out infinite alternate;
         }
-
-        /* Text & Bar */
         .loader-text {
             font-family: var(--font-head);
             color: #fff;
@@ -1159,34 +1120,25 @@
             const leftContainer = document.getElementById('gallery-left');
             const rightContainer = document.getElementById('gallery-right');
 
-            // Clear containers
             leftContainer.innerHTML = '';
             rightContainer.innerHTML = '';
 
-            // Distribute thumbnails
             galleryData.forEach((item, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
                 thumb.onclick = () => setGalleryImage(index);
                 thumb.innerHTML = `<img src="${item.src}" loading="lazy">`;
-
-                // Even to left, Odd to right (or split half/half)
-                // Let's do split half/half for better balance
                 if (index < galleryData.length / 2) {
                     leftContainer.appendChild(thumb);
                 } else {
                     rightContainer.appendChild(thumb);
                 }
             });
-
-            // Set initial image
             setGalleryImage(0);
         }
 
         function setGalleryImage(index) {
             if (!galleryData || galleryData.length === 0) return;
-
-            // Update Index
             currentGalleryIndex = index;
             if (currentGalleryIndex < 0) currentGalleryIndex = galleryData.length - 1;
             if (currentGalleryIndex >= galleryData.length) currentGalleryIndex = 0;
@@ -1194,8 +1146,6 @@
             const item = galleryData[currentGalleryIndex];
             const img = document.getElementById('gallery-main-img');
             const title = document.getElementById('gallery-title');
-
-            // Animation Out
             gsap.to(img, {
                 opacity: 0, scale: 0.95, duration: 0.2, onComplete: () => {
                     // Update Content
@@ -1205,8 +1155,6 @@
                     gsap.to(img, { opacity: 1, scale: 1, duration: 0.4 });
                 }
             });
-
-            // Update Active Thumb
             document.querySelectorAll('.gallery-thumb').forEach((el, i) => {
                 if (i === currentGalleryIndex) el.classList.add('active');
                 else el.classList.remove('active');
@@ -1216,8 +1164,6 @@
         function changeGalleryImage(direction) {
             setGalleryImage(currentGalleryIndex + direction);
         }
-
-        // 修改你现有的 window.addEventListener('load', ...) 部分
         window.addEventListener('load', () => {
             // Init Gallery
             try {
@@ -1225,8 +1171,6 @@
             } catch (e) {
                 console.error("Gallery Init Failed", e);
             }
-
-            // 1. 原有的样式修正逻辑 (保留)
             const cards = document.querySelectorAll('.metric-card');
             cards.forEach(card => {
                 card.className = 'kpi-card';
@@ -1235,8 +1179,6 @@
                 const p = card.querySelector('p');
                 if (p) p.className = 'kpi-value';
             });
-
-            // 2. 新增：开屏加载动画逻辑 (Enhanced)
             const tl = gsap.timeline();
             const bar = document.getElementById('loading-bar');
             const overlay = document.getElementById('loader-overlay');
@@ -1250,8 +1192,6 @@
                 "渲染可视化组件...",
                 "访问权限已确认"
             ];
-
-            // Status text animation
             let msgIndex = 0;
             const statusInterval = setInterval(() => {
                 if (msgIndex < statusMessages.length) {
@@ -1261,8 +1201,6 @@
                     clearInterval(statusInterval);
                 }
             }, 400);
-
-            // Main loading sequence
             tl.to(bar, {
                 width: "100%",
                 duration: 2.5,
@@ -1298,15 +1236,12 @@
                 }, "-=0.4");
         });
         function switchTab(tabName) {
-            // Hide all
             document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
 
-            // Show target
             document.getElementById('tab-' + tabName).style.display = 'block';
             event.target.classList.add('active');
 
-            // Trigger resize for charts
             setTimeout(() => {
                 window.dispatchEvent(new Event('resize'));
             }, 50);
@@ -1320,9 +1255,7 @@
             document.getElementById('modal').classList.remove('active');
         }
 
-        // Init Carousel (Simple visuals)
         const track = document.getElementById('carousel-track');
-        // Use galleryData directly to populate carousel
         if (galleryData && galleryData.length > 0) {
             galleryData.forEach((item, i) => {
                 if (i > 5) return; // Limit items
@@ -1333,7 +1266,6 @@
                 div.style.transform = `rotateY(${i * 60}deg) translateZ(300px)`;
                 track.appendChild(div);
             });
-            // Auto rotate
             let angle = 0;
             setInterval(() => {
                 angle -= 0.5;

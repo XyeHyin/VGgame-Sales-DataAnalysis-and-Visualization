@@ -39,12 +39,6 @@ class MLArtifacts:
 class SalesMLAnalyzer:
     """
     使用 LightGBM 进行销量预测和爆款分类的 ML 分析器。
-
-    优化点:
-    - LightGBM 替代 RandomForest/GradientBoosting (速度快 10-20 倍)
-    - 原生类别特征支持，无需 OneHotEncoder
-    - SHAP 替代 Permutation Importance (更快、更精确)
-    - 分位数回归使用 LightGBM objective='quantile'
     """
 
     def __init__(
@@ -120,7 +114,6 @@ class SalesMLAnalyzer:
 
     def _prepare_features(self, df: pd.DataFrame) -> pd.DataFrame:
         work = df.copy()
-        # 将低频发行商合并到 OtherPublisher，避免稀疏矩阵膨胀
         top_publishers = work["Publisher"].value_counts().head(30).index
         work["Publisher_Grouped"] = work["Publisher"].where(
             work["Publisher"].isin(top_publishers), "OtherPublisher"
@@ -130,8 +123,6 @@ class SalesMLAnalyzer:
         work["Platform_Family"] = work["Platform_Family"].fillna("Other")
         work["Decade"] = work["Decade"].fillna(work["Decade"].median())
         work["Year"] = work["Year"].fillna(work["Year"].median())
-
-        # LightGBM 原生支持类别特征，转换为 category 类型
         for col in self.categorical_features:
             if col in work.columns:
                 work[col] = work[col].astype("category")
@@ -139,7 +130,6 @@ class SalesMLAnalyzer:
         return work
 
     def _train_regression(self, df: pd.DataFrame) -> Optional[Dict[str, object]]:
-        """使用 LightGBM 进行回归建模，预测全球销量"""
         target = df["Global_Sales"]
         if target.nunique() <= 1 or len(df) < 50:
             LOGGER.warning("ML 模块：样本不足或目标列缺乏变化，跳过回归建模")
@@ -165,7 +155,6 @@ class SalesMLAnalyzer:
             verbosity=-1,
         )
 
-        # 使用 early_stopping 智能停止
         model.fit(
             X_train,
             y_train,
@@ -185,7 +174,7 @@ class SalesMLAnalyzer:
             ),
         }
 
-        # 获取 LightGBM 内置特征重要性 (基于 split 或 gain)
+        # 获取 LightGBM 内置特征重要性
         feature_importance = self._collect_lgb_feature_importance(model, feature_cols)
 
         # 使用 SHAP 进行特征重要性分析
@@ -500,7 +489,7 @@ class SalesMLAnalyzer:
                     "avg_global_sales": float(group["Global_Sales"].mean()),
                     "avg_age": avg_age,
                     "score_median": score_median,
-                    "cluster_purity": avg_prob,  # GMM 软聚类特有指标
+                    "cluster_purity": avg_prob,
                     "top_genres": group["Genre"].value_counts().head(3).index.tolist(),
                     "top_platforms": group["Platform_Family"]
                     .value_counts()
@@ -725,7 +714,6 @@ class SalesMLAnalyzer:
         behavior_clusters: Optional[Dict[str, object]] = None,
         similarity: Optional[List[Dict[str, object]]] = None,
     ) -> None:
-        # 移除不可序列化的模型对象
         regression_copy = None
         if regression:
             regression_copy = {k: v for k, v in regression.items() if k != "model"}

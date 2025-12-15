@@ -53,7 +53,6 @@ class DashboardBuilder:
         LOGGER.info("仪表盘构建完成：%s", self.output_path)
 
     def _build_static_gallery(self, static_charts: List[Path]) -> str:
-        """构建高科技感的静态图库数据 (JSON)"""
         gallery_data = []
 
         for chart_path in static_charts:
@@ -74,12 +73,9 @@ class DashboardBuilder:
         self, df: pd.DataFrame, metrics: Dict[str, object]
     ) -> Dict[str, str]:
         charts = {}
-
-        # --- 通用配置优化 ---
         full_width_grid = opts.GridOpts(
             pos_left="2%", pos_right="2%", pos_bottom="10%", is_contain_label=True
         )
-
         # 1. 核心预测图表
         charts["yearly_line"] = self._render_chart(
             self._build_yearly_line_chart(df, full_width_grid)
@@ -395,7 +391,7 @@ class DashboardBuilder:
                         theme=ThemeType.DARK, width="100%", height="100%"
                     )
                 )
-                .add_xaxis([f["feature"] for f in features[:8]])  # 只展示前8个，防拥挤
+                .add_xaxis([f["feature"] for f in features[:8]])
                 .add_yaxis(
                     "SHAP Value",
                     [
@@ -460,7 +456,6 @@ class DashboardBuilder:
 
         return charts
 
-    # --- 其他辅助图表  ---
     def _build_platform_pie_chart(self, metrics: Dict[str, object]) -> Optional[Pie]:
         data = metrics["innovation"]["platform_share"]
         if not data:
@@ -548,7 +543,6 @@ class DashboardBuilder:
         return c
 
     def _build_region_sunburst_chart(self, df: pd.DataFrame) -> Optional[Sunburst]:
-        # 旭日图
         data = (
             df.groupby(["Top_Region_CN", "Platform_Family_CN"])["Global_Sales"]
             .sum()
@@ -683,13 +677,10 @@ class DashboardBuilder:
         return rendered
 
     def _build_ml_features(self, ml_metrics: Dict[str, object]) -> List[str]:
-        # 优先读取 SHAP 特征重要性，否则回退到传统特征重要性
         shap_features = ml_metrics.get("shap_features") or []
         top_features = ml_metrics.get("top_features") or []
 
         rendered = []
-
-        # 如果有 SHAP 特征，优先显示
         if shap_features:
             for feature in shap_features[:5]:
                 rendered.append(
@@ -699,7 +690,6 @@ class DashboardBuilder:
                     )
                 )
         elif top_features:
-            # 回退显示传统特征重要性
             for feature in top_features[:5]:
                 rendered.append(
                     "📈 {name} 重要度 {score:.2%}".format(

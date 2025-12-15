@@ -38,8 +38,6 @@
                 linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-
-        /* --- Scrollbar --- */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -52,8 +50,6 @@
             background: var(--primary);
             border-radius: 3px;
         }
-
-        /* --- Hero Banner (Unchanged as requested) --- */
         .hero-section {
             height: 450px;
             position: relative;
@@ -88,8 +84,6 @@
             padding: 5px 15px;
             border: 1px solid var(--primary);
         }
-
-        /* 3D Carousel (Keep existing logic) */
         .carousel-container {
             position: absolute;
             top: 60%;
@@ -129,8 +123,6 @@
             object-fit: cover;
             opacity: 0.7;
         }
-
-        /* --- Navigation --- */
         .nav-bar {
             display: flex;
             justify-content: center;
@@ -170,16 +162,11 @@
             background: var(--primary);
             box-shadow: 0 -2px 10px var(--primary);
         }
-
-        /* --- Main Layout --- */
         .container {
             max-width: 1800px;
-            /* Wider container */
             margin: 0 auto;
             padding: 40px 20px;
         }
-
-        /* --- The Data Vault (New Static Gallery) --- */
         .vault-section {
             margin-bottom: 60px;
             border: 1px solid var(--grid-line);
@@ -219,8 +206,6 @@
             overflow: hidden;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        /* Highlight priority charts (Quadrant/Bump/Stream) */
         .vault-card.priority {
             border-color: var(--accent);
             grid-column: span 2;
@@ -304,8 +289,6 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-
-        /* --- New Gallery Styles --- */
         .gallery-container {
             display: flex;
             height: 700px;
@@ -448,8 +431,6 @@
         .gallery-nav.next {
             right: 20px;
         }
-
-        /* --- Intelligent Grid Layout for Charts --- */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -465,8 +446,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        /* 装饰角标 */
         .module::after {
             content: '';
             position: absolute;
@@ -477,8 +456,6 @@
             border-top: 2px solid var(--primary);
             border-right: 2px solid var(--primary);
         }
-
-        /* Size Classes */
         .col-12 {
             grid-column: span 12;
         }
@@ -529,8 +506,6 @@
             color: var(--text-dim);
             text-transform: uppercase;
         }
-
-        /* 关键修改：消除图表容器留白 */
         .chart-wrapper {
             flex-grow: 1;
             position: relative;
@@ -539,13 +514,9 @@
             /* Fixed height for consistency */
             overflow: hidden;
         }
-
-        /* 针对特别宽的图表 */
         .chart-wrapper.tall {
             height: 600px;
         }
-
-        /* --- Nexus Theme Styles (Renamed to avoid conflicts) --- */
         .nexus-card {
             background: var(--bg-panel);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -621,8 +592,6 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 10px;
         }
-
-        /* --- Metrics & List Items --- */
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -721,8 +690,6 @@
                 transform: translateY(100%);
             }
         }
-
-        /* --- Modal --- */
         .modal {
             display: none;
             position: fixed;
@@ -755,8 +722,6 @@
             color: #fff;
             cursor: pointer;
         }
-
-        /* --- 开屏加载器样式 (Tech Enhanced) --- */
         #loader-overlay {
             position: fixed;
             top: 0;
@@ -782,8 +747,6 @@
             flex-direction: column;
             align-items: center;
         }
-
-        /* Complex Spinner */
         .spinner-wrapper {
             position: relative;
             width: 120px;
@@ -841,8 +804,6 @@
             box-shadow: 0 0 20px var(--primary);
             animation: pulse 0.8s ease-in-out infinite alternate;
         }
-
-        /* Text & Bar */
         .loader-text {
             font-family: var(--font-head);
             color: #fff;
@@ -927,7 +888,7 @@
             style="position:absolute; width:100%; height:100%; background: linear-gradient(0deg, transparent 95%, var(--primary) 100%); opacity:0.1; animation: scan 3s infinite linear;">
         </div>
         <div class="hero-title">全球电子游戏销量交互式仪表盘</div>
-        <div class="hero-subtitle">INTELLIGENCE UNIT // 更新于: 2025-12-14 17:02</div>
+        <div class="hero-subtitle">INTELLIGENCE UNIT // 更新于: 2025-12-15 15:46</div>
 
         <div class="carousel-container">
             <div class="carousel-track" id="carousel-track">
@@ -979,11 +940,11 @@
     
 </head>
 <body >
-    <div id="eed1466de8944288b045580c6b3d87f2" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="1fea1ddf3df84b2392fd8e8dbdf20fcf" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_eed1466de8944288b045580c6b3d87f2 = echarts.init(
-            document.getElementById('eed1466de8944288b045580c6b3d87f2'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_eed1466de8944288b045580c6b3d87f2 = {
+        var chart_1fea1ddf3df84b2392fd8e8dbdf20fcf = echarts.init(
+            document.getElementById('1fea1ddf3df84b2392fd8e8dbdf20fcf'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_1fea1ddf3df84b2392fd8e8dbdf20fcf = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -1001,64 +962,43 @@
             "name": "\u6d41\u5411",
             "data": [
                 {
-                    "name": "\u6559\u80b2"
-                },
-                {
-                    "name": "\u6c99\u76d2"
-                },
-                {
-                    "name": "Xbox \u5bb6\u65cf"
-                },
-                {
-                    "name": "\u5927\u578b\u591a\u4eba"
+                    "name": "\u4efb\u5929\u5802\u5bb6\u65cf"
                 },
                 {
                     "name": "\u6b27\u6d32\u9500\u91cf"
                 },
                 {
-                    "name": "\u65e5\u672c\u9500\u91cf"
-                },
-                {
-                    "name": "\u4efb\u5929\u5802\u5bb6\u65cf"
-                },
-                {
-                    "name": "\u683c\u6597"
-                },
-                {
-                    "name": "\u89c6\u89c9\u5c0f\u8bf4"
-                },
-                {
-                    "name": "\u96c5\u8fbe\u5229\u5e73\u53f0"
-                },
-                {
-                    "name": "\u684c\u6e38"
-                },
-                {
-                    "name": "\u5176\u4ed6\u5730\u533a\u9500\u91cf"
-                },
-                {
-                    "name": "PlayStation \u5bb6\u65cf"
-                },
-                {
-                    "name": "\u5e73\u53f0\u8df3\u8dc3"
+                    "name": "\u5176\u4ed6\u5e73\u53f0"
                 },
                 {
                     "name": "\u7ade\u901f"
                 },
                 {
-                    "name": "\u4e16\u5609\u5e73\u53f0"
+                    "name": "\u7b56\u7565"
                 },
                 {
-                    "name": "\u677e\u4e0b\u5e73\u53f0"
+                    "name": "SNK \u5e73\u53f0"
                 },
                 {
-                    "name": "PlayStation \u638c\u673a"
+                    "name": "\u5927\u578b\u591a\u4eba"
                 },
                 {
-                    "name": "\u97f3\u4e50\u8282\u594f"
+                    "name": "\u76ca\u667a"
                 },
                 {
-                    "name": "\u89d2\u8272\u626e\u6f14"
+                    "name": "\u4f53\u80b2"
+                },
+                {
+                    "name": "\u5176\u4ed6\u5730\u533a\u9500\u91cf"
+                },
+                {
+                    "name": "\u6d3e\u5bf9"
+                },
+                {
+                    "name": "Xbox \u5bb6\u65cf"
+                },
+                {
+                    "name": "\u96c5\u8fbe\u5229\u5e73\u53f0"
                 },
                 {
                     "name": "\u5176\u4ed6"
@@ -1067,7 +1007,43 @@
                     "name": "\u5c04\u51fb"
                 },
                 {
-                    "name": "\u5317\u7f8e\u9500\u91cf"
+                    "name": "\u5e73\u53f0\u8df3\u8dc3"
+                },
+                {
+                    "name": "\u684c\u6e38"
+                },
+                {
+                    "name": "\u89c6\u89c9\u5c0f\u8bf4"
+                },
+                {
+                    "name": "\u89d2\u8272\u626e\u6f14"
+                },
+                {
+                    "name": "\u683c\u6597"
+                },
+                {
+                    "name": "\u6a21\u62df"
+                },
+                {
+                    "name": "\u4e07\u4ee3\u5e73\u53f0"
+                },
+                {
+                    "name": "\u52a8\u4f5c\u5192\u9669"
+                },
+                {
+                    "name": "PlayStation \u5bb6\u65cf"
+                },
+                {
+                    "name": "\u6c99\u76d2"
+                },
+                {
+                    "name": "\u677e\u4e0b\u5e73\u53f0"
+                },
+                {
+                    "name": "\u4e16\u5609\u5e73\u53f0"
+                },
+                {
+                    "name": "\u97f3\u4e50\u8282\u594f"
                 },
                 {
                     "name": "\u52a8\u4f5c"
@@ -1076,37 +1052,22 @@
                     "name": "\u4e2a\u4eba\u8ba1\u7b97\u673a"
                 },
                 {
-                    "name": "\u7b56\u7565"
-                },
-                {
-                    "name": "\u52a8\u4f5c\u5192\u9669"
-                },
-                {
-                    "name": "\u6d3e\u5bf9"
-                },
-                {
-                    "name": "\u4f53\u80b2"
-                },
-                {
-                    "name": "\u5192\u9669"
-                },
-                {
-                    "name": "\u6a21\u62df"
+                    "name": "PlayStation \u638c\u673a"
                 },
                 {
                     "name": "\u5168\u5e73\u53f0"
                 },
                 {
-                    "name": "\u76ca\u667a"
+                    "name": "\u65e5\u672c\u9500\u91cf"
                 },
                 {
-                    "name": "SNK \u5e73\u53f0"
+                    "name": "\u5317\u7f8e\u9500\u91cf"
                 },
                 {
-                    "name": "\u4e07\u4ee3\u5e73\u53f0"
+                    "name": "\u6559\u80b2"
                 },
                 {
-                    "name": "\u5176\u4ed6\u5e73\u53f0"
+                    "name": "\u5192\u9669"
                 }
             ],
             "links": [
@@ -2326,9 +2287,9 @@
         }
     ]
 };
-        chart_eed1466de8944288b045580c6b3d87f2.setOption(option_eed1466de8944288b045580c6b3d87f2);
+        chart_1fea1ddf3df84b2392fd8e8dbdf20fcf.setOption(option_1fea1ddf3df84b2392fd8e8dbdf20fcf);
             window.addEventListener('resize', function(){
-                chart_eed1466de8944288b045580c6b3d87f2.resize();
+                chart_1fea1ddf3df84b2392fd8e8dbdf20fcf.resize();
             })
     </script>
 </body>
@@ -2349,11 +2310,11 @@
     
 </head>
 <body >
-    <div id="d7957abb37c143849407a4a4eb10a058" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="ca11e73d23c1420b9d4cb0eb5cf38c75" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_d7957abb37c143849407a4a4eb10a058 = echarts.init(
-            document.getElementById('d7957abb37c143849407a4a4eb10a058'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_d7957abb37c143849407a4a4eb10a058 = {
+        var chart_ca11e73d23c1420b9d4cb0eb5cf38c75 = echarts.init(
+            document.getElementById('ca11e73d23c1420b9d4cb0eb5cf38c75'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_ca11e73d23c1420b9d4cb0eb5cf38c75 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -3804,9 +3765,9 @@
     ],
     "color": []
 };
-        chart_d7957abb37c143849407a4a4eb10a058.setOption(option_d7957abb37c143849407a4a4eb10a058);
+        chart_ca11e73d23c1420b9d4cb0eb5cf38c75.setOption(option_ca11e73d23c1420b9d4cb0eb5cf38c75);
             window.addEventListener('resize', function(){
-                chart_d7957abb37c143849407a4a4eb10a058.resize();
+                chart_ca11e73d23c1420b9d4cb0eb5cf38c75.resize();
             })
     </script>
 </body>
@@ -3831,11 +3792,11 @@
     
 </head>
 <body >
-    <div id="1ac694501e0841558b48415ce1b93246" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="a9bd773fa0c746f0af163dfda4ddea00" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_1ac694501e0841558b48415ce1b93246 = echarts.init(
-            document.getElementById('1ac694501e0841558b48415ce1b93246'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_1ac694501e0841558b48415ce1b93246 = {
+        var chart_a9bd773fa0c746f0af163dfda4ddea00 = echarts.init(
+            document.getElementById('a9bd773fa0c746f0af163dfda4ddea00'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_a9bd773fa0c746f0af163dfda4ddea00 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -4306,9 +4267,9 @@
     ],
     "color": []
 };
-        chart_1ac694501e0841558b48415ce1b93246.setOption(option_1ac694501e0841558b48415ce1b93246);
+        chart_a9bd773fa0c746f0af163dfda4ddea00.setOption(option_a9bd773fa0c746f0af163dfda4ddea00);
             window.addEventListener('resize', function(){
-                chart_1ac694501e0841558b48415ce1b93246.resize();
+                chart_a9bd773fa0c746f0af163dfda4ddea00.resize();
             })
     </script>
 </body>
@@ -4348,11 +4309,11 @@
     
 </head>
 <body >
-    <div id="15dfd2041c724ea5b3c74b50f1d0e7a0" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="8db79896a8684c6db499f6b3a4779e41" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_15dfd2041c724ea5b3c74b50f1d0e7a0 = echarts.init(
-            document.getElementById('15dfd2041c724ea5b3c74b50f1d0e7a0'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_15dfd2041c724ea5b3c74b50f1d0e7a0 = {
+        var chart_8db79896a8684c6db499f6b3a4779e41 = echarts.init(
+            document.getElementById('8db79896a8684c6db499f6b3a4779e41'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_8db79896a8684c6db499f6b3a4779e41 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -5544,9 +5505,9 @@
     ],
     "color": []
 };
-        chart_15dfd2041c724ea5b3c74b50f1d0e7a0.setOption(option_15dfd2041c724ea5b3c74b50f1d0e7a0);
+        chart_8db79896a8684c6db499f6b3a4779e41.setOption(option_8db79896a8684c6db499f6b3a4779e41);
             window.addEventListener('resize', function(){
-                chart_15dfd2041c724ea5b3c74b50f1d0e7a0.resize();
+                chart_8db79896a8684c6db499f6b3a4779e41.resize();
             })
     </script>
 </body>
@@ -5592,11 +5553,11 @@
     
 </head>
 <body >
-    <div id="4e6aff402d364c969bf34648f4ceb2a5" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="a0f3e9dd59cd40ebb20874298423fa68" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_4e6aff402d364c969bf34648f4ceb2a5 = echarts.init(
-            document.getElementById('4e6aff402d364c969bf34648f4ceb2a5'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_4e6aff402d364c969bf34648f4ceb2a5 = {
+        var chart_a0f3e9dd59cd40ebb20874298423fa68 = echarts.init(
+            document.getElementById('a0f3e9dd59cd40ebb20874298423fa68'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_a0f3e9dd59cd40ebb20874298423fa68 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -5874,9 +5835,9 @@
         }
     ]
 };
-        chart_4e6aff402d364c969bf34648f4ceb2a5.setOption(option_4e6aff402d364c969bf34648f4ceb2a5);
+        chart_a0f3e9dd59cd40ebb20874298423fa68.setOption(option_a0f3e9dd59cd40ebb20874298423fa68);
             window.addEventListener('resize', function(){
-                chart_4e6aff402d364c969bf34648f4ceb2a5.resize();
+                chart_a0f3e9dd59cd40ebb20874298423fa68.resize();
             })
     </script>
 </body>
@@ -5922,11 +5883,11 @@
     
 </head>
 <body >
-    <div id="1fc83ad8a2b14e5c807830e9c4fc0377" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="69bfd114a865469ca79274f5a9be2d95" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_1fc83ad8a2b14e5c807830e9c4fc0377 = echarts.init(
-            document.getElementById('1fc83ad8a2b14e5c807830e9c4fc0377'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_1fc83ad8a2b14e5c807830e9c4fc0377 = {
+        var chart_69bfd114a865469ca79274f5a9be2d95 = echarts.init(
+            document.getElementById('69bfd114a865469ca79274f5a9be2d95'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_69bfd114a865469ca79274f5a9be2d95 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6140,9 +6101,9 @@
     ],
     "color": []
 };
-        chart_1fc83ad8a2b14e5c807830e9c4fc0377.setOption(option_1fc83ad8a2b14e5c807830e9c4fc0377);
+        chart_69bfd114a865469ca79274f5a9be2d95.setOption(option_69bfd114a865469ca79274f5a9be2d95);
             window.addEventListener('resize', function(){
-                chart_1fc83ad8a2b14e5c807830e9c4fc0377.resize();
+                chart_69bfd114a865469ca79274f5a9be2d95.resize();
             })
     </script>
 </body>
@@ -6192,11 +6153,11 @@
     
 </head>
 <body >
-    <div id="b6f044656ae7459cb4dd70cd5f22ae5a" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="5a7e5f40234c429fbbcb68d7b6d5bde8" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_b6f044656ae7459cb4dd70cd5f22ae5a = echarts.init(
-            document.getElementById('b6f044656ae7459cb4dd70cd5f22ae5a'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_b6f044656ae7459cb4dd70cd5f22ae5a = {
+        var chart_5a7e5f40234c429fbbcb68d7b6d5bde8 = echarts.init(
+            document.getElementById('5a7e5f40234c429fbbcb68d7b6d5bde8'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_5a7e5f40234c429fbbcb68d7b6d5bde8 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6387,9 +6348,9 @@
         }
     ]
 };
-        chart_b6f044656ae7459cb4dd70cd5f22ae5a.setOption(option_b6f044656ae7459cb4dd70cd5f22ae5a);
+        chart_5a7e5f40234c429fbbcb68d7b6d5bde8.setOption(option_5a7e5f40234c429fbbcb68d7b6d5bde8);
             window.addEventListener('resize', function(){
-                chart_b6f044656ae7459cb4dd70cd5f22ae5a.resize();
+                chart_5a7e5f40234c429fbbcb68d7b6d5bde8.resize();
             })
     </script>
 </body>
@@ -6419,11 +6380,11 @@
     
 </head>
 <body >
-    <div id="5c0b014873fa465d95a9b1e88faaada6" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="96e9481ba88b4bcd97b44b1250c9ac13" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_5c0b014873fa465d95a9b1e88faaada6 = echarts.init(
-            document.getElementById('5c0b014873fa465d95a9b1e88faaada6'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_5c0b014873fa465d95a9b1e88faaada6 = {
+        var chart_96e9481ba88b4bcd97b44b1250c9ac13 = echarts.init(
+            document.getElementById('96e9481ba88b4bcd97b44b1250c9ac13'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_96e9481ba88b4bcd97b44b1250c9ac13 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6627,9 +6588,9 @@
     ],
     "color": []
 };
-        chart_5c0b014873fa465d95a9b1e88faaada6.setOption(option_5c0b014873fa465d95a9b1e88faaada6);
+        chart_96e9481ba88b4bcd97b44b1250c9ac13.setOption(option_96e9481ba88b4bcd97b44b1250c9ac13);
             window.addEventListener('resize', function(){
-                chart_5c0b014873fa465d95a9b1e88faaada6.resize();
+                chart_96e9481ba88b4bcd97b44b1250c9ac13.resize();
             })
     </script>
 </body>
@@ -6761,34 +6722,25 @@
             const leftContainer = document.getElementById('gallery-left');
             const rightContainer = document.getElementById('gallery-right');
 
-            // Clear containers
             leftContainer.innerHTML = '';
             rightContainer.innerHTML = '';
 
-            // Distribute thumbnails
             galleryData.forEach((item, index) => {
                 const thumb = document.createElement('div');
                 thumb.className = `gallery-thumb ${index === 0 ? 'active' : ''}`;
                 thumb.onclick = () => setGalleryImage(index);
                 thumb.innerHTML = `<img src="${item.src}" loading="lazy">`;
-
-                // Even to left, Odd to right (or split half/half)
-                // Let's do split half/half for better balance
                 if (index < galleryData.length / 2) {
                     leftContainer.appendChild(thumb);
                 } else {
                     rightContainer.appendChild(thumb);
                 }
             });
-
-            // Set initial image
             setGalleryImage(0);
         }
 
         function setGalleryImage(index) {
             if (!galleryData || galleryData.length === 0) return;
-
-            // Update Index
             currentGalleryIndex = index;
             if (currentGalleryIndex < 0) currentGalleryIndex = galleryData.length - 1;
             if (currentGalleryIndex >= galleryData.length) currentGalleryIndex = 0;
@@ -6796,8 +6748,6 @@
             const item = galleryData[currentGalleryIndex];
             const img = document.getElementById('gallery-main-img');
             const title = document.getElementById('gallery-title');
-
-            // Animation Out
             gsap.to(img, {
                 opacity: 0, scale: 0.95, duration: 0.2, onComplete: () => {
                     // Update Content
@@ -6807,8 +6757,6 @@
                     gsap.to(img, { opacity: 1, scale: 1, duration: 0.4 });
                 }
             });
-
-            // Update Active Thumb
             document.querySelectorAll('.gallery-thumb').forEach((el, i) => {
                 if (i === currentGalleryIndex) el.classList.add('active');
                 else el.classList.remove('active');
@@ -6818,8 +6766,6 @@
         function changeGalleryImage(direction) {
             setGalleryImage(currentGalleryIndex + direction);
         }
-
-        // 修改你现有的 window.addEventListener('load', ...) 部分
         window.addEventListener('load', () => {
             // Init Gallery
             try {
@@ -6827,8 +6773,6 @@
             } catch (e) {
                 console.error("Gallery Init Failed", e);
             }
-
-            // 1. 原有的样式修正逻辑 (保留)
             const cards = document.querySelectorAll('.metric-card');
             cards.forEach(card => {
                 card.className = 'kpi-card';
@@ -6837,8 +6781,6 @@
                 const p = card.querySelector('p');
                 if (p) p.className = 'kpi-value';
             });
-
-            // 2. 新增：开屏加载动画逻辑 (Enhanced)
             const tl = gsap.timeline();
             const bar = document.getElementById('loading-bar');
             const overlay = document.getElementById('loader-overlay');
@@ -6852,8 +6794,6 @@
                 "渲染可视化组件...",
                 "访问权限已确认"
             ];
-
-            // Status text animation
             let msgIndex = 0;
             const statusInterval = setInterval(() => {
                 if (msgIndex < statusMessages.length) {
@@ -6863,8 +6803,6 @@
                     clearInterval(statusInterval);
                 }
             }, 400);
-
-            // Main loading sequence
             tl.to(bar, {
                 width: "100%",
                 duration: 2.5,
@@ -6900,15 +6838,12 @@
                 }, "-=0.4");
         });
         function switchTab(tabName) {
-            // Hide all
             document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
             document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
 
-            // Show target
             document.getElementById('tab-' + tabName).style.display = 'block';
             event.target.classList.add('active');
 
-            // Trigger resize for charts
             setTimeout(() => {
                 window.dispatchEvent(new Event('resize'));
             }, 50);
@@ -6922,9 +6857,7 @@
             document.getElementById('modal').classList.remove('active');
         }
 
-        // Init Carousel (Simple visuals)
         const track = document.getElementById('carousel-track');
-        // Use galleryData directly to populate carousel
         if (galleryData && galleryData.length > 0) {
             galleryData.forEach((item, i) => {
                 if (i > 5) return; // Limit items
@@ -6935,7 +6868,6 @@
                 div.style.transform = `rotateY(${i * 60}deg) translateZ(300px)`;
                 track.appendChild(div);
             });
-            // Auto rotate
             let angle = 0;
             setInterval(() => {
                 angle -= 0.5;

@@ -1,5 +1,3 @@
-"""VGChartz scraping utility for pulling leaderboard data into CSV."""
-
 from __future__ import annotations
 
 import argparse
@@ -62,7 +60,7 @@ class ScrapeOptions:
     page_size: int = 10000
     platform: str = "All"
     order: str = "Sales"
-    sleep_seconds: float = 3.0  # Increased default sleep
+    sleep_seconds: float = 3.0
     base_url: str = "https://www.vgchartz.com/games/games.php"
     output_csv: Path = DEFAULT_OUTPUT
     user_agent: str = DEFAULT_USER_AGENT

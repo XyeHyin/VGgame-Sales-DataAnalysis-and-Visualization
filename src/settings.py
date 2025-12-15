@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import Any, Dict
 
 
-# 获取项目根目录（src的父目录）
 PROJECT_ROOT = Path(__file__).parent.parent
 
 CONFIG_PATH = PROJECT_ROOT / "config" / "config.json"
@@ -19,13 +18,9 @@ def _load_config(path: Path) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-# 加载路径配置
 APP_CONFIG = _load_config(CONFIG_PATH)
-# 加载用户配置（数据库、日志等需要用户修改的部分）
 USER_CONFIG = _load_config(USER_CONFIG_PATH)
-# 加载映射配置
 MAPPER_CONFIG = _load_config(MAPPER_PATH)
-
 PATHS_CONFIG = APP_CONFIG.get("paths", {})
 OUTPUT_NAMES = APP_CONFIG.get("outputs", {})
 LOGGING_CONFIG = USER_CONFIG.get(
@@ -162,14 +157,10 @@ logging.basicConfig(
 
 
 def build_artifacts(directory: Path) -> OutputArtifacts:
-    """Create an OutputArtifacts bundle rooted at the given directory."""
-
-    # Helper to re-root paths while preserving subdirectories relative to default OUTPUT_DIR
     def reroot(path: Path) -> Path:
         try:
             rel = path.relative_to(OUTPUT_DIR)
         except ValueError:
-            # If path is not relative to OUTPUT_DIR, just use its name
             rel = Path(path.name)
         return directory / rel
 

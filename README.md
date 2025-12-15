@@ -58,28 +58,30 @@ dabian/
 4. 若需要中文字体在图表中正确显示，请确保系统已安装微软雅黑/苹方/思源黑体等常见 CJK 字体。
 
 ## 2. 运行步骤
-1.从 VGChartz 爬取最新榜单，可执行：
-
-```powershell
-python -m src.scrape_vgchartz --pages 1 --page-size 10000 --proxy-ignore
-```
-该脚本会自动请求新版 `games.php` 列表并启用北美/PAL/日本/"Other" 分栏及总销量字段，输出到 `outputs/vgchartz_scrape.csv`。若站点前端再次变动，可使用 `--base-url` 覆盖目标地址，`--dump-html-dir` 则会保留原始 HTML 以便调试。
-
-2.执行数据清洗和入库：
-```powershell
-python -m src.clean_and_store
-```
-3.运行完整分析管线：
+运行完整分析管线：
 ```powershell
 python run.py
 ```
+并且根据提示完成各阶段任务。
 脚本将依次完成：
+爬取:
+- 从 VGChartz 网站实时爬取最新数据，保存至 `outputs/data/vgchartz_scrape.csv`。
+清洗与入库:
+- 清洗爬取数据，合并历史数据，写入 PostgreSQL 表 `vgchartz_clean`。
+分析与可视化:
+- 合并历史数据 `data/vgsales.csv` 与爬取数据。
 - 生成缺失值、异常年份、去重情况等数据质量报告。
 - 数据清洗与特征工程（年代、平台家族、区域占比、长尾标记等）。
 - 将标准化数据写入 Parquet，并同步一份到 PostgreSQL 表 `vgchartz_clean`（供分析端加载）。
 - 计算多层指标：区域份额/HHI、平台生命周期动能、销量/评分分层、评分-销量相关性、集群偏好、Gini、CAGR/波动率等。
 - 训练多模型组合：随机森林回归 + 分位回归带 + HistGB 备选模型、梯度提升命中分类 + 概率校准、区域 & 行为聚类，以及相似游戏推荐。
 - 批量导出 20 张 Matplotlib/Plotly 图表（含季度日历、六边形密度、生命周期动能、区域扩散、生命周期瀑布、桑基流等）、中文 Markdown 摘要与交互式 HTML 仪表盘（Pyecharts 增强卡片）。
+从 VGChartz 爬取最新榜单，可执行：
+```powershell
+python -m src.scrape_vgchartz --pages 1 --page-size 10000 --proxy-ignore
+```
+该脚本会自动请求新版 `games.php` 列表并启用北美/PAL/日本/"Other" 分栏及总销量字段，输出到 `outputs/vgchartz_scrape.csv`。若站点前端再次变动，可使用 `--base-url` 覆盖目标地址，`--dump-html-dir` 则会保留原始 HTML 以便调试。
+  
 ## 3. 配置说明
 
 | 配置文件                  | 说明                                                                     |

@@ -1,0 +1,87 @@
+@startuml 项目流程图
+title 电子游戏销量数据分析与可视化流程图
+skinparam linetype ortho
+skinparam backgroundColor #F9F9F9
+skinparam activity {
+  BackgroundColor #FEFECE
+  BorderColor #A80036
+  ArrowColor #A80036
+}
+
+start
+
+:启动 run.py;
+
+if (用户选择模式?) then (0: 全流程 / 1: 爬取)
+  partition "数据获取 (Scraping)" {
+    :初始化 VGChartzScraper;
+    :访问 VGChartz 网站;
+    :抓取游戏列表数据;
+    :输出原始数据 (vgchartz_scrape.csv);
+  }
+else (跳过)
+endif
+
+if (用户选择模式?) then (0: 全流程 / 2: 清洗 / 4: 清洗+分析)
+  partition "数据清洗与存储 (ETL)" {
+    :读取原始 CSV 数据;
+    :执行数据清洗 (src.data_cleaning);
+    note right
+      - 处理缺失值
+      - 年份修正
+      - 字段标准化
+    end note
+    :特征工程 (src.clean_and_store);
+    
+    fork
+      :保存为 Parquet 文件;
+    fork again
+      :写入 PostgreSQL 数据库;
+      note right: 表名: vgchartz_clean \n(如果配置了DB) end note
+    end fork
+  }
+else (跳过)
+endif
+
+if (用户选择模式?) then (0: 全流程 / 3: 分析 / 4: 清洗+分析)
+  partition "分析管线 (Analysis Pipeline)" {
+    :初始化 VGSalesPipeline;
+    
+    partition "数据加载" {
+        if (PostgreSQL 可用?) then (是)
+            :从数据库读取清洗数据;
+        else (否)
+            :回退读取本地 CSV/Parquet;
+        endif
+    }
+
+    partition "计算与建模" {
+        :计算基础统计指标;
+        note right
+          - 区域份额
+          - 平台/厂商排名
+          - 时间序列指标 (CAGR)
+        end note
+        
+        :执行机器学习分析 (ML Analyzer);
+        note right
+          - 聚类分析
+          - 销量预测模型
+          - SHAP 特征重要性
+        end note
+    }
+
+    partition "可视化与报告" {
+        :生成静态图表 (Matplotlib/Seaborn);
+        :归档 ML 图表 (Feature Importance);
+        :生成指标文件 (JSON);
+        :生成分析简报 (Markdown);
+        :构建交互式仪表盘 (HTML);
+    }
+  }
+else (跳过)
+endif
+
+stop
+
+@enduml

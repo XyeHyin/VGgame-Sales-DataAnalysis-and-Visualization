@@ -60,7 +60,6 @@ class PostgresReader:
                 self.engine = create_engine(self.config.alchemy_url(), future=True)
             with self.engine.connect() as connection:
                 df = pd.read_sql_table(self.config.table_name, con=connection)
-                # SQLAlchemy may return quoted_name objects; convert for sklearn compatibility
                 df.columns = df.columns.astype(str)
             LOGGER.info(
                 "已从 PostgreSQL 载入表 %s，共 %d 行", self.config.table_name, len(df)
