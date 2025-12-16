@@ -4,10 +4,10 @@
     1970,
     2025
   ],
-  "global_sales_total": 16894.449999999997,
+  "global_sales_total": 16894.45,
   "region_share": {
     "北美销量": 0.5076312696817217,
-    "欧洲销量": 0.2905576323325326,
+    "欧洲销量": 0.2905576323325327,
     "日本销量": 0.10311779728699708,
     "其他地区销量": 0.09869330069874856
   },
@@ -243,7 +243,7 @@
       "2025": 36
     },
     "cagr": -0.013483098288068596,
-    "volatility": 1.617094836700752,
+    "volatility": 1.6170948367007523,
     "boom_periods": [
       {
         "year": 1980,
@@ -403,27 +403,27 @@
       {
         "tier": "1-5M",
         "avg_sales": 2.1019,
-        "lift": 2.689574043546846
+        "lift": 2.689574043546845
       },
       {
         "tier": "10-20M",
         "avg_sales": 13.9594,
-        "lift": 17.862334032774083
+        "lift": 17.862334032774076
       },
       {
         "tier": "20M+",
         "avg_sales": 40.705,
-        "lift": 52.08578497672313
+        "lift": 52.08578497672312
       },
       {
         "tier": "5-10M",
         "avg_sales": 7.2247,
-        "lift": 9.244667011947714
+        "lift": 9.24466701194771
       },
       {
         "tier": "<1M",
         "avg_sales": 0.2247,
-        "lift": 0.2875242816427881
+        "lift": 0.287524281642788
       }
     ]
   },
@@ -716,10 +716,10 @@
       "0.5": 7.66,
       "0.75": 7.74
     },
-    "correlation": 0.15158560627987644,
+    "correlation": 0.15158560627987658,
     "score_gap": {
       "mean_gap": -0.7262373947636229,
-      "std_gap": 0.30933727154023594,
+      "std_gap": 0.30933727154024043,
       "share_positive": 0.015403830141548709
     },
     "largest_disagreements": [
@@ -805,7 +805,7 @@
   "innovation": {
     "region_share": {
       "NA_Sales": 3343.29,
-      "EU_Sales": 1913.6299999999999,
+      "EU_Sales": 1913.63,
       "JP_Sales": 679.14,
       "Other_Sales": 650.0
     },
@@ -854,63 +854,63 @@
     "platform_share": [
       [
         "All",
-        0.2961345293868697
+        0.2961345293868696
       ],
       [
         "Nintendo",
-        0.26014815516338213
+        0.2601481551633821
       ],
       [
         "PlayStation",
-        0.2261180446833132
+        0.22611804468331315
       ],
       [
         "Xbox",
-        0.09207757577192512
+        0.09207757577192509
       ],
       [
         "PC",
-        0.09150519845274634
+        0.09150519845274632
       ],
       [
         "PlayStation Portable",
-        0.021095093359061706
+        0.021095093359061703
       ],
       [
         "Sega",
-        0.00598302992994741
+        0.005983029929947408
       ],
       [
         "Atari",
-        0.005765206917064481
+        0.00576520691706448
       ],
       [
         "Other",
-        0.0005623148430401701
+        0.00056231484304017
       ],
       [
         "Mobile",
-        0.00032614260896329865
+        0.0003261426089632986
       ],
       [
         "Bandai",
-        9.944094066394586e-05
+        9.944094066394585e-05
       ],
       [
         "SNK",
-        8.523509199766789e-05
+        8.523509199766787e-05
       ],
       [
         "Panasonic",
-        7.043733297029499e-05
+        7.043733297029498e-05
       ],
       [
         "Home Computer",
-        1.834922119394239e-05
+        1.8349221193942387e-05
       ],
       [
         "NEC",
-        1.1246296860803403e-05
+        1.12462968608034e-05
       ]
     ],
     "region_preference": [
@@ -922,7 +922,7 @@
       {
         "Genre": "桌游",
         "Region": "EU_Sales",
-        "Preference": 0.35650119119687906
+        "Preference": 0.356501191196879
       },
       {
         "Genre": "策略",
@@ -952,7 +952,7 @@
       {
         "Genre": "动作冒险",
         "Region": "EU_Sales",
-        "Preference": 0.11033143616615393
+        "Preference": 0.11033143616615387
       },
       {
         "Genre": "派对",
@@ -967,7 +967,7 @@
       {
         "Genre": "竞速",
         "Region": "EU_Sales",
-        "Preference": 0.049467269496794086
+        "Preference": 0.04946726949679403
       },
       {
         "Genre": "大型多人",
@@ -982,7 +982,7 @@
       {
         "Genre": "射击",
         "Region": "EU_Sales",
-        "Preference": 0.03606001620547322
+        "Preference": 0.03606001620547317
       },
       {
         "Genre": "平台跳跃",
@@ -997,7 +997,7 @@
       {
         "Genre": "大型多人",
         "Region": "EU_Sales",
-        "Preference": 0.02523184135167794
+        "Preference": 0.025231841351677886
       },
       {
         "Genre": "其他",
@@ -1027,7 +1027,7 @@
       {
         "Genre": "动作",
         "Region": "EU_Sales",
-        "Preference": 0.013896888873122237
+        "Preference": 0.013896888873122182
       },
       {
         "Genre": "大型多人",
@@ -1067,7 +1067,7 @@
       {
         "Genre": "沙盒",
         "Region": "EU_Sales",
-        "Preference": 0.005738663963763657
+        "Preference": 0.005738663963763602
       },
       {
         "Genre": "体育",
@@ -1087,7 +1087,7 @@
       {
         "Genre": "派对",
         "Region": "EU_Sales",
-        "Preference": 0.0018494759065627031
+        "Preference": 0.0018494759065626476
       },
       {
         "Genre": "模拟",
@@ -1102,17 +1102,17 @@
       {
         "Genre": "音乐节奏",
         "Region": "EU_Sales",
-        "Preference": -0.0003721609260411429
+        "Preference": -0.00037216092604119844
       },
       {
         "Genre": "模拟",
         "Region": "EU_Sales",
-        "Preference": -0.0010435999346924407
+        "Preference": -0.0010435999346924962
       },
       {
         "Genre": "体育",
         "Region": "EU_Sales",
-        "Preference": -0.002158207288142644
+        "Preference": -0.0021582072881426995
       },
       {
         "Genre": "音乐节奏",
@@ -1127,7 +1127,7 @@
       {
         "Genre": "平台跳跃",
         "Region": "EU_Sales",
-        "Preference": -0.004147627145511756
+        "Preference": -0.004147627145511812
       },
       {
         "Genre": "冒险",
@@ -1142,7 +1142,7 @@
       {
         "Genre": "冒险",
         "Region": "EU_Sales",
-        "Preference": -0.00853876324453856
+        "Preference": -0.008538763244538616
       },
       {
         "Genre": "平台跳跃",
@@ -1192,7 +1192,7 @@
       {
         "Genre": "其他",
         "Region": "EU_Sales",
-        "Preference": -0.027003876147197514
+        "Preference": -0.02700387614719757
       },
       {
         "Genre": "动作",
@@ -1222,12 +1222,12 @@
       {
         "Genre": "格斗",
         "Region": "EU_Sales",
-        "Preference": -0.05646392448054177
+        "Preference": -0.05646392448054183
       },
       {
         "Genre": "策略",
         "Region": "EU_Sales",
-        "Preference": -0.06307230194729577
+        "Preference": -0.06307230194729582
       },
       {
         "Genre": "竞速",
@@ -1262,12 +1262,12 @@
       {
         "Genre": "角色扮演",
         "Region": "EU_Sales",
-        "Preference": -0.07720147597921351
+        "Preference": -0.07720147597921356
       },
       {
         "Genre": "教育",
         "Region": "EU_Sales",
-        "Preference": -0.08222429899919931
+        "Preference": -0.08222429899919936
       },
       {
         "Genre": "大型多人",
@@ -1277,7 +1277,7 @@
       {
         "Genre": "益智",
         "Region": "EU_Sales",
-        "Preference": -0.08513930563930552
+        "Preference": -0.08513930563930558
       },
       {
         "Genre": "教育",
@@ -1302,7 +1302,7 @@
       {
         "Genre": "视觉小说",
         "Region": "EU_Sales",
-        "Preference": -0.27838371928905437
+        "Preference": -0.2783837192890544
       },
       {
         "Genre": "桌游",
@@ -1506,7 +1506,7 @@
         "avg_global_sales": 2.3908313663781797,
         "avg_age": 18.27799632835038,
         "score_median": 7.6899999999999995,
-        "cluster_purity": 0.8564871896264523,
+        "cluster_purity": 0.8564871896264281,
         "top_genres": [
           "角色扮演",
           "动作",
@@ -1529,7 +1529,7 @@
         "avg_global_sales": 2.3357099080694583,
         "avg_age": 21.28600612870276,
         "score_median": 7.69,
-        "cluster_purity": 0.9432167071017934,
+        "cluster_purity": 0.9432167071017162,
         "top_genres": [
           "体育",
           "动作",
@@ -1552,7 +1552,7 @@
         "avg_global_sales": 0.6989243740419008,
         "avg_age": 16.807358201328565,
         "score_median": 7.675000000000001,
-        "cluster_purity": 0.9330180721066469,
+        "cluster_purity": 0.9330180721065752,
         "top_genres": [
           "体育",
           "动作",
@@ -1620,7 +1620,7 @@
         "anchor_platform": "All",
         "candidate": "Dust: An Elysian Tail",
         "candidate_platform": "All",
-        "similarity": 0.9640923241175516,
+        "similarity": 0.9640923241175515,
         "anchor_sales": 350.0,
         "candidate_sales": 1.0,
         "genre_match": true
@@ -1630,7 +1630,7 @@
         "anchor_platform": "All",
         "candidate": "Red Dead Redemption: Undead Nightmare",
         "candidate_platform": "All",
-        "similarity": 0.9638712121874123,
+        "similarity": 0.9638712121874122,
         "anchor_sales": 350.0,
         "candidate_sales": 2.0,
         "genre_match": true
@@ -1640,7 +1640,7 @@
         "anchor_platform": "All",
         "candidate": "Saints Row IV",
         "candidate_platform": "All",
-        "similarity": 0.9597598574677763,
+        "similarity": 0.9597598574677764,
         "anchor_sales": 350.0,
         "candidate_sales": 1.0,
         "genre_match": true
@@ -1650,7 +1650,7 @@
         "anchor_platform": "All",
         "candidate": "Alan Wake",
         "candidate_platform": "All",
-        "similarity": 0.9592286901283942,
+        "similarity": 0.959228690128394,
         "anchor_sales": 350.0,
         "candidate_sales": 3.2,
         "genre_match": true

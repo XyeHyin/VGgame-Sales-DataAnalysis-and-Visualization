@@ -90,7 +90,7 @@
     "avg_global_sales": 2.3908313663781797,
     "avg_age": 18.27799632835038,
     "score_median": 7.6899999999999995,
-    "cluster_purity": 0.8564871896264523,
+    "cluster_purity": 0.8564871896264281,
     "top_genres": [
       "角色扮演",
       "动作",
@@ -114,7 +114,7 @@
     "avg_global_sales": 2.3357099080694583,
     "avg_age": 21.28600612870276,
     "score_median": 7.69,
-    "cluster_purity": 0.9432167071017934,
+    "cluster_purity": 0.9432167071017162,
     "top_genres": [
       "体育",
       "动作",
@@ -138,7 +138,7 @@
     "avg_global_sales": 0.6989243740419008,
     "avg_age": 16.807358201328565,
     "score_median": 7.675000000000001,
-    "cluster_purity": 0.9330180721066469,
+    "cluster_purity": 0.9330180721065752,
     "top_genres": [
       "体育",
       "动作",
@@ -162,7 +162,7 @@
     "avg_global_sales": 0.2954055013309672,
     "avg_age": 19.22661934338953,
     "score_median": 7.675000000000001,
-    "cluster_purity": 0.9733340766935717,
+    "cluster_purity": 0.9733340766936045,
     "top_genres": [
       "冒险",
       "角色扮演",
@@ -186,7 +186,7 @@
     "avg_global_sales": 0.14997251614676377,
     "avg_age": 17.40181393431359,
     "score_median": 7.654999999999999,
-    "cluster_purity": 0.9829633125426108,
+    "cluster_purity": 0.9829633125426358,
     "top_genres": [
       "体育",
       "动作",

@@ -306,6 +306,7 @@ class FigureGenerator:
         top_pub.plot(kind="barh", ax=ax, color="#c44e52")
         ax.set_title("全球销量前 15 名发行商")
         ax.set_xlabel("销量（百万套）")
+        ax.set_ylabel("发行商")
         return self._save_fig(fig, "05_发行商排行.png")
 
     def _plot_region_genre_panels(self, df: pd.DataFrame) -> Path:
