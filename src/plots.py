@@ -117,6 +117,9 @@ class FigureGenerator:
         if calendar.empty:
             return None
         calendar["Release_Quarter"] = calendar["Release_Quarter"].astype(str)
+        calendar["Release_Quarter"] = calendar["Release_Quarter"].apply(
+            lambda x: x[-2:] if "Q" in x else x
+        )
         pivot = calendar.pivot(
             index="Year", columns="Release_Quarter", values="Name"
         ).fillna(0)
@@ -138,6 +141,7 @@ class FigureGenerator:
             cmap="viridis",
             mincnt=5,
         )
+        ax.set_ylim(0,50)
         ax.set_title("评分 vs 销量 六边形密度图")
         ax.set_xlabel("综合评分")
         ax.set_ylabel("全球销量（百万套）")
@@ -648,7 +652,6 @@ class FigureGenerator:
         )
 
         return self._save_fig(fig, "19_爆款象限图.png")
-
 
     def _plot_genre_radar(self, df: pd.DataFrame) -> Path:
         top_genres = df.groupby("Genre")["Global_Sales"].sum().nlargest(4).index

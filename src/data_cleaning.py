@@ -58,6 +58,7 @@ class GameDataCleaner:
         stats.update(filter_stats)
         work = self._engineer_features(work)
         work, ml_stats = self._apply_ml_enrichment(work)
+        work = self._recalculate_score_metrics(work)
         stats.update(ml_stats)
 
         stats["final_rows"] = int(len(work))
@@ -399,6 +400,26 @@ class GameDataCleaner:
             .str.replace(r"\s+", " ", regex=True)
             .str.strip()
         )
+
+        return df
+
+    def _recalculate_score_metrics(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        [修复] 在 MICE 插补后重新计算评分衍生指标
+        确保 Composite_Score, Score_Gap, Score_Tier 包含预测填补后的数据
+        """
+        # 重新计算综合评分
+        if "Critic_Score" in df.columns and "User_Score" in df.columns:
+            # 此时的 Critic_Score 和 User_Score 已经被 MICE 填满了
+            df["Composite_Score"] = df[["Critic_Score", "User_Score"]].mean(axis=1)
+            df["Score_Gap"] = df["Critic_Score"] - df["User_Score"]
+
+            # 重新计算评分分层
+            score_bins = [-np.inf, 6, 8, np.inf]
+            score_labels = ["<=6", "6_to_8", ">=8"]
+            df["Score_Tier"] = pd.cut(
+                df["Composite_Score"], bins=score_bins, labels=score_labels
+            )
 
         return df
 
