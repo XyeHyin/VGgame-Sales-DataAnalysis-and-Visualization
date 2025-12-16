@@ -10,6 +10,7 @@
         rel="stylesheet">
     <script src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
 
     <style>
         :root {
@@ -883,6 +884,91 @@
                 transform: translate(-50%, -50%) scale(1.1);
             }
         }
+        /* New Styles for Report Tab */
+        .report-section {
+            background: var(--bg-panel);
+            border: 1px solid var(--grid-line);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .report-title {
+            font-family: var(--font-head);
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--grid-line);
+            padding-bottom: 5px;
+        }
+        .markdown-content {
+            font-family: var(--font-code);
+            line-height: 1.6;
+            color: var(--text-main);
+            white-space: pre-wrap;
+        }
+        .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+            color: var(--secondary);
+            margin-top: 20px;
+        }
+        .markdown-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .markdown-content li::before {
+            content: "> ";
+            color: var(--accent);
+        }
+        
+        /* Tech Table Styles */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+        }
+        .tech-table th, .tech-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--grid-line);
+        }
+        .tech-table th {
+            color: var(--primary);
+            text-transform: uppercase;
+            background: rgba(0, 243, 255, 0.05);
+        }
+        .tech-table tr:hover {
+            background: rgba(0, 243, 255, 0.02);
+        }
+        .tech-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid var(--grid-line);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        
+        /* Quality Cards */
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .quality-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--grid-line);
+            padding: 15px;
+            text-align: center;
+        }
+        .quality-value {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-family: var(--font-head);
+        }
+        .quality-label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -916,6 +1002,7 @@
     <div class="nav-bar">
         <button class="nav-btn active" onclick="switchTab('overview')">>> 战略总览(GENERAL)</button>
         <button class="nav-btn" onclick="switchTab('prediction')">>> 预测模型(MLCORE)</button>
+        <button class="nav-btn" onclick="switchTab('report')">>> 深度报告(REPORT)</button>
         <button class="nav-btn" onclick="switchTab('vault')">>> 静态图库 (Vault)</button>
     </div>
 
@@ -1092,6 +1179,99 @@
                         {% endfor %}
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="tab-report" class="tab-content" style="display:none;">
+            <div class="section-header">深度分析报告 (Deep Dive Analysis)</div>
+            
+            <div class="report-section">
+                <div class="report-title">分析摘要 (EXECUTIVE SUMMARY)</div>
+                <div id="markdown-container" class="markdown-content"></div>
+                <script>
+                    const mdContent = `{{ analysis_summary_md | safe }}`;
+                    const md = window.markdownit();
+                    document.getElementById('markdown-container').innerHTML = md.render(mdContent);
+                </script>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">数据质量指标 (DATA INTEGRITY)</div>
+                <div class="quality-grid">
+                    <div class="quality-card">
+                        <div class="quality-value">{{ data_quality.get('记录数量', 'N/A') }}</div>
+                        <div class="quality-label">记录数量</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">{{ data_quality.get('重复行数量', 'N/A') }}</div>
+                        <div class="quality-label">重复行数量</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">
+                            {{ data_quality.get('时间范围', {}).get('最早年份', '?') }} - 
+                            {{ data_quality.get('时间范围', {}).get('最晚年份', '?') }}
+                        </div>
+                        <div class="quality-label">时间范围</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">{{ data_quality.get('清洗摘要', {}).get('outliers_detected', 'N/A') }}</div>
+                        <div class="quality-label">检测异常点</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">聚类分析详情 (CLUSTER INTELLIGENCE)</div>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>标签</th>
+                            <th>规模</th>
+                            <th>平均销量</th>
+                            <th>热门类型</th>
+                            <th>热门平台</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cluster in ml_clusters_full %}
+                        <tr>
+                            <td><span class="tech-tag">{{ cluster.type }}</span></td>
+                            <td>{{ cluster.dominant_region or ('Cluster ' ~ cluster.cluster) }}</td>
+                            <td>{{ cluster.size }}</td>
+                            <td>{{ cluster.avg_global_sales | round(2) }}</td>
+                            <td>{{ cluster.top_genres | join(', ') }}</td>
+                            <td>{{ cluster.top_platforms | join(', ') }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">预测样本 (PREDICTION SAMPLES)</div>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>游戏名称</th>
+                            <th>真实销量</th>
+                            <th>预测销量</th>
+                            <th>误差</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sample in ml_predictions.get('regression_samples', [])[:10] %}
+                        <tr>
+                            <td>{{ sample.Name }}</td>
+                            <td>{{ sample.actual_sales | round(2) }}</td>
+                            <td>{{ sample.predicted_sales | round(2) }}</td>
+                            <td style="color: {{ 'var(--accent)' if (sample.actual_sales - sample.predicted_sales)|abs > 1 else 'var(--primary)' }}">
+                                {{ (sample.actual_sales - sample.predicted_sales) | round(2) }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
 

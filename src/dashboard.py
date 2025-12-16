@@ -140,16 +140,10 @@ class DashboardBuilder:
                 symbol_size=6,
             )
             .set_global_opts(
-                xaxis_opts=opts.AxisOpts(
-                    axislabel_opts=opts.LabelOpts(rotate=0)
-                ), 
-                legend_opts=opts.LegendOpts(
-                    is_show=False
-                ), 
+                xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=0)),
+                legend_opts=opts.LegendOpts(is_show=False),
                 tooltip_opts=opts.TooltipOpts(trigger="axis"),
-                datazoom_opts=[
-                    opts.DataZoomOpts(type_="inside")
-                ], 
+                datazoom_opts=[opts.DataZoomOpts(type_="inside")],
             )
         )
         grid = Grid(
@@ -598,7 +592,53 @@ class DashboardBuilder:
         quality_gap = metrics.get("quality_gap", {})
         cluster_insights = metrics.get("cluster_insights", [])
 
+        # --- NEW: Load additional artifacts ---
+        base_dir = self.output_path.parent
+
+        # 1. Analysis Summary Markdown
+        summary_md_path = base_dir / "reports" / "analysis_summary.md"
+        analysis_summary_content = ""
+        if summary_md_path.exists():
+            analysis_summary_content = summary_md_path.read_text(encoding="utf-8")
+
+        # 2. Data Quality JSON
+        quality_json_path = base_dir / "metrics" / "data_quality.json"
+        data_quality = {}
+        if quality_json_path.exists():
+            try:
+                data_quality = json.loads(quality_json_path.read_text(encoding="utf-8"))
+            except Exception:
+                pass
+
+        # 3. ML Clusters JSON
+        ml_clusters_path = base_dir / "metrics" / "ml_clusters.json"
+        ml_clusters_full = []
+        if ml_clusters_path.exists():
+            try:
+                ml_clusters_full = json.loads(
+                    ml_clusters_path.read_text(encoding="utf-8")
+                )
+            except Exception:
+                pass
+
+        # 4. ML Predictions JSON
+        ml_predictions_path = base_dir / "metrics" / "ml_predictions_sample.json"
+        ml_predictions = {}
+        if ml_predictions_path.exists():
+            try:
+                ml_predictions = json.loads(
+                    ml_predictions_path.read_text(encoding="utf-8")
+                )
+            except Exception:
+                pass
+        # --------------------------------------
+
         context = {}
+        context["analysis_summary_md"] = analysis_summary_content
+        context["data_quality"] = data_quality
+        context["ml_clusters_full"] = ml_clusters_full
+        context["ml_predictions"] = ml_predictions
+
         context["metric_cards"] = [
             {"title": "记录数量", "value": f"{metrics['row_count']:,}"},
             {

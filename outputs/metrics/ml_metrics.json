@@ -185,7 +185,7 @@
       "avg_global_sales": 2.3908313663781797,
       "avg_age": 18.27799632835038,
       "score_median": 7.6899999999999995,
-      "cluster_purity": 0.8564871896264281,
+      "cluster_purity": 0.8564871896264523,
       "top_genres": [
         "角色扮演",
         "动作",
@@ -208,7 +208,7 @@
       "avg_global_sales": 2.3357099080694583,
       "avg_age": 21.28600612870276,
       "score_median": 7.69,
-      "cluster_purity": 0.9432167071017162,
+      "cluster_purity": 0.9432167071017934,
       "top_genres": [
         "体育",
         "动作",
@@ -231,7 +231,7 @@
       "avg_global_sales": 0.6989243740419008,
       "avg_age": 16.807358201328565,
       "score_median": 7.675000000000001,
-      "cluster_purity": 0.9330180721065752,
+      "cluster_purity": 0.9330180721066469,
       "top_genres": [
         "体育",
         "动作",
@@ -254,7 +254,7 @@
       "avg_global_sales": 0.2954055013309672,
       "avg_age": 19.22661934338953,
       "score_median": 7.675000000000001,
-      "cluster_purity": 0.9733340766936045,
+      "cluster_purity": 0.9733340766935717,
       "top_genres": [
         "冒险",
         "角色扮演",
@@ -277,7 +277,7 @@
       "avg_global_sales": 0.14997251614676377,
       "avg_age": 17.40181393431359,
       "score_median": 7.654999999999999,
-      "cluster_purity": 0.9829633125426358,
+      "cluster_purity": 0.9829633125426108,
       "top_genres": [
         "体育",
         "动作",
@@ -346,7 +346,7 @@
       "anchor_platform": "All",
       "candidate": "Dust: An Elysian Tail",
       "candidate_platform": "All",
-      "similarity": 0.9640923241175515,
+      "similarity": 0.9640923241175516,
       "anchor_sales": 350.0,
       "candidate_sales": 1.0,
       "genre_match": true
@@ -356,7 +356,7 @@
       "anchor_platform": "All",
       "candidate": "Red Dead Redemption: Undead Nightmare",
       "candidate_platform": "All",
-      "similarity": 0.9638712121874122,
+      "similarity": 0.9638712121874123,
       "anchor_sales": 350.0,
       "candidate_sales": 2.0,
       "genre_match": true
@@ -366,7 +366,7 @@
       "anchor_platform": "All",
       "candidate": "Saints Row IV",
       "candidate_platform": "All",
-      "similarity": 0.9597598574677764,
+      "similarity": 0.9597598574677763,
       "anchor_sales": 350.0,
       "candidate_sales": 1.0,
       "genre_match": true
@@ -376,7 +376,7 @@
       "anchor_platform": "All",
       "candidate": "Alan Wake",
       "candidate_platform": "All",
-      "similarity": 0.959228690128394,
+      "similarity": 0.9592286901283942,
       "anchor_sales": 350.0,
       "candidate_sales": 3.2,
       "genre_match": true
@@ -396,7 +396,7 @@
       "anchor_platform": "All",
       "candidate": "Dead Island",
       "candidate_platform": "All",
-      "similarity": 0.9503013896047546,
+      "similarity": 0.9503013896047547,
       "anchor_sales": 350.0,
       "candidate_sales": 5.0,
       "genre_match": true
@@ -406,7 +406,7 @@
       "anchor_platform": "All",
       "candidate": "Sunset Overdrive",
       "candidate_platform": "All",
-      "similarity": 0.9501360034558511,
+      "similarity": 0.9501360034558514,
       "anchor_sales": 350.0,
       "candidate_sales": 1.9,
       "genre_match": true
@@ -416,7 +416,7 @@
       "anchor_platform": "All",
       "candidate": "Scarface: The World Is Yours",
       "candidate_platform": "All",
-      "similarity": 0.9470874460824187,
+      "similarity": 0.9470874460824186,
       "anchor_sales": 350.0,
       "candidate_sales": 2.0,
       "genre_match": true
@@ -426,7 +426,7 @@
       "anchor_platform": "All",
       "candidate": "60 Seconds!",
       "candidate_platform": "All",
-      "similarity": 0.9464136248845041,
+      "similarity": 0.9464136248845044,
       "anchor_sales": 350.0,
       "candidate_sales": 1.0,
       "genre_match": true
@@ -436,7 +436,7 @@
       "anchor_platform": "All",
       "candidate": "One Piece: Pirate Warriors 3",
       "candidate_platform": "All",
-      "similarity": 0.9455055027290314,
+      "similarity": 0.9455055027290318,
       "anchor_sales": 350.0,
       "candidate_sales": 1.46,
       "genre_match": true
@@ -446,7 +446,7 @@
       "anchor_platform": "All",
       "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9764176755279763,
+      "similarity": 0.9764176755279764,
       "anchor_sales": 220.0,
       "candidate_sales": 79.0,
       "genre_match": true
@@ -476,7 +476,7 @@
       "anchor_platform": "All",
       "candidate": "Lego Star Wars II: The Original Trilogy",
       "candidate_platform": "All",
-      "similarity": 0.9516517672826883,
+      "similarity": 0.9516517672826882,
       "anchor_sales": 220.0,
       "candidate_sales": 8.2,
       "genre_match": true
@@ -496,7 +496,7 @@
       "anchor_platform": "All",
       "candidate": "Horizon: Zero Dawn",
       "candidate_platform": "All",
-      "similarity": 0.9324734024151079,
+      "similarity": 0.9324734024151078,
       "anchor_sales": 220.0,
       "candidate_sales": 22.6,
       "genre_match": true
@@ -506,7 +506,7 @@
       "anchor_platform": "All",
       "candidate": "Lego Star Wars: The Complete Saga",
       "candidate_platform": "All",
-      "similarity": 0.9285565097586856,
+      "similarity": 0.9285565097586854,
       "anchor_sales": 220.0,
       "candidate_sales": 3.4,
       "genre_match": true
@@ -516,7 +516,7 @@
       "anchor_platform": "All",
       "candidate": "Grand Theft Auto: San Andreas",
       "candidate_platform": "All",
-      "similarity": 0.9257892720984664,
+      "similarity": 0.9257892720984663,
       "anchor_sales": 220.0,
       "candidate_sales": 27.5,
       "genre_match": true
@@ -526,7 +526,7 @@
       "anchor_platform": "All",
       "candidate": "Grand Theft Auto III",
       "candidate_platform": "All",
-      "similarity": 0.9075892078026042,
+      "similarity": 0.9075892078026043,
       "anchor_sales": 220.0,
       "candidate_sales": 14.5,
       "genre_match": true
@@ -536,7 +536,7 @@
       "anchor_platform": "All",
       "candidate": "The Last of Us",
       "candidate_platform": "PlayStation",
-      "similarity": 0.9064119585842183,
+      "similarity": 0.9064119585842184,
       "anchor_sales": 220.0,
       "candidate_sales": 8.15,
       "genre_match": true
@@ -546,7 +546,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Calcio Bit",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9993996320156027,
+      "similarity": 0.999399632015603,
       "anchor_sales": 82.9,
       "candidate_sales": 0.03,
       "genre_match": true
@@ -556,7 +556,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "True Swing Golf",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9993996320156027,
+      "similarity": 0.999399632015603,
       "anchor_sales": 82.9,
       "candidate_sales": 0.16,
       "genre_match": true
@@ -566,7 +566,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Punch-Out!!",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9986771915048969,
+      "similarity": 0.9986771915048968,
       "anchor_sales": 82.9,
       "candidate_sales": 0.27,
       "genre_match": true
@@ -576,7 +576,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Tennis: Power Tour",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9983796062997959,
+      "similarity": 0.998379606299796,
       "anchor_sales": 82.9,
       "candidate_sales": 0.52,
       "genre_match": true
@@ -586,7 +586,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Superstar Baseball",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9955429771016999,
+      "similarity": 0.9955429771017001,
       "anchor_sales": 82.9,
       "candidate_sales": 1.05,
       "genre_match": true
@@ -596,7 +596,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Golf: Advance Tour",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9950907955027224,
+      "similarity": 0.9950907955027225,
       "anchor_sales": 82.9,
       "candidate_sales": 0.45,
       "genre_match": true
@@ -606,7 +606,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Hamtaro: Ham-Ham Games",
       "candidate_platform": "Nintendo",
-      "similarity": 0.99233385477032,
+      "similarity": 0.9923338547703199,
       "anchor_sales": 82.9,
       "candidate_sales": 0.22,
       "genre_match": true
@@ -656,7 +656,7 @@
       "anchor_platform": "All",
       "candidate": "Grand Theft Auto V",
       "candidate_platform": "All",
-      "similarity": 0.9764176755279763,
+      "similarity": 0.9764176755279764,
       "anchor_sales": 79.0,
       "candidate_sales": 220.0,
       "genre_match": true
@@ -686,7 +686,7 @@
       "anchor_platform": "All",
       "candidate": "Ghost of Tsushima",
       "candidate_platform": "PlayStation",
-      "similarity": 0.9435841300113201,
+      "similarity": 0.9435841300113204,
       "anchor_sales": 79.0,
       "candidate_sales": 8.0,
       "genre_match": true
@@ -696,7 +696,7 @@
       "anchor_platform": "All",
       "candidate": "Hollow Knight",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9413153613522245,
+      "similarity": 0.9413153613522246,
       "anchor_sales": 79.0,
       "candidate_sales": 0.25,
       "genre_match": true
@@ -706,7 +706,7 @@
       "anchor_platform": "All",
       "candidate": "Marvel's Spider-Man",
       "candidate_platform": "PlayStation",
-      "similarity": 0.940703932450116,
+      "similarity": 0.9407039324501161,
       "anchor_sales": 79.0,
       "candidate_sales": 22.69,
       "genre_match": true
@@ -726,7 +726,7 @@
       "anchor_platform": "All",
       "candidate": "Resident Evil 4 (2023)",
       "candidate_platform": "All",
-      "similarity": 0.9361094930993201,
+      "similarity": 0.9361094930993199,
       "anchor_sales": 79.0,
       "candidate_sales": 11.1,
       "genre_match": true
@@ -736,7 +736,7 @@
       "anchor_platform": "All",
       "candidate": "Borderlands 2",
       "candidate_platform": "All",
-      "similarity": 0.9885595835226724,
+      "similarity": 0.9885595835226725,
       "anchor_sales": 75.0,
       "candidate_sales": 30.0,
       "genre_match": true
@@ -756,7 +756,7 @@
       "anchor_platform": "All",
       "candidate": "Overwatch",
       "candidate_platform": "PC",
-      "similarity": 0.9366646359175818,
+      "similarity": 0.9366646359175816,
       "anchor_sales": 75.0,
       "candidate_sales": 0.92,
       "genre_match": true
@@ -766,7 +766,7 @@
       "anchor_platform": "All",
       "candidate": "Tom Clancy's The Division",
       "candidate_platform": "All",
-      "similarity": 0.9326146508616027,
+      "similarity": 0.9326146508616028,
       "anchor_sales": 75.0,
       "candidate_sales": 10.0,
       "genre_match": true
@@ -786,7 +786,7 @@
       "anchor_platform": "All",
       "candidate": "BioShock Infinite",
       "candidate_platform": "PlayStation",
-      "similarity": 0.9290461487576902,
+      "similarity": 0.9290461487576903,
       "anchor_sales": 75.0,
       "candidate_sales": 1.82,
       "genre_match": true
@@ -796,7 +796,7 @@
       "anchor_platform": "All",
       "candidate": "Wolfenstein II: The New Colossus",
       "candidate_platform": "PlayStation",
-      "similarity": 0.9284891867332205,
+      "similarity": 0.9284891867332203,
       "anchor_sales": 75.0,
       "candidate_sales": 1.36,
       "genre_match": true
@@ -826,7 +826,7 @@
       "anchor_platform": "All",
       "candidate": "Far Cry 3",
       "candidate_platform": "All",
-      "similarity": 0.9213156417180484,
+      "similarity": 0.9213156417180483,
       "anchor_sales": 75.0,
       "candidate_sales": 10.0,
       "genre_match": true
@@ -846,7 +846,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Kart Wii",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9470186176081498,
+      "similarity": 0.9470186176081496,
       "anchor_sales": 69.56,
       "candidate_sales": 37.38,
       "genre_match": true
@@ -856,7 +856,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Kart DS",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9321315180423541,
+      "similarity": 0.932131518042354,
       "anchor_sales": 69.56,
       "candidate_sales": 23.6,
       "genre_match": true
@@ -876,7 +876,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Kart: Super Circuit",
       "candidate_platform": "Nintendo",
-      "similarity": 0.8826456705292987,
+      "similarity": 0.8826456705292984,
       "anchor_sales": 69.56,
       "candidate_sales": 5.91,
       "genre_match": true
@@ -896,7 +896,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "F-Zero GX",
       "candidate_platform": "Nintendo",
-      "similarity": 0.8699314627464717,
+      "similarity": 0.8699314627464716,
       "anchor_sales": 69.56,
       "candidate_sales": 0.65,
       "genre_match": true
@@ -906,7 +906,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "bit Generations: Dotstream",
       "candidate_platform": "Nintendo",
-      "similarity": 0.8612447974316289,
+      "similarity": 0.8612447974316286,
       "anchor_sales": 69.56,
       "candidate_sales": 0.01,
       "genre_match": true
@@ -916,7 +916,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "F-Zero: Maximum Velocity",
       "candidate_platform": "Nintendo",
-      "similarity": 0.8612266833866578,
+      "similarity": 0.8612266833866575,
       "anchor_sales": 69.56,
       "candidate_sales": 1.05,
       "genre_match": true
@@ -926,7 +926,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Mario Kart 7",
       "candidate_platform": "Nintendo",
-      "similarity": 0.8607179081710044,
+      "similarity": 0.8607179081710041,
       "anchor_sales": 69.56,
       "candidate_sales": 18.99,
       "genre_match": true

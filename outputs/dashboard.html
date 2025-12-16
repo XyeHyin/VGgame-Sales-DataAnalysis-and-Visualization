@@ -10,6 +10,7 @@
         rel="stylesheet">
     <script src="https://assets.pyecharts.org/assets/v5/echarts.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
 
     <style>
         :root {
@@ -883,6 +884,91 @@
                 transform: translate(-50%, -50%) scale(1.1);
             }
         }
+        /* New Styles for Report Tab */
+        .report-section {
+            background: var(--bg-panel);
+            border: 1px solid var(--grid-line);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .report-title {
+            font-family: var(--font-head);
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--grid-line);
+            padding-bottom: 5px;
+        }
+        .markdown-content {
+            font-family: var(--font-code);
+            line-height: 1.6;
+            color: var(--text-main);
+            white-space: pre-wrap;
+        }
+        .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+            color: var(--secondary);
+            margin-top: 20px;
+        }
+        .markdown-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .markdown-content li::before {
+            content: "> ";
+            color: var(--accent);
+        }
+        
+        /* Tech Table Styles */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+        }
+        .tech-table th, .tech-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--grid-line);
+        }
+        .tech-table th {
+            color: var(--primary);
+            text-transform: uppercase;
+            background: rgba(0, 243, 255, 0.05);
+        }
+        .tech-table tr:hover {
+            background: rgba(0, 243, 255, 0.02);
+        }
+        .tech-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border: 1px solid var(--grid-line);
+            border-radius: 2px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        
+        /* Quality Cards */
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .quality-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--grid-line);
+            padding: 15px;
+            text-align: center;
+        }
+        .quality-value {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-family: var(--font-head);
+        }
+        .quality-label {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -905,7 +991,7 @@
             style="position:absolute; width:100%; height:100%; background: linear-gradient(0deg, transparent 95%, var(--primary) 100%); opacity:0.1; animation: scan 3s infinite linear;">
         </div>
         <div class="hero-title">全球电子游戏销量交互式仪表盘</div>
-        <div class="hero-subtitle">INTELLIGENCE UNIT // 更新于: 2025-12-16 20:01</div>
+        <div class="hero-subtitle">INTELLIGENCE UNIT // 更新于: 2025-12-16 20:30</div>
 
         <div class="carousel-container">
             <div class="carousel-track" id="carousel-track">
@@ -916,6 +1002,7 @@
     <div class="nav-bar">
         <button class="nav-btn active" onclick="switchTab('overview')">>> 战略总览(GENERAL)</button>
         <button class="nav-btn" onclick="switchTab('prediction')">>> 预测模型(MLCORE)</button>
+        <button class="nav-btn" onclick="switchTab('report')">>> 深度报告(REPORT)</button>
         <button class="nav-btn" onclick="switchTab('vault')">>> 静态图库 (Vault)</button>
     </div>
 
@@ -957,11 +1044,11 @@
     
 </head>
 <body >
-    <div id="4082b2bc85db41e984ec4ccefe55c72a" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="05285b44a4d144188136a952cca2b65f" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_4082b2bc85db41e984ec4ccefe55c72a = echarts.init(
-            document.getElementById('4082b2bc85db41e984ec4ccefe55c72a'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_4082b2bc85db41e984ec4ccefe55c72a = {
+        var chart_05285b44a4d144188136a952cca2b65f = echarts.init(
+            document.getElementById('05285b44a4d144188136a952cca2b65f'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_05285b44a4d144188136a952cca2b65f = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -979,16 +1066,46 @@
             "name": "\u6d41\u5411",
             "data": [
                 {
-                    "name": "\u5c04\u51fb"
+                    "name": "PlayStation \u638c\u673a"
                 },
                 {
-                    "name": "\u6d3e\u5bf9"
+                    "name": "\u96c5\u8fbe\u5229\u5e73\u53f0"
+                },
+                {
+                    "name": "\u7ade\u901f"
+                },
+                {
+                    "name": "\u52a8\u4f5c\u5192\u9669"
+                },
+                {
+                    "name": "\u5927\u578b\u591a\u4eba"
                 },
                 {
                     "name": "\u590d\u53e4\u5bb6\u7528\u7535\u8111"
                 },
                 {
+                    "name": "\u683c\u6597"
+                },
+                {
                     "name": "\u5168\u5e73\u53f0"
+                },
+                {
+                    "name": "\u4efb\u5929\u5802\u5bb6\u65cf"
+                },
+                {
+                    "name": "NEC \u5e73\u53f0"
+                },
+                {
+                    "name": "\u5317\u7f8e\u9500\u91cf"
+                },
+                {
+                    "name": "\u65e5\u672c\u9500\u91cf"
+                },
+                {
+                    "name": "\u677e\u4e0b\u5e73\u53f0"
+                },
+                {
+                    "name": "\u4e2a\u4eba\u8ba1\u7b97\u673a"
                 },
                 {
                     "name": "\u4f53\u80b2"
@@ -997,103 +1114,73 @@
                     "name": "\u5e73\u53f0\u8df3\u8dc3"
                 },
                 {
-                    "name": "\u52a8\u4f5c\u5192\u9669"
-                },
-                {
-                    "name": "\u65e5\u672c\u9500\u91cf"
-                },
-                {
-                    "name": "\u5192\u9669"
-                },
-                {
-                    "name": "\u7ade\u901f"
-                },
-                {
-                    "name": "\u52a8\u4f5c"
-                },
-                {
-                    "name": "\u7b56\u7565"
-                },
-                {
-                    "name": "\u5176\u4ed6"
-                },
-                {
-                    "name": "\u684c\u6e38"
-                },
-                {
-                    "name": "\u97f3\u4e50\u8282\u594f"
-                },
-                {
-                    "name": "\u4efb\u5929\u5802\u5bb6\u65cf"
-                },
-                {
-                    "name": "\u4e16\u5609\u5e73\u53f0"
-                },
-                {
-                    "name": "\u6a21\u62df"
-                },
-                {
-                    "name": "\u89c6\u89c9\u5c0f\u8bf4"
-                },
-                {
-                    "name": "\u5927\u578b\u591a\u4eba"
-                },
-                {
-                    "name": "\u5317\u7f8e\u9500\u91cf"
-                },
-                {
-                    "name": "NEC \u5e73\u53f0"
-                },
-                {
-                    "name": "\u683c\u6597"
-                },
-                {
-                    "name": "\u96c5\u8fbe\u5229\u5e73\u53f0"
-                },
-                {
                     "name": "\u5176\u4ed6\u5730\u533a\u9500\u91cf"
-                },
-                {
-                    "name": "\u5176\u4ed6\u5e73\u53f0"
-                },
-                {
-                    "name": "SNK \u5e73\u53f0"
-                },
-                {
-                    "name": "PlayStation \u5bb6\u65cf"
-                },
-                {
-                    "name": "PlayStation \u638c\u673a"
-                },
-                {
-                    "name": "\u79fb\u52a8 / \u4e91\u6e38\u620f\u5e73\u53f0"
-                },
-                {
-                    "name": "\u6559\u80b2"
-                },
-                {
-                    "name": "\u4e2a\u4eba\u8ba1\u7b97\u673a"
-                },
-                {
-                    "name": "Xbox \u5bb6\u65cf"
-                },
-                {
-                    "name": "\u89d2\u8272\u626e\u6f14"
-                },
-                {
-                    "name": "\u76ca\u667a"
                 },
                 {
                     "name": "\u6c99\u76d2"
                 },
                 {
-                    "name": "\u4e07\u4ee3\u5e73\u53f0"
+                    "name": "\u6a21\u62df"
                 },
                 {
-                    "name": "\u677e\u4e0b\u5e73\u53f0"
+                    "name": "\u76ca\u667a"
                 },
                 {
                     "name": "\u6b27\u6d32\u9500\u91cf"
+                },
+                {
+                    "name": "\u5176\u4ed6\u5e73\u53f0"
+                },
+                {
+                    "name": "Xbox \u5bb6\u65cf"
+                },
+                {
+                    "name": "\u5176\u4ed6"
+                },
+                {
+                    "name": "\u89d2\u8272\u626e\u6f14"
+                },
+                {
+                    "name": "SNK \u5e73\u53f0"
+                },
+                {
+                    "name": "\u89c6\u89c9\u5c0f\u8bf4"
+                },
+                {
+                    "name": "\u5c04\u51fb"
+                },
+                {
+                    "name": "\u4e16\u5609\u5e73\u53f0"
+                },
+                {
+                    "name": "\u6559\u80b2"
+                },
+                {
+                    "name": "\u7b56\u7565"
+                },
+                {
+                    "name": "\u52a8\u4f5c"
+                },
+                {
+                    "name": "\u684c\u6e38"
+                },
+                {
+                    "name": "PlayStation \u5bb6\u65cf"
+                },
+                {
+                    "name": "\u5192\u9669"
+                },
+                {
+                    "name": "\u6d3e\u5bf9"
+                },
+                {
+                    "name": "\u79fb\u52a8 / \u4e91\u6e38\u620f\u5e73\u53f0"
+                },
+                {
+                    "name": "\u4e07\u4ee3\u5e73\u53f0"
+                },
+                {
+                    "name": "\u97f3\u4e50\u8282\u594f"
                 }
             ],
             "links": [
@@ -2313,9 +2400,9 @@
         }
     ]
 };
-        chart_4082b2bc85db41e984ec4ccefe55c72a.setOption(option_4082b2bc85db41e984ec4ccefe55c72a);
+        chart_05285b44a4d144188136a952cca2b65f.setOption(option_05285b44a4d144188136a952cca2b65f);
             window.addEventListener('resize', function(){
-                chart_4082b2bc85db41e984ec4ccefe55c72a.resize();
+                chart_05285b44a4d144188136a952cca2b65f.resize();
             })
     </script>
 </body>
@@ -2336,11 +2423,11 @@
     
 </head>
 <body >
-    <div id="74ff26ee9ba8470c81423673507b75ce" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="f6f479011d4a4df69dd82130ffea266d" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_74ff26ee9ba8470c81423673507b75ce = echarts.init(
-            document.getElementById('74ff26ee9ba8470c81423673507b75ce'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_74ff26ee9ba8470c81423673507b75ce = {
+        var chart_f6f479011d4a4df69dd82130ffea266d = echarts.init(
+            document.getElementById('f6f479011d4a4df69dd82130ffea266d'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_f6f479011d4a4df69dd82130ffea266d = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -4094,9 +4181,9 @@
     ],
     "color": []
 };
-        chart_74ff26ee9ba8470c81423673507b75ce.setOption(option_74ff26ee9ba8470c81423673507b75ce);
+        chart_f6f479011d4a4df69dd82130ffea266d.setOption(option_f6f479011d4a4df69dd82130ffea266d);
             window.addEventListener('resize', function(){
-                chart_74ff26ee9ba8470c81423673507b75ce.resize();
+                chart_f6f479011d4a4df69dd82130ffea266d.resize();
             })
     </script>
 </body>
@@ -4121,11 +4208,11 @@
     
 </head>
 <body >
-    <div id="e7952dbe69a047a58eb087fe3910ba00" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="b10694b7515a4227b44cf8c77c6743e4" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_e7952dbe69a047a58eb087fe3910ba00 = echarts.init(
-            document.getElementById('e7952dbe69a047a58eb087fe3910ba00'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_e7952dbe69a047a58eb087fe3910ba00 = {
+        var chart_b10694b7515a4227b44cf8c77c6743e4 = echarts.init(
+            document.getElementById('b10694b7515a4227b44cf8c77c6743e4'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_b10694b7515a4227b44cf8c77c6743e4 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -4596,9 +4683,9 @@
     ],
     "color": []
 };
-        chart_e7952dbe69a047a58eb087fe3910ba00.setOption(option_e7952dbe69a047a58eb087fe3910ba00);
+        chart_b10694b7515a4227b44cf8c77c6743e4.setOption(option_b10694b7515a4227b44cf8c77c6743e4);
             window.addEventListener('resize', function(){
-                chart_e7952dbe69a047a58eb087fe3910ba00.resize();
+                chart_b10694b7515a4227b44cf8c77c6743e4.resize();
             })
     </script>
 </body>
@@ -4638,11 +4725,11 @@
     
 </head>
 <body >
-    <div id="506e18872b4a4b7ebb1c4b7b0f2f0cc3" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="fac6e9ae42c549248d8365b2e6b2c7d3" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_506e18872b4a4b7ebb1c4b7b0f2f0cc3 = echarts.init(
-            document.getElementById('506e18872b4a4b7ebb1c4b7b0f2f0cc3'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_506e18872b4a4b7ebb1c4b7b0f2f0cc3 = {
+        var chart_fac6e9ae42c549248d8365b2e6b2c7d3 = echarts.init(
+            document.getElementById('fac6e9ae42c549248d8365b2e6b2c7d3'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_fac6e9ae42c549248d8365b2e6b2c7d3 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -5834,9 +5921,9 @@
     ],
     "color": []
 };
-        chart_506e18872b4a4b7ebb1c4b7b0f2f0cc3.setOption(option_506e18872b4a4b7ebb1c4b7b0f2f0cc3);
+        chart_fac6e9ae42c549248d8365b2e6b2c7d3.setOption(option_fac6e9ae42c549248d8365b2e6b2c7d3);
             window.addEventListener('resize', function(){
-                chart_506e18872b4a4b7ebb1c4b7b0f2f0cc3.resize();
+                chart_fac6e9ae42c549248d8365b2e6b2c7d3.resize();
             })
     </script>
 </body>
@@ -5882,11 +5969,11 @@
     
 </head>
 <body >
-    <div id="f963f22edd92495ba545026fd7538466" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="053ada113fce47ef8838006574d76339" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_f963f22edd92495ba545026fd7538466 = echarts.init(
-            document.getElementById('f963f22edd92495ba545026fd7538466'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_f963f22edd92495ba545026fd7538466 = {
+        var chart_053ada113fce47ef8838006574d76339 = echarts.init(
+            document.getElementById('053ada113fce47ef8838006574d76339'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_053ada113fce47ef8838006574d76339 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -5952,7 +6039,7 @@
                     "selected": false
                 },
                 {
-                    "name": "PlayStation \u638c\u673a",
+                    "name": "PlayStation Portable",
                     "value": 2.11,
                     "selected": false
                 },
@@ -6104,9 +6191,9 @@
         }
     ]
 };
-        chart_f963f22edd92495ba545026fd7538466.setOption(option_f963f22edd92495ba545026fd7538466);
+        chart_053ada113fce47ef8838006574d76339.setOption(option_053ada113fce47ef8838006574d76339);
             window.addEventListener('resize', function(){
-                chart_f963f22edd92495ba545026fd7538466.resize();
+                chart_053ada113fce47ef8838006574d76339.resize();
             })
     </script>
 </body>
@@ -6128,7 +6215,7 @@
                         
                         <div class="list-item">🕹️ 个人计算机 占比 9.2%</div>
                         
-                        <div class="list-item">🕹️ PlayStation 掌机 占比 2.1%</div>
+                        <div class="list-item">🕹️ PlayStation Portable 占比 2.1%</div>
                         
                         <div class="list-item">🕹️ 世嘉平台 占比 0.6%</div>
                         
@@ -6152,11 +6239,11 @@
     
 </head>
 <body >
-    <div id="5be5cf9e5ac1442a8f0b6daa24ad24b7" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="affea3a3c0f84c418dead74d2b8323d8" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_5be5cf9e5ac1442a8f0b6daa24ad24b7 = echarts.init(
-            document.getElementById('5be5cf9e5ac1442a8f0b6daa24ad24b7'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_5be5cf9e5ac1442a8f0b6daa24ad24b7 = {
+        var chart_affea3a3c0f84c418dead74d2b8323d8 = echarts.init(
+            document.getElementById('affea3a3c0f84c418dead74d2b8323d8'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_affea3a3c0f84c418dead74d2b8323d8 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6370,9 +6457,9 @@
     ],
     "color": []
 };
-        chart_5be5cf9e5ac1442a8f0b6daa24ad24b7.setOption(option_5be5cf9e5ac1442a8f0b6daa24ad24b7);
+        chart_affea3a3c0f84c418dead74d2b8323d8.setOption(option_affea3a3c0f84c418dead74d2b8323d8);
             window.addEventListener('resize', function(){
-                chart_5be5cf9e5ac1442a8f0b6daa24ad24b7.resize();
+                chart_affea3a3c0f84c418dead74d2b8323d8.resize();
             })
     </script>
 </body>
@@ -6422,11 +6509,11 @@
     
 </head>
 <body >
-    <div id="ce5825e120394c2292d5db2b04b91c8b" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="5912c40682e04d508ccb3f1e6fdb934c" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_ce5825e120394c2292d5db2b04b91c8b = echarts.init(
-            document.getElementById('ce5825e120394c2292d5db2b04b91c8b'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_ce5825e120394c2292d5db2b04b91c8b = {
+        var chart_5912c40682e04d508ccb3f1e6fdb934c = echarts.init(
+            document.getElementById('5912c40682e04d508ccb3f1e6fdb934c'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_5912c40682e04d508ccb3f1e6fdb934c = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6617,9 +6704,9 @@
         }
     ]
 };
-        chart_ce5825e120394c2292d5db2b04b91c8b.setOption(option_ce5825e120394c2292d5db2b04b91c8b);
+        chart_5912c40682e04d508ccb3f1e6fdb934c.setOption(option_5912c40682e04d508ccb3f1e6fdb934c);
             window.addEventListener('resize', function(){
-                chart_ce5825e120394c2292d5db2b04b91c8b.resize();
+                chart_5912c40682e04d508ccb3f1e6fdb934c.resize();
             })
     </script>
 </body>
@@ -6649,11 +6736,11 @@
     
 </head>
 <body >
-    <div id="17a42d3f8786466e92affddbb0c56472" class="chart-container" style="width:100%; height:100%; "></div>
+    <div id="d7d204870d65415c8923078e3f466674" class="chart-container" style="width:100%; height:100%; "></div>
     <script>
-        var chart_17a42d3f8786466e92affddbb0c56472 = echarts.init(
-            document.getElementById('17a42d3f8786466e92affddbb0c56472'), 'dark', {renderer: 'canvas', locale: 'ZH'});
-        var option_17a42d3f8786466e92affddbb0c56472 = {
+        var chart_d7d204870d65415c8923078e3f466674 = echarts.init(
+            document.getElementById('d7d204870d65415c8923078e3f466674'), 'dark', {renderer: 'canvas', locale: 'ZH'});
+        var option_d7d204870d65415c8923078e3f466674 = {
     "animation": true,
     "animationThreshold": 2000,
     "animationDuration": 1000,
@@ -6857,9 +6944,9 @@
     ],
     "color": []
 };
-        chart_17a42d3f8786466e92affddbb0c56472.setOption(option_17a42d3f8786466e92affddbb0c56472);
+        chart_d7d204870d65415c8923078e3f466674.setOption(option_d7d204870d65415c8923078e3f466674);
             window.addEventListener('resize', function(){
-                chart_17a42d3f8786466e92affddbb0c56472.resize();
+                chart_d7d204870d65415c8923078e3f466674.resize();
             })
     </script>
 </body>
@@ -6946,6 +7033,299 @@
                         
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div id="tab-report" class="tab-content" style="display:none;">
+            <div class="section-header">深度分析报告 (Deep Dive Analysis)</div>
+            
+            <div class="report-section">
+                <div class="report-title">分析摘要 (EXECUTIVE SUMMARY)</div>
+                <div id="markdown-container" class="markdown-content"></div>
+                <script>
+                    const mdContent = `# 全球电子游戏销量分析简报
+
+- 数据记录数：21,618
+- 时间范围：1970 - 2025
+- 累计销量：16894.45 百万套
+- 销量基尼系数：0.779
+
+## 区域销量占比
+- 北美销量：50.76%
+- 欧洲销量：29.06%
+- 日本销量：10.31%
+- 其他地区销量：9.87%
+
+## 市场动能
+- CAGR：-1.35%
+- 波动率：161.71%
+- 近五年年度发布密度：51.8 款/年
+- 高光年份：1980: 898.7%, 1985: 596.4%, 1982: 227.3%
+
+## 销量分层表现
+- 1-5M：平均 2.10 百万套，lift 2.69
+- 10-20M：平均 13.96 百万套，lift 17.86
+- 20M+：平均 40.70 百万套，lift 52.09
+- 5-10M：平均 7.22 百万套，lift 9.24
+- <1M：平均 0.22 百万套，lift 0.29
+
+## 热门游戏类型（前五）
+- 动作冒险：2246.46 百万套
+- 射击：2211.46 百万套
+- 角色扮演：2181.92 百万套
+- 体育：1855.78 百万套
+- 动作：1771.83 百万套
+
+## 发行商综合竞争力（前五）
+- Nintendo：竞争力得分 0.95
+- Electronic Arts：竞争力得分 0.53
+- Activision：竞争力得分 0.53
+- Capcom：竞争力得分 0.43
+- Ubisoft：竞争力得分 0.40
+
+## 媒体 VS 玩家评分差异
+- 评分与销量相关性：0.15
+- 平均评分差：-0.73，标准差 0.31
+
+## 区域偏好集群（Top3）
+- 日本销量主导：样本 8818，均值 1.25 百万套
+- 欧洲销量主导：样本 5612，均值 0.59 百万套
+- 北美销量主导：样本 7188，均值 0.36 百万套`;
+                    const md = window.markdownit();
+                    document.getElementById('markdown-container').innerHTML = md.render(mdContent);
+                </script>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">数据质量指标 (DATA INTEGRITY)</div>
+                <div class="quality-grid">
+                    <div class="quality-card">
+                        <div class="quality-value">21618</div>
+                        <div class="quality-label">记录数量</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">0</div>
+                        <div class="quality-label">重复行数量</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">
+                            1970 - 
+                            2025
+                        </div>
+                        <div class="quality-label">时间范围</div>
+                    </div>
+                    <div class="quality-card">
+                        <div class="quality-value">1081</div>
+                        <div class="quality-label">检测异常点</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">聚类分析详情 (CLUSTER INTELLIGENCE)</div>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>类型</th>
+                            <th>标签</th>
+                            <th>规模</th>
+                            <th>平均销量</th>
+                            <th>热门类型</th>
+                            <th>热门平台</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td><span class="tech-tag">regional</span></td>
+                            <td>日本销量</td>
+                            <td>4877</td>
+                            <td>2.17</td>
+                            <td>角色扮演, 动作</td>
+                            <td>PC, All</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">regional</span></td>
+                            <td>欧洲销量</td>
+                            <td>5607</td>
+                            <td>0.59</td>
+                            <td>动作, 体育</td>
+                            <td>PlayStation, Nintendo</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">regional</span></td>
+                            <td>北美销量</td>
+                            <td>7193</td>
+                            <td>0.36</td>
+                            <td>体育, 动作</td>
+                            <td>Nintendo, Xbox</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">regional</span></td>
+                            <td>日本销量</td>
+                            <td>3941</td>
+                            <td>0.11</td>
+                            <td>冒险, 角色扮演</td>
+                            <td>Nintendo, PlayStation</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">behavioral</span></td>
+                            <td>Cluster 4</td>
+                            <td>3813</td>
+                            <td>2.39</td>
+                            <td>角色扮演, 动作, 体育</td>
+                            <td>Nintendo, PlayStation</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">behavioral</span></td>
+                            <td>Cluster 3</td>
+                            <td>979</td>
+                            <td>2.34</td>
+                            <td>体育, 动作, 角色扮演</td>
+                            <td>PlayStation, Nintendo</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">behavioral</span></td>
+                            <td>Cluster 2</td>
+                            <td>3914</td>
+                            <td>0.7</td>
+                            <td>体育, 动作, 射击</td>
+                            <td>PlayStation, Nintendo</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">behavioral</span></td>
+                            <td>Cluster 0</td>
+                            <td>5635</td>
+                            <td>0.3</td>
+                            <td>冒险, 角色扮演, 动作</td>
+                            <td>PC, Nintendo</td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="tech-tag">behavioral</span></td>
+                            <td>Cluster 1</td>
+                            <td>7277</td>
+                            <td>0.15</td>
+                            <td>体育, 动作, 其他</td>
+                            <td>Nintendo, PlayStation</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="report-section">
+                <div class="report-title">预测样本 (PREDICTION SAMPLES)</div>
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>游戏名称</th>
+                            <th>真实销量</th>
+                            <th>预测销量</th>
+                            <th>误差</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr>
+                            <td>Smart Kid's Mega Game Mix</td>
+                            <td>0.01</td>
+                            <td>0.25</td>
+                            <td style="color: var(--primary)">
+                                -0.24
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Stella Glow</td>
+                            <td>0.26</td>
+                            <td>0.23</td>
+                            <td style="color: var(--primary)">
+                                0.03
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Fit in Six</td>
+                            <td>0.11</td>
+                            <td>0.4</td>
+                            <td style="color: var(--primary)">
+                                -0.29
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Monster House</td>
+                            <td>0.09</td>
+                            <td>0.33</td>
+                            <td style="color: var(--primary)">
+                                -0.24
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Batman: Vengeance</td>
+                            <td>0.55</td>
+                            <td>0.42</td>
+                            <td style="color: var(--primary)">
+                                0.13
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Dreamworks Madagascar Kartz</td>
+                            <td>0.37</td>
+                            <td>0.39</td>
+                            <td style="color: var(--primary)">
+                                -0.02
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Sniper: Art of Victory</td>
+                            <td>0.49</td>
+                            <td>1.04</td>
+                            <td style="color: var(--primary)">
+                                -0.55
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Spider-Man</td>
+                            <td>0.53</td>
+                            <td>0.44</td>
+                            <td style="color: var(--primary)">
+                                0.09
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Doraemon: Shin Nobita no Daimakyou Peko to 5-nin no Tankenta</td>
+                            <td>0.04</td>
+                            <td>0.39</td>
+                            <td style="color: var(--primary)">
+                                -0.35
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Legend of the Dragon</td>
+                            <td>0.06</td>
+                            <td>0.27</td>
+                            <td style="color: var(--primary)">
+                                -0.21
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
 
