@@ -76,10 +76,6 @@ python run.py
 - 计算多层指标：区域份额/HHI、平台生命周期动能、销量/评分分层、评分-销量相关性、集群偏好、Gini、CAGR/波动率等。
 - 训练多模型组合：随机森林回归 + 分位回归带 + HistGB 备选模型、梯度提升命中分类 + 概率校准、区域 & 行为聚类，以及相似游戏推荐。
 - 批量导出 20 张 Matplotlib/Plotly 图表（含季度日历、六边形密度、生命周期动能、区域扩散、生命周期瀑布、桑基流等）、中文 Markdown 摘要与交互式 HTML 仪表盘（Pyecharts 增强卡片）。
-从 VGChartz 爬取最新榜单，可执行：
-```powershell
-python -m src.scrape_vgchartz --pages 1 --page-size 10000 --proxy-ignore
-```
 该脚本会自动请求新版 `games.php` 列表并启用北美/PAL/日本/"Other" 分栏及总销量字段，输出到 `outputs/vgchartz_scrape.csv`。若站点前端再次变动，可使用 `--base-url` 覆盖目标地址，`--dump-html-dir` 则会保留原始 HTML 以便调试。
   
 ## 3. 配置说明
