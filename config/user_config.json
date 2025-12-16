@@ -16,6 +16,6 @@
     "page_title": "全球电子游戏销量交互式仪表盘",
     "hero_title": "全球电子游戏销量交互式仪表盘",
     "hero_subtitle": "覆盖 1970-2025 年度主流游戏的销量表现、区域差异与发行格局",
-    "data_source": "数据来源：VGChartz 实时抓取（vgchartz_scrape.csv）"
+    "data_source": "数据来源：VGChartz"
   }
 }

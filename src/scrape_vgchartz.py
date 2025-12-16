@@ -126,7 +126,7 @@ class VGChartzScraper:
 
     def run(self) -> Path:
         total_rows = 0
-        max_consecutive_empty = 10  # Increased tolerance
+        max_consecutive_empty = 10
         max_page_retries = 3
         genres = self.options.genres or DEFAULT_GENRES
 
@@ -161,8 +161,6 @@ class VGChartzScraper:
                             self._dump_html(
                                 html, page, suffix=f"_{genre_slug}_retry_{retry+1}"
                             )
-
-                            # Exponential backoff for empty page retry
                             sleep_time = (
                                 self.options.sleep_seconds * (retry + 1)
                             ) + random.uniform(2.0, 5.0)
@@ -196,8 +194,6 @@ class VGChartzScraper:
                             record["Genre"] = genre
                             writer.writerow(record)
                             total_rows += 1
-
-                    # 随机休眠以避免反爬
                     sleep_time = self.options.sleep_seconds + random.uniform(1.0, 4.0)
                     LOGGER.debug("分类 %s 休眠 %.2f 秒...", genre, sleep_time)
                     time.sleep(sleep_time)
@@ -368,10 +364,8 @@ class VGChartzScraper:
                     if colspan > 1:
                         headers.extend(["Game"] * (colspan - 1))
                     continue
-                # Handle Console header specifically if needed, though usually it's text
                 headers.extend([label or f"col_{len(headers)}"] * colspan)
 
-            # Validate critical headers
             if "Console" not in headers:
                 LOGGER.warning(
                     "警告：未在表头中找到 'Console' 列。当前表头: %s", headers

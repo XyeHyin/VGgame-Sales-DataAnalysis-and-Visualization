@@ -51,7 +51,6 @@ def run_cleaning(
     执行数据清洗流程
     """
     if not input_path.exists():
-        # 如果未在指定位置找到，尝试在输出目录中查找同名文件作为回退
         alt_path = OUTPUT_DIR / input_path.name
         if alt_path.exists():
             LOGGER.warning("未在 %s 找到原始数据，改为使用：%s", input_path, alt_path)
