@@ -51,8 +51,15 @@ def run_cleaning(
     执行数据清洗流程
     """
     if not input_path.exists():
-        LOGGER.error("原始数据文件不存在：%s", input_path)
-        sys.exit(1)
+        # 如果未在指定位置找到，尝试在输出目录中查找同名文件作为回退
+        alt_path = OUTPUT_DIR / input_path.name
+        if alt_path.exists():
+            LOGGER.warning("未在 %s 找到原始数据，改为使用：%s", input_path, alt_path)
+            input_path = alt_path
+        else:
+            LOGGER.error("原始数据文件不存在：%s", input_path)
+            LOGGER.error("回退路径也未找到：%s", alt_path)
+            sys.exit(1)
 
     LOGGER.info("读取原始数据：%s", input_path)
     raw_df = pd.read_csv(input_path)

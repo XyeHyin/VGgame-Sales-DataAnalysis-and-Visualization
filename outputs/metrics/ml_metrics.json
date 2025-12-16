@@ -1,52 +1,52 @@
 {
   "regression": {
     "model": "LGBMRegressor",
-    "mae": 0.8207253562383956,
-    "rmse": 5.672045467945466,
-    "r2": 0.09193234742242007,
-    "n_estimators_used": 54
+    "mae": 0.7651201223566517,
+    "rmse": 2.3169284404166017,
+    "r2": 0.22836024154750223,
+    "n_estimators_used": 45
   },
   "regression_quantiles": {
-    "p10_mean": 0.08053972065029041,
-    "p50_mean": 0.3678131423243123,
-    "p90_mean": 1.655284537639475,
-    "p10_median": 0.04099302533713503,
-    "p50_median": 0.19254552548014991,
-    "p90_median": 0.92033759543276
+    "p10_mean": 0.06628852567061343,
+    "p50_mean": 0.3397173082150689,
+    "p90_mean": 1.5978802080237164,
+    "p10_median": 0.03793329002634406,
+    "p50_median": 0.18557875984985395,
+    "p90_median": 0.8603380192170583
   },
   "classification": {
     "model": "LGBMClassifier",
-    "accuracy": 0.8686401480111008,
-    "precision": 0.7157190635451505,
-    "recall": 0.30703012912482064,
-    "f1": 0.42971887550200805,
+    "accuracy": 0.8677150786308974,
+    "precision": 0.7208480565371025,
+    "recall": 0.2926829268292683,
+    "f1": 0.4163265306122449,
     "hit_threshold": 1.0,
     "support": 4324,
-    "brier": 0.09866869609634599,
+    "brier": 0.09680047728365535,
     "classification_report": {
       "0": {
-        "precision": 0.88,
-        "recall": 0.9765646539840088,
-        "f1-score": 0.9257710402509148,
+        "precision": 0.8780004949269983,
+        "recall": 0.9782189137027847,
+        "f1-score": 0.9254042775169535,
         "support": 3627.0
       },
       "1": {
-        "precision": 0.7157190635451505,
-        "recall": 0.30703012912482064,
-        "f1-score": 0.42971887550200805,
+        "precision": 0.7208480565371025,
+        "recall": 0.2926829268292683,
+        "f1-score": 0.4163265306122449,
         "support": 697.0
       },
-      "accuracy": 0.8686401480111008,
+      "accuracy": 0.8677150786308974,
       "macro avg": {
-        "precision": 0.7978595317725752,
-        "recall": 0.6417973915544147,
-        "f1-score": 0.6777449578764614,
+        "precision": 0.7994242757320504,
+        "recall": 0.6354509202660265,
+        "f1-score": 0.6708654040645992,
         "support": 4324.0
       },
       "weighted avg": {
-        "precision": 0.8535190072365796,
-        "recall": 0.8686401480111008,
-        "f1-score": 0.8458107352486048,
+        "precision": 0.8526685685722902,
+        "recall": 0.8677150786308974,
+        "f1-score": 0.8433443354280123,
         "support": 4324.0
       }
     }
@@ -54,50 +54,50 @@
   "calibration": {
     "curve": [
       {
-        "predicted": 0.04036162574647105,
-        "observed": 0.04604985213350232
+        "predicted": 0.04517023883825336,
+        "observed": 0.04577908441831163
       },
       {
-        "predicted": 0.14689240246839408,
-        "observed": 0.13928182807399347
+        "predicted": 0.14629607358082702,
+        "observed": 0.13697104677060135
       },
       {
-        "predicted": 0.24175528313719455,
-        "observed": 0.2780487804878049
+        "predicted": 0.24358585917780504,
+        "observed": 0.23979591836734693
       },
       {
-        "predicted": 0.3443342409534882,
-        "observed": 0.3917525773195876
+        "predicted": 0.3479561912132769,
+        "observed": 0.40669856459330145
       },
       {
-        "predicted": 0.4447722255006907,
-        "observed": 0.4148148148148148
+        "predicted": 0.4484532807997145,
+        "observed": 0.5093167701863354
       },
       {
-        "predicted": 0.5437170019336095,
-        "observed": 0.5959595959595959
+        "predicted": 0.5414252240469998,
+        "observed": 0.47435897435897434
       },
       {
-        "predicted": 0.6439203282156073,
-        "observed": 0.5714285714285714
+        "predicted": 0.6355374761179688,
+        "observed": 0.6727272727272727
       },
       {
-        "predicted": 0.7490320471708729,
-        "observed": 0.6304347826086957
+        "predicted": 0.7443762987560175,
+        "observed": 0.7333333333333333
       },
       {
-        "predicted": 0.8436966437723628,
-        "observed": 0.926829268292683
+        "predicted": 0.8637304653570957,
+        "observed": 0.9
       },
       {
-        "predicted": 0.9389845491195317,
-        "observed": 0.9824561403508771
+        "predicted": 0.9557291189488684,
+        "observed": 0.9555555555555556
       }
     ]
   },
   "clustering": [
     {
-      "cluster": 1,
+      "cluster": 3,
       "size": 4877,
       "avg_global_sales": 2.1736805413163833,
       "top_genres": [
@@ -137,7 +137,7 @@
       }
     },
     {
-      "cluster": 0,
+      "cluster": 1,
       "size": 7193,
       "avg_global_sales": 0.35569720561657164,
       "top_genres": [
@@ -157,7 +157,7 @@
       }
     },
     {
-      "cluster": 3,
+      "cluster": 0,
       "size": 3941,
       "avg_global_sales": 0.11334432885054556,
       "top_genres": [
@@ -180,12 +180,12 @@
   "clustering_algorithm": "K-Means++ with PCA",
   "behavior_clusters": [
     {
-      "cluster": 4,
+      "cluster": 0,
       "size": 1562,
       "avg_global_sales": 5.293898847631242,
       "avg_age": 11.54225352112676,
       "score_median": 8.5,
-      "cluster_purity": 0.8322542725110337,
+      "cluster_purity": 0.8322542725110371,
       "top_genres": [
         "角色扮演",
         "动作冒险",
@@ -203,12 +203,12 @@
       }
     },
     {
-      "cluster": 3,
+      "cluster": 4,
       "size": 891,
       "avg_global_sales": 2.7083838383838383,
       "avg_age": 23.69472502805836,
       "score_median": 8.3,
-      "cluster_purity": 0.9260816558874069,
+      "cluster_purity": 0.9260816558873981,
       "top_genres": [
         "体育",
         "动作",
@@ -231,7 +231,7 @@
       "avg_global_sales": 0.7652934226073257,
       "avg_age": 18.523631350925562,
       "score_median": 7.3,
-      "cluster_purity": 0.8777358446906556,
+      "cluster_purity": 0.8777358446906516,
       "top_genres": [
         "动作",
         "体育",
@@ -254,7 +254,7 @@
       "avg_global_sales": 0.30504182384779405,
       "avg_age": 21.808594390683943,
       "score_median": 0.0,
-      "cluster_purity": 0.9386203893391429,
+      "cluster_purity": 0.9386203893390631,
       "top_genres": [
         "体育",
         "动作",
@@ -272,12 +272,12 @@
       }
     },
     {
-      "cluster": 0,
+      "cluster": 3,
       "size": 7990,
       "avg_global_sales": 0.0583491864831039,
       "avg_age": 15.659699624530663,
       "score_median": 0.0,
-      "cluster_purity": 0.957495593583289,
+      "cluster_purity": 0.9574955935833598,
       "top_genres": [
         "冒险",
         "动作",
@@ -299,19 +299,19 @@
   "top_features": [
     {
       "feature": "年份",
-      "importance": 965.0
+      "importance": 818.0
     },
     {
       "feature": "类型",
-      "importance": 288.0
+      "importance": 234.0
     },
     {
       "feature": "发行商",
-      "importance": 246.0
+      "importance": 189.0
     },
     {
       "feature": "平台",
-      "importance": 121.0
+      "importance": 109.0
     },
     {
       "feature": "年代",
@@ -321,19 +321,19 @@
   "shap_features": [
     {
       "feature": "平台",
-      "shap_importance": 0.3299562045856271
+      "shap_importance": 0.31723998479939874
     },
     {
       "feature": "发行商",
-      "shap_importance": 0.2648074776000457
+      "shap_importance": 0.2474711670756531
     },
     {
       "feature": "类型",
-      "shap_importance": 0.1578331750688175
+      "shap_importance": 0.1577756584672472
     },
     {
       "feature": "年份",
-      "shap_importance": 0.10045771561132498
+      "shap_importance": 0.10402667474663972
     },
     {
       "feature": "年代",
@@ -346,7 +346,7 @@
       "anchor_platform": "All",
       "candidate": "Kinect Adventures!",
       "candidate_platform": "Xbox",
-      "similarity": 0.99816824663507,
+      "similarity": 0.9981682466350699,
       "anchor_sales": 350.0,
       "candidate_sales": 24.0
     },
@@ -355,7 +355,7 @@
       "anchor_platform": "All",
       "candidate": "Grand Theft Auto V",
       "candidate_platform": "All",
-      "similarity": 0.9966258368264862,
+      "similarity": 0.9966258368264861,
       "anchor_sales": 350.0,
       "candidate_sales": 220.0
     },
@@ -364,7 +364,7 @@
       "anchor_platform": "All",
       "candidate": "Wii Sports",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9957362547715363,
+      "similarity": 0.9957362547715365,
       "anchor_sales": 350.0,
       "candidate_sales": 82.9
     },
@@ -373,7 +373,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops",
       "candidate_platform": "All",
-      "similarity": 0.9941275631788608,
+      "similarity": 0.9941275631788606,
       "anchor_sales": 350.0,
       "candidate_sales": 30.0
     },
@@ -382,7 +382,7 @@
       "anchor_platform": "All",
       "candidate": "Wii Sports Resort",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9940307814792033,
+      "similarity": 0.9940307814792032,
       "anchor_sales": 350.0,
       "candidate_sales": 33.14
     },
@@ -391,7 +391,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops II",
       "candidate_platform": "All",
-      "similarity": 0.9986131541892336,
+      "similarity": 0.9986131541892334,
       "anchor_sales": 220.0,
       "candidate_sales": 31.0
     },
@@ -400,7 +400,7 @@
       "anchor_platform": "All",
       "candidate": "The Elder Scrolls V: Skyrim",
       "candidate_platform": "All",
-      "similarity": 0.9985656914893143,
+      "similarity": 0.9985656914893144,
       "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
@@ -409,7 +409,7 @@
       "anchor_platform": "All",
       "candidate": "Call of Duty: Black Ops",
       "candidate_platform": "All",
-      "similarity": 0.9981256445752571,
+      "similarity": 0.998125644575257,
       "anchor_sales": 220.0,
       "candidate_sales": 30.0
     },
@@ -418,7 +418,7 @@
       "anchor_platform": "All",
       "candidate": "The Witcher 3: Wild Hunt",
       "candidate_platform": "All",
-      "similarity": 0.998080599964966,
+      "similarity": 0.9980805999649659,
       "anchor_sales": 220.0,
       "candidate_sales": 60.0
     },
@@ -427,7 +427,7 @@
       "anchor_platform": "All",
       "candidate": "Terraria",
       "candidate_platform": "PC",
-      "similarity": 0.9979549422672138,
+      "similarity": 0.9979549422672134,
       "anchor_sales": 220.0,
       "candidate_sales": 32.0
     },
@@ -436,7 +436,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Minecraft",
       "candidate_platform": "All",
-      "similarity": 0.9957362547715363,
+      "similarity": 0.9957362547715365,
       "anchor_sales": 82.9,
       "candidate_sales": 350.0
     },
@@ -454,7 +454,7 @@
       "anchor_platform": "Nintendo",
       "candidate": "Kinect Adventures!",
       "candidate_platform": "Xbox",
-      "similarity": 0.9951414887563584,
+      "similarity": 0.9951414887563585,
       "anchor_sales": 82.9,
       "candidate_sales": 24.0
     },
@@ -481,7 +481,7 @@
       "anchor_platform": "All",
       "candidate": "Mario Kart 8 Deluxe",
       "candidate_platform": "NS",
-      "similarity": 0.9997384192039105,
+      "similarity": 0.9997384192039104,
       "anchor_sales": 79.0,
       "candidate_sales": 69.56
     },
@@ -490,7 +490,7 @@
       "anchor_platform": "All",
       "candidate": "Super Smash Bros. Ultimate",
       "candidate_platform": "NS",
-      "similarity": 0.9992082546452514,
+      "similarity": 0.9992082546452511,
       "anchor_sales": 79.0,
       "candidate_sales": 36.93
     },
@@ -508,7 +508,7 @@
       "anchor_platform": "All",
       "candidate": "Dying Light",
       "candidate_platform": "All",
-      "similarity": 0.9990215055025484,
+      "similarity": 0.9990215055025483,
       "anchor_sales": 79.0,
       "candidate_sales": 20.0
     },
@@ -517,7 +517,7 @@
       "anchor_platform": "All",
       "candidate": "Diablo III",
       "candidate_platform": "All",
-      "similarity": 0.9990149175540719,
+      "similarity": 0.9990149175540717,
       "anchor_sales": 79.0,
       "candidate_sales": 30.0
     },
@@ -526,7 +526,7 @@
       "anchor_platform": "All",
       "candidate": "Human: Fall Flat",
       "candidate_platform": "All",
-      "similarity": 0.9998811415658623,
+      "similarity": 0.9998811415658624,
       "anchor_sales": 75.0,
       "candidate_sales": 55.0
     },
@@ -553,7 +553,7 @@
       "anchor_platform": "All",
       "candidate": "The Legend of Zelda: Breath of the Wild",
       "candidate_platform": "All",
-      "similarity": 0.9994530693233875,
+      "similarity": 0.9994530693233874,
       "anchor_sales": 75.0,
       "candidate_sales": 35.04
     },
@@ -571,7 +571,7 @@
       "anchor_platform": "NS",
       "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9997384192039105,
+      "similarity": 0.9997384192039104,
       "anchor_sales": 69.56,
       "candidate_sales": 79.0
     },
@@ -589,7 +589,7 @@
       "anchor_platform": "NS",
       "candidate": "Dying Light",
       "candidate_platform": "All",
-      "similarity": 0.9992583760054318,
+      "similarity": 0.9992583760054319,
       "anchor_sales": 69.56,
       "candidate_sales": 20.0
     },
@@ -598,7 +598,7 @@
       "anchor_platform": "NS",
       "candidate": "Diablo III",
       "candidate_platform": "All",
-      "similarity": 0.999014683913271,
+      "similarity": 0.9990146839132709,
       "anchor_sales": 69.56,
       "candidate_sales": 30.0
     },
@@ -607,7 +607,7 @@
       "anchor_platform": "NS",
       "candidate": "Fallout 4",
       "candidate_platform": "All",
-      "similarity": 0.9989013197140568,
+      "similarity": 0.9989013197140572,
       "anchor_sales": 69.56,
       "candidate_sales": 25.0
     }

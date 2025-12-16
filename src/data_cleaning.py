@@ -33,7 +33,7 @@ class CleaningResult:
 
 class GameDataCleaner:
 
-    def __init__(self, random_state: int = 42) -> None:
+    def __init__(self, random_state: int = 230010202) -> None:
         self.random_state = random_state
 
     def clean(self, raw_df: pd.DataFrame) -> CleaningResult:
@@ -324,7 +324,7 @@ class GameDataCleaner:
         scaler = StandardScaler()
         scaled_features = scaler.fit_transform(feature_df)
         iso_forest = IsolationForest(
-            contamination=0.05, 
+            contamination=0.05,
             random_state=self.random_state,
             n_jobs=-1,
         )
@@ -415,7 +415,7 @@ class GameDataCleaner:
             for col in ["VGChartz_Score", "Critic_Score", "User_Score"]
             if col in df.columns
         ]
-        helper_cols = [col for col in ["Global_Sales", "Year"] if col in df.columns] 
+        helper_cols = [col for col in ["Global_Sales", "Year"] if col in df.columns]
         if score_cols and helper_cols and df[score_cols].isna().any().any():
             feature_columns = score_cols + helper_cols
             # IterativeImputer: 基于贝叶斯岭回归的多元链式插补

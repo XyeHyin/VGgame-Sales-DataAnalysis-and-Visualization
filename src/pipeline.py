@@ -52,7 +52,7 @@ class VGSalesPipeline:
         )
         self.ml_analyzer = ml_analyzer or SalesMLAnalyzer(default_ml_artifacts)
         self.db_reader = PostgresReader(db_config or PostgresConfig())
-        self.random_state = 42
+        self.random_state = 230010202
         LOGGER.info("输出目录：%s", self.output_dir.resolve())
 
     def run(self) -> None:

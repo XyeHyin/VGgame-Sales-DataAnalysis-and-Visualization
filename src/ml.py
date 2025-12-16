@@ -46,7 +46,7 @@ class SalesMLAnalyzer:
         artifacts: MLArtifacts,
         *,
         hit_threshold: float = 1.0,
-        random_state: int = 42,
+        random_state: int = 230010202,
     ) -> None:
         self.artifacts = artifacts
         self.hit_threshold = hit_threshold
