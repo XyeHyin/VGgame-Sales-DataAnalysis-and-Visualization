@@ -1,7 +1,7 @@
 [
   {
     "type": "regional",
-    "cluster": 3,
+    "cluster": 0,
     "size": 4877,
     "avg_global_sales": 2.1736805413163833,
     "top_genres": [
@@ -10,7 +10,7 @@
     ],
     "top_platforms": [
       "PC",
-      "Other"
+      "All"
     ],
     "dominant_region": "日本销量",
     "region_profile": {
@@ -64,9 +64,9 @@
   },
   {
     "type": "regional",
-    "cluster": 0,
+    "cluster": 3,
     "size": 3941,
-    "avg_global_sales": 0.11334432885054556,
+    "avg_global_sales": 0.11334432885054554,
     "top_genres": [
       "冒险",
       "角色扮演"
@@ -86,11 +86,11 @@
   {
     "type": "behavioral",
     "cluster": 4,
-    "size": 3705,
-    "avg_global_sales": 2.446442645074224,
-    "avg_age": 18.270445344129556,
+    "size": 3813,
+    "avg_global_sales": 2.3908313663781797,
+    "avg_age": 18.27799632835038,
     "score_median": 7.6899999999999995,
-    "cluster_purity": 0.856337684006519,
+    "cluster_purity": 0.8564871896264281,
     "top_genres": [
       "角色扮演",
       "动作",
@@ -101,20 +101,20 @@
       "PlayStation"
     ],
     "region_profile": {
-      "北美销量": 0.1876,
-      "欧洲销量": 0.0716,
-      "日本销量": 0.7093,
-      "其他地区销量": 0.0314
+      "北美销量": 0.207,
+      "欧洲销量": 0.0773,
+      "日本销量": 0.6818,
+      "其他地区销量": 0.0339
     }
   },
   {
     "type": "behavioral",
-    "cluster": 2,
-    "size": 980,
-    "avg_global_sales": 2.339122448979592,
-    "avg_age": 21.268367346938774,
-    "score_median": 7.6925,
-    "cluster_purity": 0.9441046714660764,
+    "cluster": 3,
+    "size": 979,
+    "avg_global_sales": 2.3357099080694583,
+    "avg_age": 21.28600612870276,
+    "score_median": 7.69,
+    "cluster_purity": 0.9432167071017162,
     "top_genres": [
       "体育",
       "动作",
@@ -125,20 +125,20 @@
       "Nintendo"
     ],
     "region_profile": {
-      "北美销量": 0.4463,
-      "欧洲销量": 0.3263,
-      "日本销量": 0.1128,
-      "其他地区销量": 0.1146
+      "北美销量": 0.445,
+      "欧洲销量": 0.3257,
+      "日本销量": 0.115,
+      "其他地区销量": 0.1143
     }
   },
   {
     "type": "behavioral",
-    "cluster": 3,
-    "size": 3998,
-    "avg_global_sales": 0.6856103051525763,
-    "avg_age": 16.803151575787894,
+    "cluster": 2,
+    "size": 3914,
+    "avg_global_sales": 0.6989243740419008,
+    "avg_age": 16.807358201328565,
     "score_median": 7.675000000000001,
-    "cluster_purity": 0.932996565960966,
+    "cluster_purity": 0.9330180721065752,
     "top_genres": [
       "体育",
       "动作",
@@ -149,20 +149,20 @@
       "Nintendo"
     ],
     "region_profile": {
-      "北美销量": 0.5625,
-      "欧洲销量": 0.3137,
-      "日本销量": 0.018,
-      "其他地区销量": 0.1057
+      "北美销量": 0.5623,
+      "欧洲销量": 0.3143,
+      "日本销量": 0.0175,
+      "其他地区销量": 0.1059
     }
   },
   {
     "type": "behavioral",
     "cluster": 0,
-    "size": 5657,
-    "avg_global_sales": 0.30169878027222913,
-    "avg_age": 19.23493017500442,
+    "size": 5635,
+    "avg_global_sales": 0.2954055013309672,
+    "avg_age": 19.22661934338953,
     "score_median": 7.675000000000001,
-    "cluster_purity": 0.9729009440054608,
+    "cluster_purity": 0.9733340766936045,
     "top_genres": [
       "冒险",
       "角色扮演",
@@ -182,11 +182,11 @@
   {
     "type": "behavioral",
     "cluster": 1,
-    "size": 7278,
-    "avg_global_sales": 0.14980214344600165,
-    "avg_age": 17.417697169552074,
+    "size": 7277,
+    "avg_global_sales": 0.14997251614676377,
+    "avg_age": 17.40181393431359,
     "score_median": 7.654999999999999,
-    "cluster_purity": 0.9828639506883783,
+    "cluster_purity": 0.9829633125426358,
     "top_genres": [
       "体育",
       "动作",
@@ -197,10 +197,10 @@
       "PlayStation"
     ],
     "region_profile": {
-      "北美销量": 0.6599,
-      "欧洲销量": 0.2599,
+      "北美销量": 0.6597,
+      "欧洲销量": 0.26,
       "日本销量": 0.0001,
-      "其他地区销量": 0.0801
+      "其他地区销量": 0.0802
     }
   }
 ]

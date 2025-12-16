@@ -98,7 +98,7 @@
     "最晚年份": 2025
   },
   "清洗摘要": {
-    "initial_rows": 66771,
+    "initial_rows": 66784,
     "initial_columns": [
       "Rank",
       "Name",
@@ -134,16 +134,16 @@
       "JP_Sales": 0,
       "Other_Sales": 0,
       "Global_Sales": 0,
-      "VGChartz_Score": 64305,
-      "Critic_Score": 59990,
-      "User_Score": 66352,
+      "VGChartz_Score": 64318,
+      "Critic_Score": 60003,
+      "User_Score": 66365,
       "Total_Shipped": 0,
-      "Release_Date": 8990,
+      "Release_Date": 9003,
       "Last_Update": 46146
     },
     "duplicates_removed": 46,
     "missing_key_rows": 0,
-    "invalid_sales_rows": 44626,
+    "invalid_sales_rows": 44639,
     "outliers_detected": 1081,
     "series_rows_removed": 481,
     "out_of_range_years": 0,
@@ -230,7 +230,7 @@
       "Regional_Cluster": 0,
       "Regional_Cluster_Label": 0
     },
-    "deduplication_rate": 0.000688921837324587,
-    "retention_rate": 0.323763310419194
+    "deduplication_rate": 0.0006887877335888836,
+    "retention_rate": 0.32370028749401053
   }
 }

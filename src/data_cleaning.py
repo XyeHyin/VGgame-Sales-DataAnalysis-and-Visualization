@@ -213,13 +213,9 @@ class GameDataCleaner:
             df["Platform"] = (
                 df["Platform"].astype("string").str.replace(r"\s+", " ", regex=True)
             )
-
-        if "Platform_Family" not in df.columns:
-            df["Platform_Family"] = df["Platform"].map(PLATFORM_FAMILY_MAP)
-        else:
-            df["Platform_Family"] = df["Platform_Family"].fillna(
-                df["Platform"].map(PLATFORM_FAMILY_MAP)
-            )
+        df["Platform_Family"] = df["Platform_Family"].fillna(
+            df["Platform"].map(PLATFORM_FAMILY_MAP)
+        )
         df["Platform_Family"] = df["Platform_Family"].fillna("Other")
 
         if "Genre" in df.columns:

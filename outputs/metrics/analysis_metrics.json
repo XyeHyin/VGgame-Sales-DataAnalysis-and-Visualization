@@ -97,8 +97,8 @@
   ],
   "top_platforms": [
     [
-      "其他平台",
-      5012.53
+      "全平台",
+      5003.03
     ],
     [
       "任天堂家族",
@@ -129,12 +129,12 @@
       97.4
     ],
     [
-      "移动 / 云游戏平台",
-      5.51
+      "其他平台",
+      9.5
     ],
     [
-      "万代平台",
-      1.68
+      "移动 / 云游戏平台",
+      5.51
     ]
   ],
   "time_series": {
@@ -429,6 +429,17 @@
   },
   "platform_lifecycle": [
     {
+      "platform": "其他平台",
+      "year_span": [
+        1980,
+        1982
+      ],
+      "momentum": 9500000.0,
+      "recent_sales": 9.5,
+      "total_sales": 9.5,
+      "retention_share": 1.0
+    },
+    {
       "platform": "移动 / 云游戏平台",
       "year_span": [
         1970,
@@ -528,15 +539,15 @@
       "retention_share": 0.05157413336955748
     },
     {
-      "platform": "其他平台",
+      "platform": "全平台",
       "year_span": [
         1970,
         2025
       ],
       "momentum": 0.6570659236419564,
       "recent_sales": 297.71,
-      "total_sales": 5012.530000000001,
-      "retention_share": 0.11063275431767987
+      "total_sales": 5003.030000000001,
+      "retention_share": 0.11084282924547721
     },
     {
       "platform": "PlayStation 家族",
@@ -705,7 +716,7 @@
       "0.5": 7.66,
       "0.75": 7.74
     },
-    "correlation": 0.1515856062798766,
+    "correlation": 0.15158560627987658,
     "score_gap": {
       "mean_gap": -0.7262373947636229,
       "std_gap": 0.30933727154024043,
@@ -748,7 +759,7 @@
     {
       "label": "日本销量主导",
       "size": 8818,
-      "avg_sales": 1.2528611930142892,
+      "avg_sales": 1.252861193014289,
       "top_genres": [
         "角色扮演",
         "冒险",
@@ -842,8 +853,8 @@
     ],
     "platform_share": [
       [
-        "Other",
-        0.2966968442299098
+        "All",
+        0.2961345293868696
       ],
       [
         "Nintendo",
@@ -872,6 +883,10 @@
       [
         "Atari",
         0.00576520691706448
+      ],
+      [
+        "Other",
+        0.00056231484304017
       ],
       [
         "Mobile",
@@ -1300,7 +1315,7 @@
         "Preference": -0.4224138783773739
       }
     ],
-    "platform_diversity": 2.3551765435432697,
+    "platform_diversity": 2.3610722587873303,
     "publisher_moat": [
       {
         "Publisher": "Nintendo",
@@ -1328,52 +1343,52 @@
   "ml": {
     "regression": {
       "model": "LGBMRegressor",
-      "mae": 0.8077147945588152,
-      "rmse": 3.8591847239956483,
-      "r2": 0.12423473930744122,
-      "n_estimators_used": 40
+      "mae": 0.7397240332336166,
+      "rmse": 2.3339846849735135,
+      "r2": 0.21745259867896982,
+      "n_estimators_used": 64
     },
     "regression_quantiles": {
-      "p10_mean": 0.07102894324372776,
-      "p50_mean": 0.3416345208174555,
-      "p90_mean": 1.5884111804129122,
-      "p10_median": 0.04020983390447458,
-      "p50_median": 0.18668591335828555,
-      "p90_median": 0.8536893330167769
+      "p10_mean": 0.07041846780412861,
+      "p50_mean": 0.34777218240686547,
+      "p90_mean": 1.6027646646103186,
+      "p10_median": 0.04022164723389157,
+      "p50_median": 0.18840544640975684,
+      "p90_median": 0.8600897898951021
     },
     "classification": {
       "model": "LGBMClassifier",
-      "accuracy": 0.8700277520814061,
-      "precision": 0.7170418006430869,
-      "recall": 0.3199426111908178,
-      "f1": 0.44246031746031744,
+      "accuracy": 0.8734967622571693,
+      "precision": 0.7568493150684932,
+      "recall": 0.3170731707317073,
+      "f1": 0.44691607684529827,
       "hit_threshold": 1.0,
       "support": 4324,
-      "brier": 0.09498376726619148,
+      "brier": 0.09481416322492593,
       "classification_report": {
         "0": {
-          "precision": 0.881883877398455,
-          "recall": 0.9757375241246209,
-          "f1-score": 0.9264397905759162,
+          "precision": 0.8819444444444444,
+          "recall": 0.9804245933278192,
+          "f1-score": 0.9285807546677112,
           "support": 3627.0
         },
         "1": {
-          "precision": 0.7170418006430869,
-          "recall": 0.3199426111908178,
-          "f1-score": 0.44246031746031744,
+          "precision": 0.7568493150684932,
+          "recall": 0.3170731707317073,
+          "f1-score": 0.44691607684529827,
           "support": 697.0
         },
-        "accuracy": 0.8700277520814061,
+        "accuracy": 0.8734967622571693,
         "macro avg": {
-          "precision": 0.799462839020771,
-          "recall": 0.6478400676577194,
-          "f1-score": 0.6844500540181169,
+          "precision": 0.8193968797564688,
+          "recall": 0.6487488820297632,
+          "f1-score": 0.6877484157565047,
           "support": 4324.0
         },
         "weighted avg": {
-          "precision": 0.8553124325560656,
-          "recall": 0.8700277520814061,
-          "f1-score": 0.8484255230547385,
+          "precision": 0.8617799427850925,
+          "recall": 0.8734967622571693,
+          "f1-score": 0.850939616730102,
           "support": 4324.0
         }
       }
@@ -1381,50 +1396,50 @@
     "calibration": {
       "curve": [
         {
-          "predicted": 0.04338415471625293,
-          "observed": 0.04073410922112802
+          "predicted": 0.04290622207453962,
+          "observed": 0.04301552106430155
         },
         {
-          "predicted": 0.14419920455784402,
-          "observed": 0.12061855670103093
+          "predicted": 0.14390045376053626,
+          "observed": 0.11954261954261955
         },
         {
-          "predicted": 0.2416164587953309,
-          "observed": 0.23770491803278687
+          "predicted": 0.24355317160568368,
+          "observed": 0.24719101123595505
         },
         {
-          "predicted": 0.3439742633642017,
-          "observed": 0.3155893536121673
+          "predicted": 0.3506708109648802,
+          "observed": 0.36771300448430494
         },
         {
-          "predicted": 0.4522172793771059,
-          "observed": 0.5333333333333333
+          "predicted": 0.4447080950805454,
+          "observed": 0.4897959183673469
         },
         {
-          "predicted": 0.5487501412165432,
-          "observed": 0.5299145299145299
+          "predicted": 0.5397518424927851,
+          "observed": 0.5853658536585366
         },
         {
-          "predicted": 0.6460471824400286,
-          "observed": 0.6666666666666666
+          "predicted": 0.6454566694470883,
+          "observed": 0.609375
         },
         {
-          "predicted": 0.7431651575552334,
-          "observed": 0.7941176470588235
+          "predicted": 0.747465885400345,
+          "observed": 0.8484848484848485
         },
         {
-          "predicted": 0.8563757169986473,
-          "observed": 0.88
+          "predicted": 0.850581180156933,
+          "observed": 0.8958333333333334
         },
         {
-          "predicted": 0.9333678542519926,
-          "observed": 1.0
+          "predicted": 0.9292625167413465,
+          "observed": 0.9692307692307692
         }
       ]
     },
     "clustering": [
       {
-        "cluster": 3,
+        "cluster": 0,
         "size": 4877,
         "avg_global_sales": 2.1736805413163833,
         "top_genres": [
@@ -1433,7 +1448,7 @@
         ],
         "top_platforms": [
           "PC",
-          "Other"
+          "All"
         ],
         "dominant_region": "日本销量",
         "region_profile": {
@@ -1487,11 +1502,11 @@
     "behavior_clusters": [
       {
         "cluster": 4,
-        "size": 3705,
-        "avg_global_sales": 2.446442645074224,
-        "avg_age": 18.270445344129556,
+        "size": 3813,
+        "avg_global_sales": 2.3908313663781797,
+        "avg_age": 18.27799632835038,
         "score_median": 7.6899999999999995,
-        "cluster_purity": 0.856337684006519,
+        "cluster_purity": 0.8564871896264281,
         "top_genres": [
           "角色扮演",
           "动作",
@@ -1502,19 +1517,19 @@
           "PlayStation"
         ],
         "region_profile": {
-          "北美销量": 0.1876,
-          "欧洲销量": 0.0716,
-          "日本销量": 0.7093,
-          "其他地区销量": 0.0314
+          "北美销量": 0.207,
+          "欧洲销量": 0.0773,
+          "日本销量": 0.6818,
+          "其他地区销量": 0.0339
         }
       },
       {
-        "cluster": 2,
-        "size": 980,
-        "avg_global_sales": 2.339122448979592,
-        "avg_age": 21.268367346938774,
-        "score_median": 7.6925,
-        "cluster_purity": 0.9441046714660764,
+        "cluster": 3,
+        "size": 979,
+        "avg_global_sales": 2.3357099080694583,
+        "avg_age": 21.28600612870276,
+        "score_median": 7.69,
+        "cluster_purity": 0.9432167071017162,
         "top_genres": [
           "体育",
           "动作",
@@ -1525,19 +1540,19 @@
           "Nintendo"
         ],
         "region_profile": {
-          "北美销量": 0.4463,
-          "欧洲销量": 0.3263,
-          "日本销量": 0.1128,
-          "其他地区销量": 0.1146
+          "北美销量": 0.445,
+          "欧洲销量": 0.3257,
+          "日本销量": 0.115,
+          "其他地区销量": 0.1143
         }
       },
       {
-        "cluster": 3,
-        "size": 3998,
-        "avg_global_sales": 0.6856103051525763,
-        "avg_age": 16.803151575787894,
+        "cluster": 2,
+        "size": 3914,
+        "avg_global_sales": 0.6989243740419008,
+        "avg_age": 16.807358201328565,
         "score_median": 7.675000000000001,
-        "cluster_purity": 0.932996565960966,
+        "cluster_purity": 0.9330180721065752,
         "top_genres": [
           "体育",
           "动作",
@@ -1548,29 +1563,29 @@
           "Nintendo"
         ],
         "region_profile": {
-          "北美销量": 0.5625,
-          "欧洲销量": 0.3137,
-          "日本销量": 0.018,
-          "其他地区销量": 0.1057
+          "北美销量": 0.5623,
+          "欧洲销量": 0.3143,
+          "日本销量": 0.0175,
+          "其他地区销量": 0.1059
         }
       }
     ],
     "top_features": [
       {
         "feature": "年份",
-        "importance": 707.0
+        "importance": 1170.0
       },
       {
         "feature": "类型",
-        "importance": 235.0
+        "importance": 369.0
       },
       {
         "feature": "发行商",
-        "importance": 167.0
+        "importance": 246.0
       },
       {
         "feature": "平台",
-        "importance": 91.0
+        "importance": 135.0
       },
       {
         "feature": "年代",
@@ -1580,19 +1595,19 @@
     "shap_features": [
       {
         "feature": "平台",
-        "shap_importance": 0.2988083483488086
+        "shap_importance": 0.33131308073250326
       },
       {
         "feature": "发行商",
-        "shap_importance": 0.23473841944150925
+        "shap_importance": 0.29266735788701176
       },
       {
         "feature": "类型",
-        "shap_importance": 0.14296610677924695
+        "shap_importance": 0.1738709276787214
       },
       {
         "feature": "年份",
-        "shap_importance": 0.10391195519640996
+        "shap_importance": 0.11833317873243894
       },
       {
         "feature": "年代",
@@ -1602,49 +1617,49 @@
     "similar_titles": [
       {
         "anchor": "Minecraft",
-        "anchor_platform": "Other",
+        "anchor_platform": "All",
         "candidate": "Dust: An Elysian Tail",
-        "candidate_platform": "Other",
-        "similarity": 0.9640923241175516,
+        "candidate_platform": "All",
+        "similarity": 0.9640923241175515,
         "anchor_sales": 350.0,
         "candidate_sales": 1.0,
         "genre_match": true
       },
       {
         "anchor": "Minecraft",
-        "anchor_platform": "Other",
+        "anchor_platform": "All",
         "candidate": "Red Dead Redemption: Undead Nightmare",
-        "candidate_platform": "Other",
-        "similarity": 0.9638712121874125,
+        "candidate_platform": "All",
+        "similarity": 0.9638712121874122,
         "anchor_sales": 350.0,
         "candidate_sales": 2.0,
         "genre_match": true
       },
       {
         "anchor": "Minecraft",
-        "anchor_platform": "Other",
+        "anchor_platform": "All",
         "candidate": "Saints Row IV",
-        "candidate_platform": "Other",
-        "similarity": 0.9597598574677763,
+        "candidate_platform": "All",
+        "similarity": 0.9597598574677764,
         "anchor_sales": 350.0,
         "candidate_sales": 1.0,
         "genre_match": true
       },
       {
         "anchor": "Minecraft",
-        "anchor_platform": "Other",
+        "anchor_platform": "All",
         "candidate": "Alan Wake",
-        "candidate_platform": "Other",
-        "similarity": 0.9592286901283941,
+        "candidate_platform": "All",
+        "similarity": 0.959228690128394,
         "anchor_sales": 350.0,
         "candidate_sales": 3.2,
         "genre_match": true
       },
       {
         "anchor": "Minecraft",
-        "anchor_platform": "Other",
+        "anchor_platform": "All",
         "candidate": "One Piece Unlimited World: Red",
-        "candidate_platform": "Other",
+        "candidate_platform": "All",
         "similarity": 0.9555953118608448,
         "anchor_sales": 350.0,
         "candidate_sales": 0.65,

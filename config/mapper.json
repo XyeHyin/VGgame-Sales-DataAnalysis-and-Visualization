@@ -73,8 +73,8 @@
       "PS4": "PlayStation",
       "PS5": "PlayStation",
       "PSN": "PlayStation",
-      "PSP": "PlayStation Portable",
-      "PSV": "PlayStation Portable",
+      "PSP": "PlayStation",
+      "PSV": "PlayStation",
       "S32X": "Sega",
       "SAT": "Sega",
       "SCD": "Sega",
@@ -110,7 +110,6 @@
       "PC": "个人计算机",
       "Panasonic": "松下平台",
       "PlayStation": "PlayStation 家族",
-      "PlayStation Portable": "PlayStation 掌机",
       "SNK": "SNK 平台",
       "Sega": "世嘉平台",
       "Xbox": "Xbox 家族"
