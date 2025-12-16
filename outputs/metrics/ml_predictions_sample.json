@@ -1,70 +1,70 @@
 {
   "regression_samples": [
     {
-      "Name": "Poupee Girl DS 2: Elegant Mint / Sweet Pink Style",
+      "Name": "Sansuu Puzzle de Migaku: Gakken Otona no Shikou Sense",
       "Platform": "Nintendo",
       "Genre": "其他",
-      "Year": 2010,
+      "Year": 2007,
       "actual_sales": 0.02,
-      "predicted_sales": 0.2998057482540524,
-      "p10": 0.013792987988651155,
-      "p50": 0.08784862994083044,
-      "p90": 0.3557635939245599
+      "predicted_sales": 0.32692223195332015,
+      "p10": 0.012093509206935147,
+      "p50": 0.08006273193761038,
+      "p90": 0.5886415739221107
     },
     {
-      "Name": "Divinity: Dragon Commander",
-      "Platform": "PC",
+      "Name": "Dungeons & Dragons: Eye of the Beholder",
+      "Platform": "Nintendo",
       "Genre": "角色扮演",
-      "Year": 2013,
-      "actual_sales": 0.27,
-      "predicted_sales": 0.607669745805082,
-      "p10": 0.028063782943978488,
-      "p50": 0.18511207848956351,
-      "p90": 2.066363665543234
+      "Year": 2002,
+      "actual_sales": 0.26,
+      "predicted_sales": 0.3359669543174546,
+      "p10": 0.04041538757389282,
+      "p50": 0.1800591256814862,
+      "p90": 1.0219497580000656
     },
     {
-      "Name": "The BIGS",
-      "Platform": "PlayStation Portable",
+      "Name": "Goal Storm '97",
+      "Platform": "PlayStation",
       "Genre": "体育",
-      "Year": 2007,
+      "Year": 1997,
       "actual_sales": 0.11,
-      "predicted_sales": 0.2933495887241545,
-      "p10": 0.0573755841074342,
-      "p50": 0.08900239594404932,
-      "p90": 0.2907526211937975
+      "predicted_sales": 0.46294574508327374,
+      "p10": 0.05431005625769959,
+      "p50": 0.23403337560419527,
+      "p90": 0.6995315409827958
     },
     {
-      "Name": "Aibou DS",
+      "Name": "The Mummy: Tomb of the Dragon Emperor",
       "Platform": "Nintendo",
       "Genre": "冒险",
-      "Year": 2009,
-      "actual_sales": 0.08,
-      "predicted_sales": 0.2588048967842792,
-      "p10": 0.010343395855520309,
-      "p50": 0.06047247741515532,
-      "p90": 0.3246725758811973
+      "Year": 2008,
+      "actual_sales": 0.09,
+      "predicted_sales": 0.29929754731705976,
+      "p10": 0.010048253735732976,
+      "p50": 0.08148956787182467,
+      "p90": 0.3785592666698588
     },
     {
-      "Name": "Hotel Dusk: Room 215",
-      "Platform": "Nintendo",
+      "Name": "ABZU",
+      "Platform": "PC",
       "Genre": "冒险",
-      "Year": 2007,
-      "actual_sales": 0.54,
-      "predicted_sales": 1.6588727140538622,
-      "p10": 0.06595015174499677,
-      "p50": 0.7642602890363981,
-      "p90": 4.421689451425373
+      "Year": 2016,
+      "actual_sales": 0.58,
+      "predicted_sales": 0.40835249569732807,
+      "p10": 0.01831021569860347,
+      "p50": 0.1300325552476749,
+      "p90": 0.5565214724231001
     },
     {
-      "Name": "Juiced 2: Hot Import Nights",
-      "Platform": "PlayStation Portable",
+      "Name": "Moto Racer World Tour",
+      "Platform": "PlayStation",
       "Genre": "竞速",
-      "Year": 2007,
-      "actual_sales": 0.37,
-      "predicted_sales": 0.3569404179034145,
-      "p10": 0.09014390839900091,
-      "p50": 0.49678986638216505,
-      "p90": 0.6319411113257191
+      "Year": 2000,
+      "actual_sales": 0.38,
+      "predicted_sales": 0.46648008002803404,
+      "p10": 0.048263325726461775,
+      "p50": 0.21389537558930122,
+      "p90": 1.1571054376613952
     },
     {
       "Name": "GoldenEye: Rogue Agent",
@@ -72,43 +72,43 @@
       "Genre": "射击",
       "Year": 2004,
       "actual_sales": 0.49,
-      "predicted_sales": 1.1102741094133508,
-      "p10": 0.10579356858288773,
-      "p50": 0.6954717608165009,
-      "p90": 1.5033020070566785
+      "predicted_sales": 0.9057983112580719,
+      "p10": 0.15164073756136945,
+      "p50": 0.7132733332406003,
+      "p90": 1.5903585766173596
     },
     {
-      "Name": "How to Train Your Dragon",
+      "Name": "Spider-Man",
       "Platform": "Nintendo",
       "Genre": "动作",
-      "Year": 2010,
+      "Year": 2000,
       "actual_sales": 0.53,
-      "predicted_sales": 0.42975680453327214,
-      "p10": 0.06703241640782434,
-      "p50": 0.22384028884563534,
-      "p90": 0.4783786493833652
+      "predicted_sales": 0.4539125033169703,
+      "p10": 0.10040849787349605,
+      "p50": 0.2441851298651291,
+      "p90": 0.9368556119664564
     },
     {
-      "Name": "Yomawari: The Long Night Collection",
-      "Platform": "NS",
+      "Name": "Yakuza 3",
+      "Platform": "PlayStation",
       "Genre": "动作冒险",
       "Year": 2018,
       "actual_sales": 0.05,
-      "predicted_sales": 1.1969730843081303,
-      "p10": 0.013907597537840483,
-      "p50": 0.1717975629851272,
-      "p90": 1.8977605482325934
+      "predicted_sales": 0.6588072280317157,
+      "p10": 0.01921876506081574,
+      "p50": 0.15524008498436756,
+      "p90": 2.5761829574363
     },
     {
-      "Name": "Legend of the Dragon",
-      "Platform": "Nintendo",
+      "Name": "The King of Fighters 02/03",
+      "Platform": "PlayStation",
       "Genre": "格斗",
-      "Year": 2007,
-      "actual_sales": 0.06,
-      "predicted_sales": 0.3174500727066241,
-      "p10": 0.020620485632304595,
-      "p50": 0.0605897355956753,
-      "p90": 0.2347142393690796
+      "Year": 2005,
+      "actual_sales": 0.07,
+      "predicted_sales": 0.6167604722253202,
+      "p10": 0.03820799446285912,
+      "p50": 0.11103430571831578,
+      "p90": 0.7375827693692392
     },
     {
       "Name": "Assassin's Creed: Brotherhood",
@@ -116,325 +116,205 @@
       "Genre": "动作",
       "Year": 2010,
       "actual_sales": 3.53,
-      "predicted_sales": 0.6937859713540082,
-      "p10": 0.06824192458503811,
-      "p50": 0.45625277018408755,
-      "p90": 2.009982895586637
+      "predicted_sales": 0.6820374205219075,
+      "p10": 0.0731206375619315,
+      "p50": 0.47548390097744603,
+      "p90": 2.3445641112092397
     },
     {
-      "Name": "Sengoku Basara 2",
-      "Platform": "PlayStation",
+      "Name": "Deadly Premonition",
+      "Platform": "Xbox",
       "Genre": "动作",
-      "Year": 2006,
+      "Year": 2010,
       "actual_sales": 0.26,
-      "predicted_sales": 0.6226313133098426,
-      "p10": 0.027638967292764875,
-      "p50": 0.31274917243646155,
-      "p90": 1.6266605546616786
+      "predicted_sales": 0.6187601350417493,
+      "p10": 0.020758735010091907,
+      "p50": 0.2067574544118682,
+      "p90": 1.5617148220860047
     },
     {
-      "Name": "Planet Puzzle League",
-      "Platform": "Nintendo",
+      "Name": "Super Bust-A-Move",
+      "Platform": "PlayStation",
       "Genre": "益智",
-      "Year": 2007,
-      "actual_sales": 0.33,
-      "predicted_sales": 0.9378728241005757,
-      "p10": 0.05435790088844128,
-      "p50": 0.43882520821352233,
-      "p90": 2.323398692197895
+      "Year": 2000,
+      "actual_sales": 0.34,
+      "predicted_sales": 0.4039914779734273,
+      "p10": 0.06005990041723836,
+      "p50": 0.17386421755753445,
+      "p90": 0.6346901165804594
     },
     {
-      "Name": "The Eye of Judgment: Legends",
+      "Name": "Shutsugeki! Otometachi no Senjou 2: Ikusabana no Kizuna",
       "Platform": "PlayStation Portable",
       "Genre": "策略",
-      "Year": 2010,
+      "Year": 2011,
       "actual_sales": 0.01,
-      "predicted_sales": 0.35251009880323547,
-      "p10": 0.03196834827796083,
-      "p50": 0.11574661872688531,
-      "p90": 0.7614674419304035
+      "predicted_sales": 0.29201667521300767,
+      "p10": 0.01586811433438429,
+      "p50": 0.0594212741072254,
+      "p90": 0.14960762580564654
     },
     {
-      "Name": "Shovel Knight",
-      "Platform": "PC",
+      "Name": "Skylanders: Trap Team",
+      "Platform": "PlayStation",
       "Genre": "平台跳跃",
       "Year": 2014,
-      "actual_sales": 0.51,
-      "predicted_sales": 0.7056907750936323,
-      "p10": 0.046797830183350674,
-      "p50": 0.17639396788837,
-      "p90": 1.1907148429226804
+      "actual_sales": 0.52,
+      "predicted_sales": 1.0303563504184936,
+      "p10": 0.07446834999411955,
+      "p50": 0.3940932639801185,
+      "p90": 1.3112081642043134
     },
     {
-      "Name": "Rock of Ages",
-      "Platform": "PC",
+      "Name": "Nobunaga no Yabou: Haouden",
+      "Platform": "Nintendo",
       "Genre": "策略",
-      "Year": 2011,
-      "actual_sales": 0.64,
-      "predicted_sales": 0.36492761838857574,
-      "p10": 0.01781051385422469,
-      "p50": 0.11684068790514773,
-      "p90": 0.2056782598746442
+      "Year": 1993,
+      "actual_sales": 0.62,
+      "predicted_sales": 0.45238708624606344,
+      "p10": 0.11279690606648203,
+      "p50": 0.24859552912874947,
+      "p90": 0.8553598383720156
     },
     {
-      "Name": "Rock Blast",
+      "Name": "Arkanoid DS",
       "Platform": "Nintendo",
       "Genre": "益智",
       "Year": 2008,
       "actual_sales": 0.06,
-      "predicted_sales": 0.2588048967842792,
-      "p10": 0.0104334539836409,
-      "p50": 0.07368371684332056,
-      "p90": 0.2784601168833432
+      "predicted_sales": 0.40615815848371106,
+      "p10": 0.011016346752219556,
+      "p50": 0.13791189641547322,
+      "p90": 0.4423823873216021
     },
     {
-      "Name": "Mojo!",
-      "Platform": "Xbox",
-      "Genre": "益智",
-      "Year": 2003,
-      "actual_sales": 0.03,
-      "predicted_sales": 0.3450408108145348,
-      "p10": 0.015403626693643533,
-      "p50": 0.07816587081199969,
-      "p90": 0.37337188288572176
-    },
-    {
-      "Name": "Lucky * Star: Ryouou Gakuen Outousai",
-      "Platform": "PlayStation",
-      "Genre": "冒险",
-      "Year": 2008,
-      "actual_sales": 0.1,
-      "predicted_sales": 0.35018956500193266,
-      "p10": 0.010053333034232354,
-      "p50": 0.022586118734344286,
-      "p90": 0.5075849264923861
-    },
-    {
-      "Name": "Rec Room Games",
+      "Name": "Merv Griffin's Crosswords",
       "Platform": "Nintendo",
-      "Genre": "体育",
-      "Year": 2009,
-      "actual_sales": 0.37,
-      "predicted_sales": 0.27945240368158775,
-      "p10": 0.014850913993647984,
-      "p50": 0.07751483249115686,
-      "p90": 0.39394678566641
+      "Genre": "益智",
+      "Year": 2008,
+      "actual_sales": 0.03,
+      "predicted_sales": 0.29929754731705976,
+      "p10": 0.00968157283210421,
+      "p50": 0.06326690210818602,
+      "p90": 0.2733197854068075
     },
     {
-      "Name": "Spy Hunter 2",
+      "Name": "Manhunter 2: San Francisco",
+      "Platform": "All",
+      "Genre": "冒险",
+      "Year": 1989,
+      "actual_sales": 0.1,
+      "predicted_sales": 0.6760258481560283,
+      "p10": 0.03054660970978335,
+      "p50": 0.26787911668337255,
+      "p90": 1.652700868510679
+    },
+    {
+      "Name": "High Heat Major League Baseball 2003",
+      "Platform": "PlayStation",
+      "Genre": "体育",
+      "Year": 2002,
+      "actual_sales": 0.37,
+      "predicted_sales": 0.470651387015888,
+      "p10": 0.04337168077201625,
+      "p50": 0.16278512197862594,
+      "p90": 1.0112943109833168
+    },
+    {
+      "Name": "MotorStorm: Apocalypse",
       "Platform": "PlayStation",
       "Genre": "竞速",
-      "Year": 2003,
+      "Year": 2011,
       "actual_sales": 0.49,
-      "predicted_sales": 0.43354756554842,
-      "p10": 0.06838737535433945,
-      "p50": 0.13082284908533967,
-      "p90": 0.6081085190498295
+      "predicted_sales": 1.4651154674693119,
+      "p10": 0.08511870555816767,
+      "p50": 0.8075753114997368,
+      "p90": 4.285260800608482
     },
     {
-      "Name": "Test Drive Off-Road Wide Open",
-      "Platform": "Xbox",
+      "Name": "Driving Emotion Type-S",
+      "Platform": "PlayStation",
       "Genre": "竞速",
       "Year": 2001,
       "actual_sales": 0.18,
-      "predicted_sales": 0.4353595302643829,
-      "p10": 0.03479185299866903,
-      "p50": 0.19327078641976003,
-      "p90": 2.241421392310799
+      "predicted_sales": 0.46648008002803404,
+      "p10": 0.044971151188432645,
+      "p50": 0.20789574191482124,
+      "p90": 1.178127595353448
     },
     {
-      "Name": "NieR",
-      "Platform": "Xbox",
-      "Genre": "角色扮演",
-      "Year": 2010,
-      "actual_sales": 0.29,
-      "predicted_sales": 1.021735934240665,
-      "p10": 0.06516862324291015,
-      "p50": 0.587728916812955,
-      "p90": 2.847711635536436
-    },
-    {
-      "Name": "Atelier Escha & Logy: Alchemists of the Dusk Sky",
+      "Name": "Atelier Iris 3: Grand Phantasm (US Sales)",
       "Platform": "PlayStation",
       "Genre": "角色扮演",
-      "Year": 2014,
-      "actual_sales": 0.1,
-      "predicted_sales": 0.42343514214939415,
-      "p10": 0.051590172787113385,
-      "p50": 0.1339930615605174,
-      "p90": 0.15632965694523207
+      "Year": 2007,
+      "actual_sales": 0.29,
+      "predicted_sales": 0.6167604722253202,
+      "p10": 0.0184617414124185,
+      "p50": 0.1405994117172253,
+      "p90": 1.3098960977705725
     },
     {
-      "Name": "Medabots 8",
-      "Platform": "Nintendo",
+      "Name": "Might and Magic: The Secret of the Inner Sanctum",
+      "Platform": "All",
+      "Genre": "角色扮演",
+      "Year": 1986,
+      "actual_sales": 0.1,
+      "predicted_sales": 0.7501161134997684,
+      "p10": 0.009743903487603062,
+      "p50": 0.0845991706475574,
+      "p90": 0.4455511271075064
+    },
+    {
+      "Name": "Space Channel 5 Special Edition",
+      "Platform": "PlayStation",
       "Genre": "其他",
-      "Year": 2014,
+      "Year": 2003,
       "actual_sales": 0.08,
-      "predicted_sales": 0.2998057482540524,
-      "p10": 0.013172999954482163,
-      "p50": 0.07069519415296933,
-      "p90": 0.35114402558543295
+      "predicted_sales": 0.5432262918672541,
+      "p10": 0.03776868052425209,
+      "p50": 0.19251266675264667,
+      "p90": 0.8505950697039677
     }
   ],
   "classification_samples": [
     {
-      "Name": "Just Dance 3",
-      "Platform": "All",
-      "Genre": "音乐节奏",
-      "Year": 2011,
-      "hit_probability": 0.9824561403508771,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Super Mario Party Jamboree",
-      "Platform": "NS",
-      "Genre": "派对",
-      "Year": 2024,
-      "hit_probability": 0.9824561403508771,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Resident Evil 3 (2020)",
+      "Name": "The Incredibles",
       "Platform": "All",
       "Genre": "动作冒险",
-      "Year": 2020,
-      "hit_probability": 0.9824561403508771,
+      "Year": 2004,
+      "hit_probability": 0.9916666666666667,
       "predicted_label": 1
     },
     {
-      "Name": "NBA 2K13",
-      "Platform": "All",
-      "Genre": "体育",
-      "Year": 2012,
-      "hit_probability": 0.9824561403508771,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Metroid Dread",
+      "Name": "Kirby's Return to Dream Land Deluxe",
       "Platform": "NS",
       "Genre": "平台跳跃",
-      "Year": 2021,
-      "hit_probability": 0.9824561403508771,
+      "Year": 2023,
+      "hit_probability": 0.9886039886039887,
       "predicted_label": 1
     },
     {
-      "Name": "Child of Eden",
-      "Platform": "All",
-      "Genre": "音乐节奏",
-      "Year": 2011,
-      "hit_probability": 0.9824561403508771,
+      "Name": "Princess Peach: Showtime!",
+      "Platform": "NS",
+      "Genre": "动作冒险",
+      "Year": 2023,
+      "hit_probability": 0.9886039886039887,
       "predicted_label": 1
     },
     {
-      "Name": "Saints Row 2",
+      "Name": "Luigi's Mansion 2 HD",
+      "Platform": "NS",
+      "Genre": "动作冒险",
+      "Year": 2024,
+      "hit_probability": 0.9886039886039887,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Lego Batman: The Videogame",
       "Platform": "All",
       "Genre": "动作冒险",
       "Year": 2008,
-      "hit_probability": 0.9824561403508771,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Tom Clancy's Ghost Recon Wildlands",
-      "Platform": "All",
-      "Genre": "射击",
-      "Year": 2017,
-      "hit_probability": 0.9753086419753086,
-      "predicted_label": 1
-    },
-    {
-      "Name": "The Legend of Zelda: Tears of the Kingdom",
-      "Platform": "NS",
-      "Genre": "动作冒险",
-      "Year": 2023,
-      "hit_probability": 0.9729323308270676,
-      "predicted_label": 1
-    },
-    {
-      "Name": "The Legend of Zelda: Breath of the Wild",
-      "Platform": "All",
-      "Genre": "动作冒险",
-      "Year": 2017,
-      "hit_probability": 0.9657848324514992,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Assassin's Creed II",
-      "Platform": "All",
-      "Genre": "动作冒险",
-      "Year": 2009,
-      "hit_probability": 0.9610917144493486,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Metroid Prime Remastered",
-      "Platform": "NS",
-      "Genre": "射击",
-      "Year": 2023,
-      "hit_probability": 0.9597069597069597,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Prince of Persia: The Two Thrones",
-      "Platform": "All",
-      "Genre": "动作冒险",
-      "Year": 2005,
-      "hit_probability": 0.9597069597069597,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Fight Night 2004",
-      "Platform": "All",
-      "Genre": "体育",
-      "Year": 2004,
-      "hit_probability": 0.959451897481841,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Madden NFL 2005",
-      "Platform": "All",
-      "Genre": "体育",
-      "Year": 2004,
-      "hit_probability": 0.959451897481841,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Call of Duty: Black Ops II",
-      "Platform": "All",
-      "Genre": "射击",
-      "Year": 2012,
-      "hit_probability": 0.9577647823261858,
-      "predicted_label": 1
-    },
-    {
-      "Name": "FIFA 12",
-      "Platform": "All",
-      "Genre": "体育",
-      "Year": 2011,
-      "hit_probability": 0.9577647823261858,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Bastion",
-      "Platform": "All",
-      "Genre": "角色扮演",
-      "Year": 2011,
-      "hit_probability": 0.9577647823261858,
-      "predicted_label": 1
-    },
-    {
-      "Name": "Call of Duty 4: Modern Warfare",
-      "Platform": "All",
-      "Genre": "射击",
-      "Year": 2007,
-      "hit_probability": 0.9577647823261858,
-      "predicted_label": 1
-    },
-    {
-      "Name": "WWE All Stars",
-      "Platform": "All",
-      "Genre": "体育",
-      "Year": 2011,
-      "hit_probability": 0.9577647823261858,
+      "hit_probability": 0.9802706552706552,
       "predicted_label": 1
     },
     {
@@ -442,7 +322,103 @@
       "Platform": "All",
       "Genre": "动作",
       "Year": 2019,
-      "hit_probability": 0.9577647823261858,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Shaun White Snowboarding",
+      "Platform": "All",
+      "Genre": "体育",
+      "Year": 2008,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Exoprimal",
+      "Platform": "All",
+      "Genre": "射击",
+      "Year": 2023,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Watch Dogs",
+      "Platform": "All",
+      "Genre": "动作冒险",
+      "Year": 2014,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Dragon Quest Builders 2",
+      "Platform": "All",
+      "Genre": "沙盒",
+      "Year": 2019,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Assassin's Creed Unity",
+      "Platform": "All",
+      "Genre": "动作冒险",
+      "Year": 2014,
+      "hit_probability": 0.9802706552706552,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Fire Emblem Engage",
+      "Platform": "NS",
+      "Genre": "角色扮演",
+      "Year": 2023,
+      "hit_probability": 0.954121229983299,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Super Mario RPG",
+      "Platform": "NS",
+      "Genre": "角色扮演",
+      "Year": 2023,
+      "hit_probability": 0.954121229983299,
+      "predicted_label": 1
+    },
+    {
+      "Name": "NBA 2K22",
+      "Platform": "All",
+      "Genre": "体育",
+      "Year": 2021,
+      "hit_probability": 0.9493883023294788,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Fire Emblem Warriors: Three Hopes",
+      "Platform": "NS",
+      "Genre": "动作",
+      "Year": 2022,
+      "hit_probability": 0.9493883023294788,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Dragon's Dogma",
+      "Platform": "All",
+      "Genre": "角色扮演",
+      "Year": 2012,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Batman: Arkham Knight",
+      "Platform": "All",
+      "Genre": "动作冒险",
+      "Year": 2015,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Hogwarts Legacy",
+      "Platform": "All",
+      "Genre": "角色扮演",
+      "Year": 2023,
+      "hit_probability": 0.9457878966499657,
       "predicted_label": 1
     },
     {
@@ -450,31 +426,55 @@
       "Platform": "All",
       "Genre": "动作冒险",
       "Year": 2016,
-      "hit_probability": 0.9577647823261858,
+      "hit_probability": 0.9457878966499657,
       "predicted_label": 1
     },
     {
-      "Name": "Dying Light",
+      "Name": "Battlefield 6",
+      "Platform": "All",
+      "Genre": "射击",
+      "Year": 2025,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Battlefield V",
+      "Platform": "All",
+      "Genre": "射击",
+      "Year": 2018,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Monster Hunter 4",
+      "Platform": "All",
+      "Genre": "角色扮演",
+      "Year": 2015,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Dragon Quest Builders",
+      "Platform": "All",
+      "Genre": "沙盒",
+      "Year": 2016,
+      "hit_probability": 0.9457878966499657,
+      "predicted_label": 1
+    },
+    {
+      "Name": "Lego Star Wars: The Skywalker Saga",
       "Platform": "All",
       "Genre": "动作冒险",
-      "Year": 2015,
-      "hit_probability": 0.9577647823261858,
+      "Year": 2022,
+      "hit_probability": 0.9457878966499657,
       "predicted_label": 1
     },
     {
-      "Name": "Street Fighter 6",
-      "Platform": "All",
-      "Genre": "格斗",
-      "Year": 2023,
-      "hit_probability": 0.9577647823261858,
-      "predicted_label": 1
-    },
-    {
-      "Name": "WWE SmackDown! vs. Raw",
-      "Platform": "All",
-      "Genre": "格斗",
-      "Year": 2004,
-      "hit_probability": 0.9577647823261858,
+      "Name": "Yakuman",
+      "Platform": "Nintendo",
+      "Genre": "其他",
+      "Year": 1989,
+      "hit_probability": 0.9410549689961455,
       "predicted_label": 1
     }
   ],
@@ -482,272 +482,572 @@
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Kinect Adventures!",
-      "candidate_platform": "Xbox",
-      "similarity": 0.9981682466350699,
+      "candidate": "Lego Star Wars II: The Original Trilogy",
+      "candidate_platform": "All",
+      "similarity": 0.9794587663741734,
       "anchor_sales": 350.0,
-      "candidate_sales": 24.0
+      "candidate_sales": 8.2,
+      "genre_match": true
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Lego Star Wars: The Complete Saga",
+      "candidate_platform": "All",
+      "similarity": 0.9684358768282595,
+      "anchor_sales": 350.0,
+      "candidate_sales": 3.4,
+      "genre_match": true
+    },
+    {
+      "anchor": "Minecraft",
+      "anchor_platform": "All",
+      "candidate": "Marvel's Spider-Man: Miles Morales",
+      "candidate_platform": "All",
+      "similarity": 0.9524756198610841,
+      "anchor_sales": 350.0,
+      "candidate_sales": 14.4,
+      "genre_match": true
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
       "candidate": "Grand Theft Auto V",
       "candidate_platform": "All",
-      "similarity": 0.9966258368264861,
+      "similarity": 0.9168403872824609,
       "anchor_sales": 350.0,
-      "candidate_sales": 220.0
+      "candidate_sales": 220.0,
+      "genre_match": true
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Wii Sports",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9957362547715365,
+      "candidate": "Elden Ring",
+      "candidate_platform": "All",
+      "similarity": 0.9071790502820862,
       "anchor_sales": 350.0,
-      "candidate_sales": 82.9
+      "candidate_sales": 30.0,
+      "genre_match": true
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Call of Duty: Black Ops",
+      "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9941275631788606,
+      "similarity": 0.9030869648259532,
       "anchor_sales": 350.0,
-      "candidate_sales": 30.0
+      "candidate_sales": 79.0,
+      "genre_match": true
     },
     {
       "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Wii Sports Resort",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.9940307814792032,
+      "candidate": "Dead Island",
+      "candidate_platform": "All",
+      "similarity": 0.8886294363983376,
       "anchor_sales": 350.0,
-      "candidate_sales": 33.14
+      "candidate_sales": 5.0,
+      "genre_match": true
     },
     {
-      "anchor": "Grand Theft Auto V",
+      "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Call of Duty: Black Ops II",
+      "candidate": "Red Dead Redemption",
       "candidate_platform": "All",
-      "similarity": 0.9986131541892334,
-      "anchor_sales": 220.0,
-      "candidate_sales": 31.0
+      "similarity": 0.8878540594498174,
+      "anchor_sales": 350.0,
+      "candidate_sales": 15.0,
+      "genre_match": true
     },
     {
-      "anchor": "Grand Theft Auto V",
+      "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "The Elder Scrolls V: Skyrim",
+      "candidate": "Red Dead Redemption: Undead Nightmare",
       "candidate_platform": "All",
-      "similarity": 0.9985656914893144,
-      "anchor_sales": 220.0,
-      "candidate_sales": 60.0
+      "similarity": 0.8878540594498174,
+      "anchor_sales": 350.0,
+      "candidate_sales": 2.0,
+      "genre_match": true
     },
     {
-      "anchor": "Grand Theft Auto V",
+      "anchor": "Minecraft",
       "anchor_platform": "All",
-      "candidate": "Call of Duty: Black Ops",
+      "candidate": "Alan Wake",
       "candidate_platform": "All",
-      "similarity": 0.998125644575257,
-      "anchor_sales": 220.0,
-      "candidate_sales": 30.0
+      "similarity": 0.8878540594498174,
+      "anchor_sales": 350.0,
+      "candidate_sales": 3.2,
+      "genre_match": true
     },
     {
       "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "The Witcher 3: Wild Hunt",
+      "candidate": "Red Dead Redemption 2",
       "candidate_platform": "All",
-      "similarity": 0.9980805999649659,
+      "similarity": 0.9924064489474601,
       "anchor_sales": 220.0,
-      "candidate_sales": 60.0
+      "candidate_sales": 79.0,
+      "genre_match": true
     },
     {
       "anchor": "Grand Theft Auto V",
       "anchor_platform": "All",
-      "candidate": "Terraria",
-      "candidate_platform": "PC",
-      "similarity": 0.9979549422672134,
+      "candidate": "Grand Theft Auto IV",
+      "candidate_platform": "All",
+      "similarity": 0.98882044357568,
       "anchor_sales": 220.0,
-      "candidate_sales": 32.0
+      "candidate_sales": 25.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto: San Andreas",
+      "candidate_platform": "All",
+      "similarity": 0.9700748117403835,
+      "anchor_sales": 220.0,
+      "candidate_sales": 27.5,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Elden Ring",
+      "candidate_platform": "All",
+      "similarity": 0.9687277741491452,
+      "anchor_sales": 220.0,
+      "candidate_sales": 30.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto III",
+      "candidate_platform": "All",
+      "similarity": 0.9487714797151067,
+      "anchor_sales": 220.0,
+      "candidate_sales": 14.5,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Hollow Knight",
+      "candidate_platform": "NS",
+      "similarity": 0.9397809011024849,
+      "anchor_sales": 220.0,
+      "candidate_sales": 0.25,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Red Dead Redemption 2",
+      "candidate_platform": "PlayStation",
+      "similarity": 0.9367954381688675,
+      "anchor_sales": 220.0,
+      "candidate_sales": 13.94,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "The Last of Us",
+      "candidate_platform": "PlayStation",
+      "similarity": 0.9367437055785732,
+      "anchor_sales": 220.0,
+      "candidate_sales": 8.15,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Marvel's Spider-Man: Miles Morales",
+      "candidate_platform": "All",
+      "similarity": 0.9231649208095773,
+      "anchor_sales": 220.0,
+      "candidate_sales": 14.4,
+      "genre_match": true
+    },
+    {
+      "anchor": "Grand Theft Auto V",
+      "anchor_platform": "All",
+      "candidate": "Resident Evil 4",
+      "candidate_platform": "All",
+      "similarity": 0.9199902125098335,
+      "anchor_sales": 220.0,
+      "candidate_sales": 15.0,
+      "genre_match": true
     },
     {
       "anchor": "Wii Sports",
       "anchor_platform": "Nintendo",
-      "candidate": "Minecraft",
-      "candidate_platform": "All",
-      "similarity": 0.9957362547715365,
+      "candidate": "Mario Strikers Charged",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9989916583451887,
       "anchor_sales": 82.9,
-      "candidate_sales": 350.0
+      "candidate_sales": 2.6,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Calcio Bit",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9931440311921028,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.03,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "True Swing Golf",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9931440311921028,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.16,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Mario Tennis: Power Tour",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9921249149316944,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.52,
+      "genre_match": true
     },
     {
       "anchor": "Wii Sports",
       "anchor_platform": "Nintendo",
       "candidate": "Wii Fit",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9951614502645053,
+      "similarity": 0.9896516763006065,
       "anchor_sales": 82.9,
-      "candidate_sales": 22.67
+      "candidate_sales": 22.67,
+      "genre_match": true
     },
     {
       "anchor": "Wii Sports",
       "anchor_platform": "Nintendo",
-      "candidate": "Kinect Adventures!",
+      "candidate": "Hamtaro: Ham-Ham Games",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9891116276578984,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.22,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Mario Golf: Advance Tour",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9891116276578984,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.45,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Super Mario Strikers",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9851243486268284,
+      "anchor_sales": 82.9,
+      "candidate_sales": 1.6,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Active Health with Carol Vorderman",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9840137103061463,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.18,
+      "genre_match": true
+    },
+    {
+      "anchor": "Wii Sports",
+      "anchor_platform": "Nintendo",
+      "candidate": "Personal Trainer: Walking",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9840137103061463,
+      "anchor_sales": 82.9,
+      "candidate_sales": 0.78,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto V",
+      "candidate_platform": "All",
+      "similarity": 0.9924064489474601,
+      "anchor_sales": 79.0,
+      "candidate_sales": 220.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Elden Ring",
+      "candidate_platform": "All",
+      "similarity": 0.990226692904485,
+      "anchor_sales": 79.0,
+      "candidate_sales": 30.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto IV",
+      "candidate_platform": "All",
+      "similarity": 0.9658825663164305,
+      "anchor_sales": 79.0,
+      "candidate_sales": 25.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Hollow Knight",
+      "candidate_platform": "NS",
+      "similarity": 0.9492635472942785,
+      "anchor_sales": 79.0,
+      "candidate_sales": 0.25,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Marvel's Spider-Man: Miles Morales",
+      "candidate_platform": "All",
+      "similarity": 0.9454765478327148,
+      "anchor_sales": 79.0,
+      "candidate_sales": 14.4,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Grand Theft Auto: San Andreas",
+      "candidate_platform": "All",
+      "similarity": 0.9353040987942026,
+      "anchor_sales": 79.0,
+      "candidate_sales": 27.5,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Shadow of the Colossus",
+      "candidate_platform": "PlayStation",
+      "similarity": 0.9329643306566278,
+      "anchor_sales": 79.0,
+      "candidate_sales": 1.2,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "The Last of Us",
+      "candidate_platform": "PlayStation",
+      "similarity": 0.9328501474542172,
+      "anchor_sales": 79.0,
+      "candidate_sales": 8.15,
+      "genre_match": true
+    },
+    {
+      "anchor": "Red Dead Redemption 2",
+      "anchor_platform": "All",
+      "candidate": "Resident Evil 4 (2023)",
+      "candidate_platform": "All",
+      "similarity": 0.930574525275369,
+      "anchor_sales": 79.0,
+      "candidate_sales": 11.1,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Homefront: The Revolution",
+      "candidate_platform": "All",
+      "similarity": 0.9992728692910782,
+      "anchor_sales": 75.0,
+      "candidate_sales": 1.2,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Gal Gun: Double Peace",
+      "candidate_platform": "All",
+      "similarity": 0.9992728692910782,
+      "anchor_sales": 75.0,
+      "candidate_sales": 0.1,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Enter the Gungeon",
+      "candidate_platform": "All",
+      "similarity": 0.9992728692910782,
+      "anchor_sales": 75.0,
+      "candidate_sales": 3.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Superhot VR",
+      "candidate_platform": "All",
+      "similarity": 0.9992728692910782,
+      "anchor_sales": 75.0,
+      "candidate_sales": 2.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Metro Exodus",
+      "candidate_platform": "All",
+      "similarity": 0.9973816669653746,
+      "anchor_sales": 75.0,
+      "candidate_sales": 10.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Remnant: From the Ashes",
+      "candidate_platform": "All",
+      "similarity": 0.9973816669653746,
+      "anchor_sales": 75.0,
+      "candidate_sales": 3.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "My Friend Pedro",
+      "candidate_platform": "All",
+      "similarity": 0.9973816669653746,
+      "anchor_sales": 75.0,
+      "candidate_sales": 0.5,
+      "genre_match": true
+    },
+    {
+      "anchor": "PlayerUnknown's Battlegrounds",
+      "anchor_platform": "All",
+      "candidate": "Sniper: Ghost Warrior Contracts",
+      "candidate_platform": "All",
+      "similarity": 0.9973816669653746,
+      "anchor_sales": 75.0,
+      "candidate_sales": 1.0,
+      "genre_match": true
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Mario Kart 8",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.9053563870091359,
+      "anchor_sales": 69.56,
+      "candidate_sales": 8.46,
+      "genre_match": true
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Mario Kart DS",
+      "candidate_platform": "Nintendo",
+      "similarity": 0.8620787915012064,
+      "anchor_sales": 69.56,
+      "candidate_sales": 23.6,
+      "genre_match": true
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Forza Horizon 4",
       "candidate_platform": "Xbox",
-      "similarity": 0.9951414887563585,
-      "anchor_sales": 82.9,
-      "candidate_sales": 24.0
+      "similarity": 0.8574068022178727,
+      "anchor_sales": 69.56,
+      "candidate_sales": 1.84,
+      "genre_match": true
     },
     {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "DiRT 4",
+      "candidate_platform": "Xbox",
+      "similarity": 0.8566923877433869,
+      "anchor_sales": 69.56,
+      "candidate_sales": 0.23,
+      "genre_match": true
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
+      "candidate": "Project CARS 2",
+      "candidate_platform": "Xbox",
+      "similarity": 0.8566923877433869,
+      "anchor_sales": 69.56,
+      "candidate_sales": 0.2,
+      "genre_match": true
+    },
+    {
+      "anchor": "Mario Kart 8 Deluxe",
+      "anchor_platform": "NS",
       "candidate": "Mario Kart Wii",
       "candidate_platform": "Nintendo",
-      "similarity": 0.9948302150804523,
-      "anchor_sales": 82.9,
-      "candidate_sales": 37.38
-    },
-    {
-      "anchor": "Wii Sports",
-      "anchor_platform": "Nintendo",
-      "candidate": "New Super Mario Bros.",
-      "candidate_platform": "Nintendo",
-      "similarity": 0.994653324698674,
-      "anchor_sales": 82.9,
-      "candidate_sales": 30.8
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
-      "anchor_platform": "All",
-      "candidate": "Mario Kart 8 Deluxe",
-      "candidate_platform": "NS",
-      "similarity": 0.9997384192039104,
-      "anchor_sales": 79.0,
-      "candidate_sales": 69.56
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
-      "anchor_platform": "All",
-      "candidate": "Super Smash Bros. Ultimate",
-      "candidate_platform": "NS",
-      "similarity": 0.9992082546452511,
-      "anchor_sales": 79.0,
-      "candidate_sales": 36.93
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
-      "anchor_platform": "All",
-      "candidate": "Monster Hunter: World",
-      "candidate_platform": "All",
-      "similarity": 0.9990220375638765,
-      "anchor_sales": 79.0,
-      "candidate_sales": 29.1
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
-      "anchor_platform": "All",
-      "candidate": "Dying Light",
-      "candidate_platform": "All",
-      "similarity": 0.9990215055025483,
-      "anchor_sales": 79.0,
-      "candidate_sales": 20.0
-    },
-    {
-      "anchor": "Red Dead Redemption 2",
-      "anchor_platform": "All",
-      "candidate": "Diablo III",
-      "candidate_platform": "All",
-      "similarity": 0.9990149175540717,
-      "anchor_sales": 79.0,
-      "candidate_sales": 30.0
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "Human: Fall Flat",
-      "candidate_platform": "All",
-      "similarity": 0.9998811415658624,
-      "anchor_sales": 75.0,
-      "candidate_sales": 55.0
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "Stardew Valley",
-      "candidate_platform": "All",
-      "similarity": 0.9998264489634816,
-      "anchor_sales": 75.0,
-      "candidate_sales": 41.0
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "PLAYERUNKNOWN'S BATTLEGROUNDS",
-      "candidate_platform": "PC",
-      "similarity": 0.9995240029584282,
-      "anchor_sales": 75.0,
-      "candidate_sales": 36.6
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "The Legend of Zelda: Breath of the Wild",
-      "candidate_platform": "All",
-      "similarity": 0.9994530693233874,
-      "anchor_sales": 75.0,
-      "candidate_sales": 35.04
-    },
-    {
-      "anchor": "PlayerUnknown's Battlegrounds",
-      "anchor_platform": "All",
-      "candidate": "FIFA 18",
-      "candidate_platform": "All",
-      "similarity": 0.9988132776747621,
-      "anchor_sales": 75.0,
-      "candidate_sales": 26.4
+      "similarity": 0.8566818382091417,
+      "anchor_sales": 69.56,
+      "candidate_sales": 37.38,
+      "genre_match": true
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "Red Dead Redemption 2",
-      "candidate_platform": "All",
-      "similarity": 0.9997384192039104,
+      "candidate": "F1 2017",
+      "candidate_platform": "Xbox",
+      "similarity": 0.845361336904215,
       "anchor_sales": 69.56,
-      "candidate_sales": 79.0
+      "candidate_sales": 0.19,
+      "genre_match": true
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "The Witcher 3: Wild Hunt",
-      "candidate_platform": "All",
-      "similarity": 0.9993347597207358,
+      "candidate": "Forza Horizon 3",
+      "candidate_platform": "Xbox",
+      "similarity": 0.8441715374694374,
       "anchor_sales": 69.56,
-      "candidate_sales": 60.0
+      "candidate_sales": 2.5,
+      "genre_match": true
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "Dying Light",
-      "candidate_platform": "All",
-      "similarity": 0.9992583760054319,
+      "candidate": "F1 2018",
+      "candidate_platform": "PlayStation",
+      "similarity": 0.8382003099208861,
       "anchor_sales": 69.56,
-      "candidate_sales": 20.0
+      "candidate_sales": 0.53,
+      "genre_match": true
     },
     {
       "anchor": "Mario Kart 8 Deluxe",
       "anchor_platform": "NS",
-      "candidate": "Diablo III",
-      "candidate_platform": "All",
-      "similarity": 0.9990146839132709,
+      "candidate": "Forza Motorsport 7",
+      "candidate_platform": "Xbox",
+      "similarity": 0.8379388927904095,
       "anchor_sales": 69.56,
-      "candidate_sales": 30.0
-    },
-    {
-      "anchor": "Mario Kart 8 Deluxe",
-      "anchor_platform": "NS",
-      "candidate": "Fallout 4",
-      "candidate_platform": "All",
-      "similarity": 0.9989013197140572,
-      "anchor_sales": 69.56,
-      "candidate_sales": 25.0
+      "candidate_sales": 1.52,
+      "genre_match": true
     }
   ]
 }

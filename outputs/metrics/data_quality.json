@@ -5,7 +5,7 @@
     "Name": "string",
     "Platform": "string",
     "Platform_Family": "string",
-    "Year": "int32",
+    "Year": "int64",
     "Genre": "object",
     "Publisher": "string",
     "Developer": "string",
@@ -30,8 +30,8 @@
     "JP_Sales_Share": "float64",
     "Other_Sales_Share": "float64",
     "Platform_Family_CN": "object",
-    "Decade": "int32",
-    "Age_Years": "int32",
+    "Decade": "int64",
+    "Age_Years": "int64",
     "Release_Quarter": "string",
     "Composite_Score": "float64",
     "Score_Gap": "float64",
@@ -179,7 +179,7 @@
       },
       "algorithm": "K-Means++ with PCA",
       "pca_variance_ratio": [
-        0.4578656397327826,
+        0.4578656397327822,
         0.2598632336548001
       ]
     },

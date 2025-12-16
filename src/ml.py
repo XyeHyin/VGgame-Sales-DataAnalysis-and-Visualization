@@ -377,44 +377,97 @@ class SalesMLAnalyzer:
         }
 
     def _build_similarity_samples(self, df: pd.DataFrame) -> List[Dict[str, object]]:
-        region_cols = [col for col in REGION_COLS if col in df.columns]
-        feature_cols = region_cols.copy()
-        for extra in ["Composite_Score", "Age_Years", "Global_Sales"]:
-            if extra in df.columns and extra not in feature_cols:
-                feature_cols.append(extra)
-        if len(feature_cols) < 3 or len(df) < 50:
+        """
+        构建相似性推荐样本
+        """
+        # 1. 特征选择
+        cat_cols = ["Genre", "Platform_Family", "Publisher_Grouped"]
+        valid_cat = [c for c in cat_cols if c in df.columns]
+        num_cols = ["Composite_Score", "Year"]
+        valid_num = [c for c in num_cols if c in df.columns]
+        if len(df) < 10:
             return []
-        work = df[feature_cols].copy().fillna(0)
-        sales_cols = [c for c in work.columns if "Sales" in c or "Shipped" in c]
-        for col in sales_cols:
-            work[col] = np.log1p(np.log1p(work[col]))
-        scaler = StandardScaler()
-        matrix = scaler.fit_transform(work)
-        neighbors = NearestNeighbors(metric="cosine", n_neighbors=6)
-        neighbors.fit(matrix)
-        index_positions = {idx: pos for pos, idx in enumerate(df.index)}
-        anchors = df.nlargest(10, "Global_Sales")
+        # 2. 特征预处理
+        work = df.copy()
+        feature_parts = []
+        if valid_num:
+            for col in valid_num:
+                work[col] = work[col].fillna(work[col].median())
+
+            scaler = StandardScaler()
+            scaled_num = scaler.fit_transform(work[valid_num])
+            df_num = pd.DataFrame(scaled_num, index=work.index, columns=valid_num)
+            feature_parts.append(df_num)
+
+        # 处理分类特征：One-Hot 编码
+        if valid_cat:
+            df_cat = pd.get_dummies(work[valid_cat], dummy_na=False)
+            genre_cols = [c for c in df_cat.columns if c.startswith("Genre_")]
+            if genre_cols:
+                df_cat[genre_cols] *= 2.0
+
+            feature_parts.append(df_cat)
+
+        if not feature_parts:
+            return []
+
+        matrix_df = pd.concat(feature_parts, axis=1)
+        matrix_df = matrix_df.fillna(0)
+
+        # 3. 计算相似度
+        n_neighbors = min(11, len(df))
+        neighbors = NearestNeighbors(metric="cosine", n_neighbors=n_neighbors)
+        neighbors.fit(matrix_df.values)
+
+        # 4. 生成推荐列表
+        anchors = (
+            df.sort_values("Global_Sales", ascending=False)
+            .drop_duplicates(subset=["Name"])
+            .head(10)
+        )
         recommendations: List[Dict[str, object]] = []
+
+        # 获取矩阵值用于查询
+        matrix_values = matrix_df.values
+        index_positions = {idx: pos for pos, idx in enumerate(df.index)}
+
         for anchor_idx, anchor_row in anchors.iterrows():
             position = index_positions.get(anchor_idx)
             if position is None:
                 continue
-            distances, indices = neighbors.kneighbors(matrix[position].reshape(1, -1))
-            for distance, neighbor_pos in zip(distances[0][1:], indices[0][1:]):
+
+            distances, indices = neighbors.kneighbors(
+                matrix_values[position].reshape(1, -1)
+            )
+
+            for dist, neighbor_pos in zip(distances[0], indices[0]):
+                if dist < 1e-5:
+                    continue
+
                 neighbor_row = df.iloc[int(neighbor_pos)]
+
+                if neighbor_row.get("Name") == anchor_row.get("Name"):
+                    continue
+
+                similarity_score = max(0.0, 1.0 - dist)
+
                 recommendations.append(
                     {
                         "anchor": anchor_row.get("Name"),
                         "anchor_platform": anchor_row.get("Platform_Family"),
                         "candidate": neighbor_row.get("Name"),
                         "candidate_platform": neighbor_row.get("Platform_Family"),
-                        "similarity": float(1 - distance),
+                        "similarity": float(similarity_score),
                         "anchor_sales": float(anchor_row.get("Global_Sales", 0.0)),
                         "candidate_sales": float(neighbor_row.get("Global_Sales", 0.0)),
+                        "genre_match": anchor_row.get("Genre")
+                        == neighbor_row.get("Genre"),
                     }
                 )
-            if len(recommendations) >= 30:
+
+            if len(recommendations) >= 50:
                 break
+
         return recommendations
 
     def _cluster_behavior_segments(
